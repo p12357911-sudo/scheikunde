@@ -169,3 +169,23 @@ Alle 19 pagina's bekeken op 360×640, 390×844, 414×896 en 768×1024 (met aanra
 Bewust gelaten: de zwevende knop ligt tijdens het scrollen over de tekst (zo ontworpen, hij verdwijnt zodra de gewone knop in beeld is); de onderindices/bovenindices (H₂O) blijven 15 px; de dropdown op de beginpagina legt zich over het volgende blok (standaard w3.css-gedrag); de docx-spellen worden op een telefoon gedownload in plaats van geopend.
 
 Voor/na-schermafbeeldingen: `screens/mobiel_voor_*.png` en `screens/mobiel_na_*.png`.
+
+## Hoofdstukpagina's Nova en Polaris (29 okt 2026)
+
+Voor elk hoofdstuk dat Peter nu behandelt is minstens één KB- en één MP-pagina gemaakt en in het menu gezet. Alleen training, geen uitleg; korte vragen in eenvoudig Nederlands.
+
+| Hoofdstuk | KB | MP |
+|---|---|---|
+| Scheikunde 3 Nova H1 Stoffen | bestaand: Matriaalenstof1KB (+ KBAI) | nieuw: NovaHavo3H1StoffenMP (28) |
+| Scheikunde 3 Nova H2 Reacties | bestaand: ChemReactions1KB; nieuw: NovaHavo3H2Reacties2KB (26) | nieuw: NovaHavo3H2ReactiesMP (27) |
+| NaSk2 Nova H1 Stoffen en mengsels | nieuw: NovaVmbo3H1StoffenKB (29) | nieuw: NovaVmbo3H1StoffenMP (25) |
+| NaSk2 Nova H2 Water | nieuw: NovaVmbo3H2WaterKB (29) | nieuw: NovaVmbo3H2WaterMP (24) |
+| Natuurkunde 3 Nova H1 Elektriciteit | nieuw: NovaNatHavo3H1ElektriciteitKB (25) | nieuw: NovaNatHavo3H1ElektriciteitMP (22) |
+| Natuurkunde 3 Nova H2 Krachten | nieuw: NovaNatHavo3H2KrachtenKB (26) | nieuw: NovaNatHavo3H2KrachtenMP (23) |
+| Scheikunde 4 Polaris H1 Atoombouw | nieuw: PolarisHavo4H1AtoombouwKB (25) | nieuw: PolarisHavo4H1AtoombouwMP (26) |
+| Scheikunde 4 Polaris H2 Rekenen en meten | nieuw: PolarisHavo4H2RekenenKB (26) | nieuw: PolarisHavo4H2RekenenMP (24) |
+
+- **Menu** (`index.html`): nieuwe items in de lijsten Scheikunde Havo/VWO 3 en 4, NaSk2 en een nieuwe lijst "Leerjaar 3" bij Natuurkunde. De bestaande scheikunde-3-items heten nu "Nova H1 Stoffen KB", "Nova H1 Stoffen KBAI" en "Nova H2 Reacties KB".
+- **Titels en menutekst** bevatten geen niveau (havo/vwo/vmbo); het niveau staat alleen in de bestandsnamen.
+- **Gemaakt met** `mp/make_shells.py` (lege MP-pagina's), `mp/build.py` (MP-vragen uit `mp/data.py`), `mp/build_kb.py` (KB-pagina's uit `mp/kb_data.py`). Subscripts en superscripts (H₂O, 10⁻³) worden bij het bouwen omgezet naar `<sub>`/`<sup>`.
+- **Controle**: alle nieuwe pagina's laden zonder fouten op 1280 en 390 breed; bij MP geeft alles goed 15 van de 15 en alles fout 0 van de 15; KB toont het modelantwoord na typen en "Meer vragen" werkt; alle 449 verwijzingen op de site werken.

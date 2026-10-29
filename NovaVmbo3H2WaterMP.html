@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Nova H2 Water - 123 school</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+        <em>Nova H2 Water</em>
+        <br><br>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>
+            <a class="w3-button w3-theme" href="#myPage">
+                <span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: 'Uit welk water kan een drinkwaterbedrijf drinkwater maken?',
+                answers: {
+                    a: 'Grondwater',
+                    b: 'Water uit het zwembad',
+                    c: 'Afvalwater van een fabriek',
+                    d: 'Rioolwater'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat is grondwater?',
+                answers: {
+                    a: 'Water in zee',
+                    b: 'Water uit de kraan',
+                    c: 'Water onder de grond',
+                    d: 'Water in een rivier'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is oppervlaktewater?',
+                answers: {
+                    a: 'Water in de kraan',
+                    b: 'Water onder de grond',
+                    c: 'Water in de lucht',
+                    d: 'Water in rivieren, meren en sloten'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Regenwater zakt in de grond. Hoe heet dit water daarna?',
+                answers: {
+                    a: 'Oppervlaktewater',
+                    b: 'Grondwater',
+                    c: 'Zeewater',
+                    d: 'Drinkwater'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat zit er in zeewater opgelost?',
+                answers: {
+                    a: 'Zeep',
+                    b: 'Olie',
+                    c: 'Zouten',
+                    d: 'Zand'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Welk water bevat (bijna) geen opgeloste zouten?',
+                answers: {
+                    a: 'Zeewater',
+                    b: 'Zoet water',
+                    c: 'Brak water',
+                    d: 'Zout water'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Water is vaak een…',
+                answers: {
+                    a: 'Legering',
+                    b: 'Brandstof',
+                    c: 'Emulgator',
+                    d: 'Oplosmiddel'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Suiker lost goed op in water. Hoe noem je suiker dan?',
+                answers: {
+                    a: 'Hydrofiel',
+                    b: 'Suspensie',
+                    c: 'Hydrofoob',
+                    d: 'Emulsie'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Olie lost slecht op in water. Hoe noem je olie dan?',
+                answers: {
+                    a: 'Hydrofiel',
+                    b: 'Oplossing',
+                    c: 'Zuur',
+                    d: 'Hydrofoob'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat gebruik je om olie en water gemengd te houden?',
+                answers: {
+                    a: 'Een emulgator',
+                    b: 'Een filter',
+                    c: 'Een magneet',
+                    d: 'Een thermometer'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Een zeepdeeltje heeft een kop en een staart. Welk deel is hydrofiel?',
+                answers: {
+                    a: 'Allebei',
+                    b: 'Geen van beide',
+                    c: 'De kop',
+                    d: 'De staart'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Welk deel van een zeepdeeltje hecht aan vet?',
+                answers: {
+                    a: 'Allebei',
+                    b: 'De staart',
+                    c: 'De kop',
+                    d: 'Geen van beide'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is een detergent?',
+                answers: {
+                    a: 'Een zuur',
+                    b: 'Een natuurlijke zeep',
+                    c: 'Een synthetische zeep',
+                    d: 'Een oplosmiddel'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat doet zeep met vet en water?',
+                answers: {
+                    a: 'Het maakt water zuur',
+                    b: 'Het laat vet en water mengen',
+                    c: 'Het laat vet verdampen',
+                    d: 'Het maakt van vet een gas'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Een oplossing is zuur. Wat weet je over de pH?',
+                answers: {
+                    a: 'De pH is hoger dan 7',
+                    b: 'De pH is precies 7',
+                    c: 'De pH is precies 14',
+                    d: 'De pH is lager dan 7'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Een oplossing is basisch. Wat weet je over de pH?',
+                answers: {
+                    a: 'De pH is hoger dan 7',
+                    b: 'De pH is precies 7',
+                    c: 'De pH is lager dan 7',
+                    d: 'De pH is precies 0'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Een oplossing heeft pH 7. Hoe noem je zo\'n oplossing?',
+                answers: {
+                    a: 'Zout',
+                    b: 'Basisch',
+                    c: 'Zuur',
+                    d: 'Neutraal'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Welke stof is een zuur?',
+                answers: {
+                    a: 'Ammoniak',
+                    b: 'Azijn',
+                    c: 'Soda',
+                    d: 'Zeepoplossing'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Welke stof is een base?',
+                answers: {
+                    a: 'Soda',
+                    b: 'Citroensap',
+                    c: 'Azijn',
+                    d: 'Cola'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Waarmee meet je de pH?',
+                answers: {
+                    a: 'Met een thermometer',
+                    b: 'Met een weegschaal',
+                    c: 'Met universeel indicatorpapier',
+                    d: 'Met een maatcilinder'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Er komt zuur op je huid. Wat doe je eerst?',
+                answers: {
+                    a: 'Spoelen met veel water',
+                    b: 'Wachten tot het droog is',
+                    c: 'Afvegen met een doek',
+                    d: 'Er een basisch middel op doen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Welke stof mag je nooit bij open vuur gebruiken?',
+                answers: {
+                    a: 'Keukenzout',
+                    b: 'Suikerwater',
+                    c: 'Wasbenzine',
+                    d: 'Gewoon water'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat betekent 5 g/L?',
+                answers: {
+                    a: '5 gram in 5 liter',
+                    b: '5 gram stof in 1 liter oplossing',
+                    c: '5 liter in 1 gram',
+                    d: '5 gram in 1 mL'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Er is 20 g zout opgelost in 2 L oplossing. Wat is de concentratie?',
+                answers: {
+                    a: '0,1 g/L',
+                    b: '22 g/L',
+                    c: '40 g/L',
+                    d: '10 g/L'
+                },
+                correctAnswer: 'd'
+            }
+        ];
+    </script>
+
+    <script src="school.js"></script>
+</body>
+</html>
