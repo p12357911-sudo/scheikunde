@@ -198,3 +198,11 @@ Voor elk hoofdstuk dat Peter nu behandelt is minstens één KB- en één MP-pagi
 - Getest: geen JavaScript-fouten op desktop en mobiel, volledige score klopt (15 van 15 goed).
 - **Tweede ronde (29 okt 2026)**: H1 KB 35 (3 nieuw: brandervlammen, geur veilig bepalen, reactieschema roesten; 5 weg die dubbel waren), H1 MP 31 (5 nieuw: corrosief, pauzevlam, overgebleven chemicaliën, bezinken, magnesium + zuurstof; 5 weg die dubbel waren). H2 KB 35 (2 nieuw: hard water en zeep, talg wegwassen; 3 dubbele weg), H2 MP 32 (3 nieuw: hard water en zeep, talg, ontsmetten; 4 dubbele weg). Fout hersteld: tandpasta bestaat uit zeep en een schuurmiddel (geen water).
 - Getest: geen JavaScript-fouten op desktop en mobiel, alles goed geeft 15 van de 15, KB toont modelantwoord en "Meer vragen" werkt.
+
+## BINAS-tabel bij vragen waar BINAS nodig is (29 okt 2026)
+
+- Bij vragen waarbij leerlingen gegevens uit BINAS moeten opzoeken staat nu erbij: "(gebruik BINAS tabel N)", zodat leerlingen weten dat ze BINAS mogen gebruiken. Alleen toegevoegd waar het tabelnummer zeker is.
+- **Volledige BINAS (4e jaar)**, tabelnummers van de 6e druk (de 7e druk heeft dezelfde nummers voor deze tabellen): Polaris 4 H2 Rekenen en meten (KB 4, MP 5: molaire massa H₂O, CO₂, CH₄, gram uit mol, constante van Avogadro tabel 7A), Polaris 4 H1 Atoombouw (KB 1), ChemCalcPeriodSys1KB (2, tabel 99), acidbase1KB (14, tabel 49 en 52A), redox1KB (4, tabel 48).
+- **Ingekorte BINAS (vmbo)**, tabelnummers van Binas vmbo KGT NaSk1/NaSk2, 2e editie: Uitdeaardevmbo4Hst9 (6: tabel 41, 15, 34, 40), Zoutenvmbo4Hst10 (2: tabel 15 en 35).
+- Niet aangepast: de Nova havo 3 pagina's (daar is nog geen BINAS) en de NaSk2 Nova H1/H2 pagina's (geen vraag vraagt daar echt om een opzoektabel). Bestaande vermeldingen van BINAS in jouw eigen formulering zijn niet veranderd.
+- Getest: geen JavaScript-fouten op 1280 en 390 breed, MP geeft 15 van de 15 bij alles goed en 0 bij alles fout, KB toont het modelantwoord en "Meer vragen" werkt.
