@@ -10,32 +10,6 @@
     <link rel="stylesheet" href="123school.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="https://www.w3schools.com/lib/w3data.js"></script>
-    <style>
-        .question {
-            font-weight: bold;
-            text-align: left;
-            margin-bottom: 10px;
-        }
-        .answers label {
-            display: block;
-            text-align: left;
-            margin-left: 20px;
-        }
-        .answers input {
-            margin-right: 10px;
-        }
-        #results {
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .footer-link {
-            text-decoration: none;
-            color: #fff;
-        }
-        .footer-link:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <!-- Navbar -->
@@ -63,7 +37,7 @@
     <script>
         var myQuestions = [
             {
-                question: '1. Archeologen',
+                question: 'Archeologen',
                 answers: {
                     a: 'Boekenverzamelaars',
                     b: 'Kunstenaars',
@@ -73,7 +47,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '2. Nederzetting',
+                question: 'Nederzetting',
                 answers: {
                     a: 'Een plaats waar een groep mensen zich vestigt',
                     b: 'Een groot schip',
@@ -83,7 +57,7 @@
                 correctAnswer: 'a'
             },
             {
-                question: '3. Hooglied',
+                question: 'Hooglied',
                 answers: {
                     a: 'Een beroemde symfonie',
                     b: 'Een bekend schilderij',
@@ -93,7 +67,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '4. Kopist',
+                question: 'Kopist',
                 answers: {
                     a: 'Iemand die schilderijen maakt',
                     b: 'Iemand die beelden houwt',
@@ -103,7 +77,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '5. Allegaartje',
+                question: 'Allegaartje',
                 answers: {
                     a: 'Een soort dier',
                     b: 'Een soort plant',
@@ -113,7 +87,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '6. Klankwetten',
+                question: 'Klankwetten',
                 answers: {
                     a: 'Wetten over verkeersgeluid',
                     b: 'Betrouwbare bewering over een bepaalde klankontwikkeling',
@@ -123,7 +97,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '7. Reconstructie',
+                question: 'Reconstructie',
                 answers: {
                     a: 'Het bouwen van nieuwe huizen',
                     b: 'Een type machine',
@@ -133,7 +107,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '8. Overgeleverd',
+                question: 'Overgeleverd',
                 answers: {
                     a: 'Mondeling doorgegeven; doorverteld',
                     b: 'Met de post verstuurd',
@@ -143,7 +117,7 @@
                 correctAnswer: 'a'
             },
             {
-                question: '9. Pennenproefsel',
+                question: 'Pennenproefsel',
                 answers: {
                     a: 'Een manier van schrijven',
                     b: 'Een test om te controleren of je pen werkt',
@@ -153,7 +127,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '10. Samengesteld',
+                question: 'Samengesteld',
                 answers: {
                     a: 'Gemengd',
                     b: 'Gemaakt van metaal',
@@ -163,7 +137,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '11. Liet links liggen',
+                question: 'Liet links liggen',
                 answers: {
                     a: 'Schreef erover',
                     b: 'Vond het leuk',
@@ -173,7 +147,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '12. Interpreteren',
+                question: 'Interpreteren',
                 answers: {
                     a: 'Verduidelijken',
                     b: 'Vertalen',
@@ -183,7 +157,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '13. Exotisch',
+                question: 'Exotisch',
                 answers: {
                     a: 'Lokaal',
                     b: 'Gewoon',
@@ -193,7 +167,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '16. Redeneren',
+                question: 'Redeneren',
                 answers: {
                     a: 'Zingen',
                     b: 'Uitleggen van welke feiten en gedachten je uitgaat bij het maken van keuzes',
@@ -203,7 +177,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '17. Zich voltrok',
+                question: 'Zich voltrok',
                 answers: {
                     a: 'Werd geschreven',
                     b: 'Werd vergeten',
@@ -213,7 +187,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '18. Taalfamilie',
+                question: 'Taalfamilie',
                 answers: {
                     a: 'Een verzameling van woorden',
                     b: 'Groep verwante talen die dezelfde geschiedenis hebben',
@@ -223,7 +197,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '19. Aanknopingspunt',
+                question: 'Aanknopingspunt',
                 answers: {
                     a: 'Een aanwijzing; iets wat je kunt gebruiken om een zaak (verder) te onderzoeken',
                     b: 'Een muziekinstrument',
@@ -233,7 +207,7 @@
                 correctAnswer: 'a'
             },
             {
-                question: '20. Klerk',
+                question: 'Klerk',
                 answers: {
                     a: 'Politieagent',
                     b: 'Leraar',
@@ -243,7 +217,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '21. Laaggeletterdheid',
+                question: 'Laaggeletterdheid',
                 answers: {
                     a: 'Het kunnen lezen en schrijven',
                     b: 'Snel kunnen lezen',
@@ -253,7 +227,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '22. Remedie',
+                question: 'Remedie',
                 answers: {
                     a: 'Een type voedsel',
                     b: 'Een soort plant',
@@ -263,7 +237,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '23. Gepubliceerde',
+                question: 'Gepubliceerde',
                 answers: {
                     a: 'Verloren',
                     b: 'Gestolen',
@@ -273,7 +247,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '24. Betoogd',
+                question: 'Betoogd',
                 answers: {
                     a: 'Geweigerd',
                     b: 'Geprobeerd te bewijzen',
@@ -283,7 +257,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '25. Beroepsopvoeders',
+                question: 'Beroepsopvoeders',
                 answers: {
                     a: 'Mensen die tuinen onderhouden',
                     b: 'Mensen die huizen bouwen',
@@ -293,7 +267,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '26. Empathischer',
+                question: 'Empathischer',
                 answers: {
                     a: 'Sterker',
                     b: 'Minder emotioneel',
@@ -303,7 +277,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '27. Onomstotelijk',
+                question: 'Onomstotelijk',
                 answers: {
                     a: 'Gemakkelijk te weerleggen',
                     b: 'Twijfelachtig',
@@ -313,7 +287,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '28. Polariserende',
+                question: 'Polariserende',
                 answers: {
                     a: 'Vredelievende',
                     b: 'Samenvoegende',
@@ -323,7 +297,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '29. Verrijkt',
+                question: 'Verrijkt',
                 answers: {
                     a: 'Met minder kennis',
                     b: 'Met minder geld',
@@ -333,7 +307,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '31. Gemakshalve',
+                question: 'Gemakshalve',
                 answers: {
                     a: 'Voor de lol',
                     b: 'Voor de prijs',
@@ -343,7 +317,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '32. Participeren',
+                question: 'Participeren',
                 answers: {
                     a: 'Tegenwerken',
                     b: 'Observeren',
@@ -353,7 +327,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '33. Het tij keren',
+                question: 'Het tij keren',
                 answers: {
                     a: 'De situatie negeren',
                     b: 'De situatie veranderen',
@@ -363,7 +337,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '34. Maakt zich hard',
+                question: 'Maakt zich hard',
                 answers: {
                     a: 'Doet niets',
                     b: 'Verzet zich',
@@ -373,7 +347,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '35. Initiatief',
+                question: 'Initiatief',
                 answers: {
                     a: 'Einde',
                     b: 'Vertraging',
@@ -383,7 +357,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '36. Neerlandistiek',
+                question: 'Neerlandistiek',
                 answers: {
                     a: 'Wetenschap die zich bezighoudt met de Nederlandse taal en literatuur',
                     b: 'Wetenschap over de Duitse taal',
@@ -393,7 +367,7 @@
                 correctAnswer: 'a'
             },
             {
-                question: '37. Opheffen',
+                question: 'Opheffen',
                 answers: {
                     a: 'Beginnen',
                     b: 'Dubbelen',
@@ -403,7 +377,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '38. Stimuleert',
+                question: 'Stimuleert',
                 answers: {
                     a: 'Verlaat',
                     b: 'Ontmoedigt',
@@ -413,7 +387,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '39. Hiertoe nemen',
+                question: 'Hiertoe nemen',
                 answers: {
                     a: 'Verliezen',
                     b: 'Kopen',
@@ -423,7 +397,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '40. Voedingsbodem',
+                question: 'Voedingsbodem',
                 answers: {
                     a: 'Ijskoude bodem',
                     b: 'Plaats waar iets kan ontstaan en groeien',
@@ -433,7 +407,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '41. Ontkennen',
+                question: 'Ontkennen',
                 answers: {
                     a: 'Bevestigen',
                     b: 'Vergeten',
@@ -443,7 +417,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '42. Beaamt',
+                question: 'Beaamt',
                 answers: {
                     a: 'Negeert',
                     b: 'Is het daarmee eens; bevestigt',
@@ -453,7 +427,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '43. Hiërarchie',
+                question: 'Hiërarchie',
                 answers: {
                     a: 'Gelijkheid',
                     b: 'Rangorde',
@@ -463,7 +437,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '44. Taalverrijking',
+                question: 'Taalverrijking',
                 answers: {
                     a: 'Positieve ontwikkeling van een taal',
                     b: 'Verdwijning van een taal',
@@ -473,7 +447,7 @@
                 correctAnswer: 'a'
             },
             {
-                question: '45. Woordensmeden',
+                question: 'Woordensmeden',
                 answers: {
                     a: 'Nieuwe talen',
                     b: 'Oude talen',
@@ -483,7 +457,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '46. Geïnspireerd op',
+                question: 'Geïnspireerd op',
                 answers: {
                     a: 'Gemaakt onder invloed van; ingegeven door',
                     b: 'Geboren uit',
@@ -493,7 +467,7 @@
                 correctAnswer: 'a'
             },
             {
-                question: '47. Schiepen',
+                question: 'Schiepen',
                 answers: {
                     a: 'Vernielden',
                     b: 'Maakten; creëerden',
@@ -503,7 +477,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '48. Inlijven',
+                question: 'Inlijven',
                 answers: {
                     a: 'Verwerpen',
                     b: 'Bij je eigen land of groep voegen; in een groter geheel opnemen',
@@ -513,7 +487,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '49. Vloot',
+                question: 'Vloot',
                 answers: {
                     a: 'Aantal vliegtuigen',
                     b: 'Aantal schepen',
@@ -523,7 +497,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '50. Deceptie',
+                question: 'Deceptie',
                 answers: {
                     a: 'Blijdschap',
                     b: 'Teleurstelling',
@@ -533,7 +507,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '51. Heeft het uit eerste hand',
+                question: 'Heeft het uit eerste hand',
                 answers: {
                     a: 'Heeft het zelf verzonnen',
                     b: 'Heeft het gekopieerd',
@@ -543,7 +517,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '52. Verkrijgen',
+                question: 'Verkrijgen',
                 answers: {
                     a: 'Verliezen',
                     b: 'Vergeten',
@@ -553,7 +527,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '53. Bewegen tot',
+                question: 'Bewegen tot',
                 answers: {
                     a: 'Laten zitten',
                     b: 'Overhalen tot',
@@ -563,7 +537,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '54. Gebikkeld',
+                question: 'Gebikkeld',
                 answers: {
                     a: 'Geleerd',
                     b: 'Gefluisterd',
@@ -573,7 +547,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '55. Initiatiefnemer',
+                question: 'Initiatiefnemer',
                 answers: {
                     a: 'Iemand die als laatste iets bedenkt',
                     b: 'Iemand die altijd luistert',
@@ -583,7 +557,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '56. Hield af',
+                question: 'Hield af',
                 answers: {
                     a: 'Gaf door',
                     b: 'Verkocht',
@@ -593,7 +567,7 @@
                 correctAnswer: 'c'
             },
             {
-                question: '57. Diverse',
+                question: 'Diverse',
                 answers: {
                     a: 'Weinig',
                     b: 'Eén exemplaar',
@@ -603,7 +577,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '58. Verkoopnet',
+                question: 'Verkoopnet',
                 answers: {
                     a: 'Een kring van leveranciers',
                     b: 'Een visnet',
@@ -613,7 +587,7 @@
                 correctAnswer: 'a'
             },
             {
-                question: '59. Klinisch',
+                question: 'Klinisch',
                 answers: {
                     a: 'Medisch',
                     b: 'Huiselijk',
@@ -623,7 +597,7 @@
                 correctAnswer: 'd'
             },
             {
-                question: '60. Fysicus',
+                question: 'Fysicus',
                 answers: {
                     a: 'Dokter',
                     b: 'Natuurkundige',
@@ -633,7 +607,7 @@
                 correctAnswer: 'b'
             },
             {
-                question: '61. Ondervond',
+                question: 'Ondervond',
                 answers: {
                     a: 'Leerde kennen; ervoer',
                     b: 'Verloor',
@@ -643,7 +617,7 @@
                 correctAnswer: 'a'
             },
             {
-                question: '62. Krakkemikkig',
+                question: 'Krakkemikkig',
                 answers: {
                     a: 'Wankel; niet zo stevig',
                     b: 'Snel',
@@ -653,65 +627,7 @@
                 correctAnswer: 'a'
             }
         ];
-
-        var quizContainer = document.getElementById('quiz');
-        var resultsContainer = document.getElementById('results');
-        var submitButton = document.getElementById('submit');
-
-        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
-
-        function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
-            function showQuestions(questions, quizContainer) {
-                var output = [];
-                var answers;
-                for (var i = 0; i < questions.length; i++) {
-                    answers = [];
-                    for (letter in questions[i].answers) {
-                        answers.push(
-                            '<label>' +
-                            '<input type="radio" name="question' + i + '" value="' + letter + '">' +
-                            letter + ': ' +
-                            questions[i].answers[letter] +
-                            '</label>'
-                        );
-                    }
-                    output.push(
-                        '<div class="question">' + questions[i].question + '</div>' +
-                        '<div class="answers">' + answers.join('') + '</div>'
-                    );
-                }
-                quizContainer.innerHTML = output.join('');
-            }
-
-            function showResults(questions, quizContainer, resultsContainer) {
-                var answerContainers = quizContainer.querySelectorAll('.answers');
-                var userAnswer = '';
-                var numCorrect = 0;
-                for (var i = 0; i < questions.length; i++) {
-                    userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
-                    if (userAnswer === questions[i].correctAnswer) {
-                        numCorrect++;
-                        answerContainers[i].style.color = '#14532d';
-				markeer(answerContainers[i], true);
-                    } else {
-                        answerContainers[i].style.color = '#7f1d1d';
-				markeer(answerContainers[i], false);
-                    }
-                }
-                resultsContainer.innerHTML = numCorrect + ' van de ' + questions.length + ' goed';
-            }
-
-            showQuestions(questions, quizContainer);
-
-            submitButton.onclick = function () {
-                showResults(questions, quizContainer, resultsContainer);
-            }
-        }
     </script>
-    <!-- Include functionality to load external page material -->
-    <script>
-        w3IncludeHTML();
-    </script>
-<script src="school.js"></script>
+    <script src="school.js"></script>
 </body>
 </html>

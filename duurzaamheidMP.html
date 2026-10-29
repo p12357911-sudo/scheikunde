@@ -10,16 +10,6 @@
     <link rel="stylesheet" href="123school.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="https://www.w3schools.com/lib/w3data.js"></script>
-    <style>
-        .question {
-            font-weight: bold;
-            text-align: left;
-        }
-        .answers label {
-            display: block;
-            text-align: left;
-        }
-    </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <!-- Navbar -->
@@ -178,70 +168,8 @@
                 correctAnswer: 'b'
             }
         ];
-
-        var quizContainer = document.getElementById('quiz');
-        var resultsContainer = document.getElementById('results');
-        var submitButton = document.getElementById('submit');
-
-        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
-
-        function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
-            function showQuestions(questions, quizContainer) {
-                var output = [];
-                var answers;
-
-                for (var i = 0; i < questions.length; i++) {
-                    answers = [];
-                    for (var letter in questions[i].answers) {
-                        answers.push(
-                            '<label>' +
-                            '<input type="radio" name="question' + i + '" value="' + letter + '">' +
-                            letter + ': ' +
-                            questions[i].answers[letter] +
-                            '</br></label>'
-                        );
-                    }
-                    output.push(
-                        '<div class="question">' + questions[i].question + '</div>' +
-                        '<div class="answers">' + answers.join('') + '</div>'
-                    );
-                }
-                quizContainer.innerHTML = output.join('');
-            }
-
-            function showResults(questions, quizContainer, resultsContainer) {
-                var answerContainers = quizContainer.querySelectorAll('.answers');
-                var userAnswer = '';
-                var numCorrect = 0;
-
-                for (var i = 0; i < questions.length; i++) {
-                    userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
-
-                    if (userAnswer === questions[i].correctAnswer) {
-                        numCorrect++;
-                        answerContainers[i].style.color = '#14532d';
-				markeer(answerContainers[i], true);
-                    } else {
-                        answerContainers[i].style.color = '#7f1d1d';
-				markeer(answerContainers[i], false);
-                    }
-                }
-
-                resultsContainer.innerHTML = numCorrect + ' van de ' + questions.length + ' goed';
-            }
-
-            showQuestions(questions, quizContainer);
-
-            submitButton.onclick = function () {
-                showResults(questions, quizContainer, resultsContainer);
-            }
-        }
     </script>
 
-    <!-- Include functionality to load external page material -->
-    <script>
-        w3IncludeHTML();
-    </script>
-<script src="school.js"></script>
+    <script src="school.js"></script>
 </body>
 </html>

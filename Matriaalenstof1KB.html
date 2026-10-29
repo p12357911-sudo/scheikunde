@@ -10,9 +10,6 @@
 <link rel="stylesheet" href="123school.css">
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script src="https://www.w3schools.com/lib/w3data.js"></script>
-<style>
-
-</style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Navbar -->
@@ -84,11 +81,7 @@
 <div><button onclick='myFunction("Demo51")' class='vraag-knop'> Hoeveel mL is een L?</button> <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel mL is een L?" placeholder='Type hier je antwoord'> <div id="Demo51" class='w3-hide w3-container antwoord-box'> <p> 1L = 1000 mL</p></div></div>
 <div><button onclick='myFunction("Demo52")' class='vraag-knop'> Een drankje bevat 20 g suiker per 250 mL. Wat is het gehalte suiker in g/L?</button> <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een drankje bevat 20 g suiker per 250 mL. Wat is het gehalte suiker in g/L?" placeholder='Type hier je antwoord'> <div id="Demo52" class='w3-hide w3-container antwoord-box'> <p> gehalte = massa suiker/volume drankje = 20g/0,25L = 80 g/L</p></div></div>
 
-
 <!-- Next button -->
-<!-- <div class="w3-container w3-padding-64 w3-center"> -->
-<!-- <button style="text-decoration: none" class="w3-button w3-black" > <a href="Matriaalenstof2KB.html">Volgende</a></button> -->
-<!-- </div> -->
 
 <!-- Footer -->
 <div class="w3-container">
@@ -104,22 +97,6 @@
 </footer>
 </div>
 
-
-<script>
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
-
-<!-- Include functionality to load external page material -->
-<script>
-w3IncludeHTML();
-</script>
 <script src="school.js"></script>
 </body>
 </html>

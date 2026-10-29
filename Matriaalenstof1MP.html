@@ -10,9 +10,6 @@
 <link rel="stylesheet" href="123school.css">
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script src="https://www.w3schools.com/lib/w3data.js"></script>
-<style>
-
-</style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Navbar -->
@@ -140,7 +137,8 @@ var myQuestions = [
                     c: 'Blauw',
                     d: 'Geel'
                 },
-                correctAnswer: 'd'
+                correctAnswer: 'd',
+                fixed: true
             },
             {
                 question: 'Binas tabel 52A: welke kleur heeft fenolrood bij pH = 9?',
@@ -150,7 +148,8 @@ var myQuestions = [
                     c: 'Blauw',
                     d: 'Geel'
                 },
-                correctAnswer: 'a'
+                correctAnswer: 'a',
+                fixed: true
             },
             {
                 question: 'Binas tabel 52A: welke kleur heeft thymolblauw bij pH = 1?',
@@ -160,7 +159,8 @@ var myQuestions = [
                     c: 'Blauw',
                     d: 'Geel'
                 },
-                correctAnswer: 'a'
+                correctAnswer: 'a',
+                fixed: true
             },
             {
                 question: 'Binas tabel 52A: welke kleur heeft thymolblauw bij pH = 5?',
@@ -170,7 +170,8 @@ var myQuestions = [
                     c: 'Blauw',
                     d: 'Geel'
                 },
-                correctAnswer: 'd'
+                correctAnswer: 'd',
+                fixed: true
             },
             {
                 question: 'Binas tabel 52A: welke kleur heeft thymolblauw bij pH = 11?',
@@ -180,7 +181,8 @@ var myQuestions = [
                     c: 'Blauw',
                     d: 'Geel'
                 },
-                correctAnswer: 'c'
+                correctAnswer: 'c',
+                fixed: true
             },
             {
                 question: 'Wat is de tegenhanger van een zuur?',
@@ -257,7 +259,6 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 		quizContainer.innerHTML = output.join('');
 	}
 
-
 	function showResults(questions, quizContainer, resultsContainer){
 		
 		// gather answer containers from our quiz
@@ -303,10 +304,6 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 	}
 
 }
-</script>
-<!-- Include functionality to load external page material -->
-<script>
-w3IncludeHTML();
 </script>
 <script src="school.js"></script>
 </body>

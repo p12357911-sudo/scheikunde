@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="123school.css">
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script src="https://www.w3schools.com/lib/w3data.js"></script>
-<style>
-</style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Navbar -->
@@ -455,35 +453,6 @@
 </footer>
 </div>
 
-
-<script>
-function myFunction(id, button) {
-  var input = button.nextElementSibling;
-  var answer = document.getElementById(id);
-  if (input.value.length >= 1) {
-    if (answer.className.indexOf("w3-show") == -1) {
-      answer.className += " w3-show";
-    } else { 
-      answer.className = answer.className.replace(" w3-show", "");
-    }
-  } else {
-    // Geen pop-up (alert): een rustige melding naast het invoerveld
-    var melding = input.parentNode.querySelector(".inline-melding");
-    if (!melding) {
-      melding = document.createElement("p");
-      melding.className = "inline-melding";
-      melding.setAttribute("role", "alert");
-      input.parentNode.insertBefore(melding, input.nextSibling);
-    }
-    melding.textContent = "Typ eerst je antwoord. Dan kun je het juiste antwoord bekijken.";
-  }
-}
-</script>
-
-<!-- Include functionality to load external page material -->
-<script>
-w3IncludeHTML();
-</script>
 <script src="school.js"></script>
 </body>
 </html>

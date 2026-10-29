@@ -4,27 +4,15 @@ body{
 	color: #111111;
 }
 .question{
-	font-weight: 600;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 10px;
 }
 .answers {
     margin-bottom: 20px;
 }
-/* anchor behavior */
+/* anchor behavior (de dubbele, overschreven regels van vroeger zijn weg; werking is gelijk gebleven) */
 a:link {
-  text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:active {
-  text-decoration: underline;
-}a:link {
   text-decoration: none;
 }
 
@@ -123,4 +111,209 @@ body.heeft-zweefknop footer { padding-bottom: 96px; }
 .zweefknop[hidden] { display: none; }
 @media (max-width: 600px) {
   .zweefknop { padding: 10px 16px; right: 12px; bottom: 12px; }
+}
+
+/* ===== Meerkeuzepagina's (MP): was eerst per pagina een eigen <style> ===== */
+.answers label {
+  display: block;
+  text-align: left;
+  margin-left: 20px;
+}
+.answers input { margin-right: 10px; }
+#results {
+  font-weight: bold;
+  margin-top: 20px;
+}
+/* Knop "Meer vragen (nog X)" onder de eerste 15 vragen */
+.meer-vragen { margin: 24px 0; }
+.question:focus { outline: none; }
+
+/* ===== Alleen pagina "Stoffen KBAI" (was eigen <style>) ===== */
+.vraag-knop.w3-hover-light-grey:hover {
+  background-color: #D3D3D3 !important;
+  color: black !important;
+}
+
+/* ===== Beginpagina (index.html): stond eerst in een eigen <style>; alles hangt onder body.home ===== */
+body.home .w3-button.spel-open {
+  background-color: #003A5C !important; color: #ffffff !important;
+}
+body.home {
+  font: 400 15px Lato, sans-serif;
+  line-height: 1.8;
+  color: #111111;
+}
+body.home h2 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #303030;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+body.home h4 {
+  font-size: 19px;
+  line-height: 1.375em;
+  color: #303030;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+body.home .jumbotron {
+  background-color: #303030;
+  color: #fff;
+  padding: 100px 25px;
+  font-family: Montserrat, sans-serif;
+}
+body.home .container-fluid {
+  padding: 60px 50px;
+}
+body.home .bg-grey {
+  background-color: #f6f6f6;
+}
+body.home .logo-small {
+  color: #2e5cb8;
+  font-size: 50px;
+}
+body.home .logo {
+  color: #2e5cb8;
+  font-size: 200px;
+}
+body.home .thumbnail {
+  padding: 0 0 15px 0;
+  border: none;
+  border-radius: 0;
+}
+body.home .thumbnail img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+}
+body.home .carousel-control.right, body.home .carousel-control.left {
+  background-image: none;
+  color: #2e5cb8;
+}
+body.home .carousel-indicators li {
+  border-color: #2e5cb8;
+}
+body.home .carousel-indicators li.active {
+  background-color: #2e5cb8;
+}
+body.home .item h4 {
+  font-size: 19px;
+  line-height: 1.375em;
+  font-weight: 400;
+  font-style: italic;
+  margin: 70px 0;
+}
+body.home .item span {
+  font-style: normal;
+}
+body.home .panel {
+  border: 1px solid #2e5cb8;
+  border-radius: 0 !important;
+  transition: box-shadow 0.5s;
+}
+body.home .panel:hover {
+  box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+body.home .panel-footer .btn:hover {
+  border: 1px solid #2e5cb8;
+  background-color: #fff !important;
+  color: #2e5cb8;
+}
+body.home .panel-heading {
+  color: #fff !important;
+  background-color: black !important;
+  padding: 25px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+body.home .panel-footer {
+  background-color: white !important;
+}
+body.home .panel-footer h3 {
+  font-size: 32px;
+}
+body.home .panel-footer h4 {
+  color: #555555;
+  font-size: 14px;
+}
+body.home .panel-footer .btn {
+  margin: 15px 0;
+  background-color: #2e5cb8;
+  color: #fff;
+}
+body.home .navbar {
+  margin-bottom: 0;
+  background-color: #2e5cb8;
+  z-index: 9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+  font-family: Montserrat, sans-serif;
+}
+body.home .navbar li a, body.home .navbar .navbar-brand {
+  color: #fff !important;
+}
+body.home .navbar-nav li a:hover, body.home .navbar-nav li.active a {
+  color: #2e5cb8 !important;
+  background-color: #fff !important;
+}
+body.home .navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+body.home footer .glyphicon {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #2e5cb8;
+}
+body.home .slideanim {
+  visibility: hidden;
+}
+body.home .slide {
+  animation-name: slide;
+  -webkit-animation-name: slide;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  visibility: visible;
+}
+@keyframes slide {
+            0% {
+                opacity: 0;
+                transform: translateY(70%);
+            } 
+            100% {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+}
+@-webkit-keyframes slide {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(70%);
+            } 
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+            }
+}
+@media screen and (max-width: 768px) {
+  body.home .col-sm-4 {
+    text-align: center;
+    margin: 25px 0;
+  }
+  body.home .btn-lg {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+}
+@media screen and (max-width: 480px) {
+  body.home .logo {
+    font-size: 150px;
+  }
 }

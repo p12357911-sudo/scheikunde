@@ -127,3 +127,29 @@ Dit heb ik niet zelf durven veranderen of ik ben er niet zeker van:
 - Fenolrood-vraag bij pH 8 is pH 9 geworden (pH 8 is de grens van het omslaggebied).
 - Het goede antwoord staat nu verspreid over a, b, c en d.
 - Zie `mp_wijzigingen.md` (in de werkmap) voor voorbeelden en twijfelgevallen.
+
+## Willekeurige volgorde, 15 vragen per keer, één script en één stijlbestand (29 okt 2026)
+
+**Willekeurige volgorde**
+- Bij elke keer openen staan de vragen in een andere volgorde: op alle KB-pagina's en alle MP-pagina's (ook NL1).
+- Op MP-pagina's worden ook de antwoordopties door elkaar gezet. De letters a t/m d blijven netjes op volgorde staan. Het nakijken gaat op inhoud van het antwoord, niet op de plek, dus de score klopt altijd.
+- Uitzondering: de kleurvragen (ZB-set, 5 vragen op acidbase1MP en Matriaalenstof1MP) houden hun vaste volgorde van antwoorden, omdat de opties daar bij elkaar horen.
+- In NL1 stonden vraagnummers ("1. ", "2. " ...) in de vragen. Die zijn weggehaald, anders klopt de nummering niet meer bij een willekeurige volgorde.
+
+**15 vragen per keer**
+- Pagina's met meer dan 15 vragen tonen er eerst 15. Onderaan staat een knop "Meer vragen (nog X)" die de volgende 15 laat zien (de laatste keer de rest). Pagina's met 15 of minder vragen hebben de knop niet.
+- Vragen die nog niet getoond zijn tellen niet mee als fout. Op MP-pagina's staat de score als "8 van de 15 goed" (alleen de getoonde vragen).
+- De zwevende knop "Controleer nu" werkt nog steeds. De pagina verspringt niet bij "Meer vragen" en niet bij "Controleer nu" (de pagina scrolt niet meer automatisch naar de score).
+- Dit geldt voor: ChemBonds1KB, ChemCalcPeriodSys1KB, ChemReactions1KB (18), Kunststoffen1KB, Matriaalenstof1KB, MolBouw1KB, Sorterenvmbo3Hst2, Uitdeaardevmbo4Hst9, Zoutenvmbo4Hst10, acidbase1KB, redox1KB, acidbase1MP (17), Matriaalenstof1MP (17), chemrekenenVMBO3MP (21), NL1 (59). Niet nodig bij kunststoffenMP, duurzaamheidMP, Matriaalenstof1KBAI.
+
+**Eén script, één stijlbestand**
+- Alle losse `<script>`- en `<style>`-blokken in de pagina's zijn samengevoegd in `school.js` en `123school.css`. Dubbele en nooit gebruikte code is verwijderd (o.a. dubbele `myFunction`, drie verschillende `submitAnswer`, dubbele stijlregels voor links, oude uitgecommentarieerde knoppen).
+- De stijlen van de beginpagina staan nu in `123school.css` onder `body.home`, zodat ze andere pagina's niet beïnvloeden. De beginpagina is vergeleken met de oude versie: alle stijlen en posities zijn gelijk, ook op mobiel.
+- Bewust niet samengevoegd: de bibliotheken (w3.css, font-awesome, jQuery, Bootstrap, w3.js, w3data.js) en de vragenlijst van de MP-pagina's (`var myQuestions = [...]` staat per pagina in de HTML, zodat `mp/build.py` die lijst kan blijven vervangen). Losse `style="..."`-attributen in de HTML staan er nog.
+- `mp/build.py` is aangepast: de kleurvragen krijgen `fixed: true`, en de speler zelf staat in `school.js`.
+
+**Stappenplan reactievergelijking (op verzoek van Peter)**
+- ChemCalcPeriodSys1KB, "Stel de reactievergelijking op" (Demo27): het antwoord volgt nu precies jouw vier stappen: Stap 1 reactieschema in woorden, Stap 2 reactieschema in molecuulformules, Stap 3 atoombalans - kloppend maken, Stap 4 reactievergelijking vereenvoudigen. De vraag verwijst naar "het stappenplan".
+- De MP-vraag "Je gaat rekenen aan een reactie. Wat doe je als eerste?" (De reactievergelijking opstellen) is ongewijzigd. Andere MP- of KB-vragen over het opstellen van een reactievergelijking met stappen zijn er niet.
+
+**Getest** (Playwright, Chrome, 1280×800 en 390×780): geen JavaScript-fouten op alle 20 pagina's; volgorde verschilt tussen twee keer openen; alles goed = volle score op de getoonde vragen, alles fout = 0; "Meer vragen" en de zwevende knop werken zonder dat de pagina verspringt; ingetypte antwoorden op de KB-pagina's blijven na verversen niet in een verkeerd vak staan; alle interne links en plaatjes bestaan.

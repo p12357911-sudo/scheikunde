@@ -10,12 +10,6 @@
 <link rel="stylesheet" href="123school.css">
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script src="https://www.w3schools.com/lib/w3data.js"></script>
-<style>
-.w3-hover-light-grey:hover {
-  background-color: #D3D3D3 !important;
-  color: black !important;
-}
-</style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Navbar -->
@@ -61,28 +55,6 @@
 </footer>
 </div>
 
-<script>
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-function submitAnswer(inputId, correctAnswer) {
-  // Het nakijken met AI is nog in ontwikkeling: er wordt (nog) niets naar een server gestuurd.
-  var resultDiv = document.getElementById("result" + inputId);
-  resultDiv.innerText = "Nakijken met AI is nog in ontwikkeling. Klik op de blauwe vraag om het juiste antwoord te zien.";
-  resultDiv.classList.remove("w3-hide");
-}
-</script>
-
-<!-- Include functionality to load external page material -->
-<script>
-w3IncludeHTML();
-</script>
 <script src="school.js"></script>
 </body>
 </html>
