@@ -118,3 +118,12 @@ Dit heb ik niet zelf durven veranderen of ik ben er niet zeker van:
 
 ## Zwevende knop "Controleer nu" (meerkeuzepagina's)
 - Op alle MP-pagina's zweeft rechtsonder een knop "Controleer nu" die dezelfde controle doet als de knop onderaan; daarna scrolt de pagina naar de score. De gewone knop heet nu ook "Controleer nu".
+
+## Meerkeuzevragen (MP) opgeschoond (29 okt 2026)
+- Alle MP-pagina's hebben nu 4 antwoordopties (a t/m d) in plaats van 5; de antwoordsleutel is opnieuw gezet en getest (alles goed = volle score).
+- Vragen eenvoudiger geformuleerd (korte zinnen, één idee per vraag, geen dubbele ontkenningen).
+- Dubbelzinnige antwoorden herschreven, onder andere reactiesnelheid en reactietijd (nu losse vragen met duidelijk verschillende antwoorden).
+- Dubbele vragen verwijderd: kunststoffenMP 16 → 11 vragen, chemrekenenVMBO3MP 37 → 21 vragen. Zuur-base blijft 17, duurzaamheid 13.
+- Fenolrood-vraag bij pH 8 is pH 9 geworden (pH 8 is de grens van het omslaggebied).
+- Het goede antwoord staat nu verspreid over a, b, c en d.
+- Zie `mp_wijzigingen.md` (in de werkmap) voor voorbeelden en twijfelgevallen.

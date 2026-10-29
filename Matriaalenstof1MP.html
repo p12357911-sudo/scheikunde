@@ -42,186 +42,177 @@
 
 <script>
 var myQuestions = [
-
-{
-  question: ' Hoe groot is de pH van een zuur? ', 
-  answers: {
-   a: ' 7 ', 
-   b: ' 1 ', 
-   c: ' Kleiner dan 7 ', 
-   d: ' 14 ', 
-   e: ' Groter dan 7 '
-  },
-  correctAnswer: 'c'
- },
-{
-  question: ' De pH is de? ', 
-  answers: {
-   a: ' Zuurtegraad ', 
-   b: ' Concentratie van een zuur ', 
-   c: ' Hoeveelheid azijnzuur ', 
-   d: ' De petro-Hydrochemische constante ', 
-   e: ' Mate van zwakte van een zuur '
-  },
-  correctAnswer: 'a'
- },
-{
-  question: ' Ethaanzuur is ', 
-  answers: {
-   a: ' Alcohol ', 
-   b: ' Azijnzuur ', 
-   c: ' Ethaan mono zuur ', 
-   d: ' Ethaan in zoutzuur ', 
-   e: ' Zure alcohol oplossing '
-  },
-  correctAnswer: 'b'
- },
-{
-  question: ' Een zuur is ', 
-  answers: {
-   a: ' Een deeltje dat H+ kan afstaan ', 
-   b: ' Een deeltje dat H+ kan neutraliseren ', 
-   c: ' Een deeltje dat H+ kan opnemen ', 
-   d: ' Een oplossing met veel OH- deeltjes ', 
-   e: ' een oplossing die niet kan bevriezen '
-  },
-  correctAnswer: 'a'
- },
-{
-  question: ' Een zure oplossing  ', 
-  answers: {
-   a: ' Bestaat uit ionen ', 
-   b: ' Bestaat uit moleculaire stoffen ', 
-   c: ' Kan geen elektriciteit geleiden ', 
-   d: ' Kan slecht kalk oplossen ', 
-   e: ' Een blauw kleurt met universeel pH papier '
-  },
-  correctAnswer: 'a'
- },
-{
-  question: ' Met universeel pH papier kun je ', 
-  answers: {
-   a: ' Ionen aan tonen ', 
-   b: ' De zuurtegraad meten ', 
-   c: ' de water concentratie meten ', 
-   d: ' de redox potentiaal vast leggen ', 
-   e: ' De concentratie van keukenzout meten in een oplossing '
-  },
-  correctAnswer: 'b'
- },
-{
-  question: ' Zoutzuur ', 
-  answers: {
-   a: ' is waterstof chloride (g) ', 
-   b: ' is een oplossing van HCl gas in water ', 
-   c: ' is een zwak zuur ', 
-   d: ' Kleurt groen met universeel pH papier ', 
-   e: ' is een oplossing van keukenzout en azijnzuur '
-  },
-  correctAnswer: 'b'
- },
-{
-  question: ' Ammoniak is ', 
-  answers: {
-   a: ' Een sterk zuur ', 
-   b: ' NH3 (g) ', 
-   c: ' HNO3 (l) ', 
-   d: ' NH4+ (aq) ', 
-   e: ' NH2 (g) '
-  },
-  correctAnswer: 'b'
- },
-{
-  question: ' In een neutrale oplossing water ', 
-  answers: {
-   a: ' zitten geen H+ en OH- deeltjes ', 
-   b: ' kun je geen zuur oplossen ', 
-   c: ' kun je geen base oplossen ', 
-   d: ' is de pH 0 ', 
-   e: ' is de pH 7 '
-  },
-  correctAnswer: 'e'
- },
-{
-  question: ' Binas 52A: Fenol rood is bij pH=3 ', 
-  answers: {
-   a: ' rood ', 
-   b: ' groen ', 
-   c: ' blauw ', 
-   d: ' geel ', 
-   e: ' kleurloos '
-  },
-  correctAnswer: 'd'
- },
-{
-  question: ' Binas 52A: Fenol rood is bij pH=8 ', 
-  answers: {
-   a: ' rood ', 
-   b: ' groen ', 
-   c: ' blauw ', 
-   d: ' geel ', 
-   e: ' kleurloos '
-  },
-  correctAnswer: 'a'
- },
-{
-  question: ' Binas 52A: thymolblauw is bij pH=1 ', 
-  answers: {
-   a: ' rood ', 
-   b: ' groen ', 
-   c: ' blauw ', 
-   d: ' geel ', 
-   e: ' kleurloos '
-  },
-  correctAnswer: 'a'
- },
-{
-  question: ' Binas 52A: thymolblauw is bij pH=5 ', 
-  answers: {
-   a: ' rood ', 
-   b: ' groen ', 
-   c: ' blauw ', 
-   d: ' geel ', 
-   e: ' kleurloos '
-  },
-  correctAnswer: 'd'
- },
-{
-  question: ' Binas 52A: thymolblauw is bij pH=11 ', 
-  answers: {
-   a: ' rood ', 
-   b: ' groen ', 
-   c: ' blauw ', 
-   d: ' geel ', 
-   e: ' kleurloos '
-  },
-  correctAnswer: 'c'
- },
-{
-  question: ' Wat is de tegenhanger van zuur? ', 
-  answers: {
-   a: ' Acid ', 
-   b: ' Base ', 
-   c: ' Oxidator ', 
-   d: ' Onzuur ', 
-   e: ' Reductor '
-  },
-  correctAnswer: 'b'
- },
-{
-  question: ' Een zwakzuur… ', 
-  answers: {
-   a: ' Splitst al zijn protonen af ', 
-   b: ' Splitst een deel van zijn protonen af ', 
-   c: ' is bijvoorbeeld HCl ', 
-   d: ' een verdunde oplossing van een sterkzuur ', 
-   e: ' Ontstaat als je een base met een sterk zuur mengt '
-  },
-  correctAnswer: 'b'
- },
-
-
-];
+            {
+                question: 'Een oplossing is zuur. Wat weet je dan over de pH?',
+                answers: {
+                    a: 'De pH is groter dan 7',
+                    b: 'De pH is precies 7',
+                    c: 'De pH is kleiner dan 7',
+                    d: 'De pH is precies 14'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat geeft de pH aan?',
+                answers: {
+                    a: 'De temperatuur van een oplossing',
+                    b: 'De hoeveelheid water in een oplossing',
+                    c: 'De massa van een oplossing',
+                    d: 'De zuurtegraad van een oplossing'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is ethaanzuur?',
+                answers: {
+                    a: 'Zoutzuur',
+                    b: 'Azijnzuur',
+                    c: 'Ammoniak',
+                    d: 'Alcohol'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is een zuur?',
+                answers: {
+                    a: 'Een deeltje dat H<sup>+</sup> kan afstaan',
+                    b: 'Een deeltje dat H<sup>+</sup> kan opnemen',
+                    c: 'Een deeltje dat H<sup>+</sup> kan neutraliseren',
+                    d: 'Een oplossing met veel OH<sup>-</sup> deeltjes'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat is waar over een zure oplossing?',
+                answers: {
+                    a: 'Er zitten geen ionen in',
+                    b: 'Ze kleurt blauw met universeel pH-papier',
+                    c: 'Kalk lost er slecht in op',
+                    d: 'Er zitten ionen in'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Waarvoor gebruik je universeel pH-papier?',
+                answers: {
+                    a: 'Om de hoeveelheid water te meten',
+                    b: 'Om ionen aan te tonen',
+                    c: 'Om de zuurtegraad te meten',
+                    d: 'Om de hoeveelheid keukenzout in een oplossing te meten'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is zoutzuur?',
+                answers: {
+                    a: 'Een zwak zuur',
+                    b: 'Een oplossing van HCl-gas in water',
+                    c: 'Een oplossing van keukenzout en azijnzuur',
+                    d: 'Het gas waterstofchloride (HCl)'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is de formule van ammoniak?',
+                answers: {
+                    a: 'NH<sub>3</sub> (g)',
+                    b: 'NH<sub>2</sub> (g)',
+                    c: 'NH<sub>4</sub><sup>+</sup> (aq)',
+                    d: 'HNO<sub>3</sub> (l)'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat geldt voor een neutrale oplossing?',
+                answers: {
+                    a: 'De pH is 0',
+                    b: 'Je kunt er geen base in oplossen',
+                    c: 'De pH is 7',
+                    d: 'Er zitten geen H<sup>+</sup> en OH<sup>-</sup> deeltjes in'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Binas tabel 52A: welke kleur heeft fenolrood bij pH = 3?',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Binas tabel 52A: welke kleur heeft fenolrood bij pH = 9?',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Binas tabel 52A: welke kleur heeft thymolblauw bij pH = 1?',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Binas tabel 52A: welke kleur heeft thymolblauw bij pH = 5?',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Binas tabel 52A: welke kleur heeft thymolblauw bij pH = 11?',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is de tegenhanger van een zuur?',
+                answers: {
+                    a: 'Een oxidator',
+                    b: 'Een reductor',
+                    c: 'Acid',
+                    d: 'Een base'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is een zwak zuur?',
+                answers: {
+                    a: 'Een zuur zoals HCl',
+                    b: 'Een zuur dat al zijn H<sup>+</sup> afstaat',
+                    c: 'Een zuur dat maar een deel van zijn H<sup>+</sup> afstaat',
+                    d: 'Een verdunde oplossing van een sterk zuur'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is H<sub>2</sub>SO<sub>4</sub> (zwavelzuur)?',
+                answers: {
+                    a: 'Een tweewaardig zuur',
+                    b: 'Een sterke base',
+                    c: 'Een vierwaardig zuur',
+                    d: 'Een tweewaardige base'
+                },
+                correctAnswer: 'a'
+            }
+        ];
 
 var quizContainer = document.getElementById('quiz');
 var resultsContainer = document.getElementById('results');

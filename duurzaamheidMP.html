@@ -48,145 +48,132 @@
     <script>
         var myQuestions = [
             {
-                question: 'Wat is het proces waarbij aardolie op basis van kooktrajecten wordt gescheiden in verschillende fracties?',
+                question: 'Met welk proces scheid je aardolie in fracties met een verschillend kooktraject?',
                 answers: {
-                    a: 'Reformen',
-                    b: 'Polymerisatie',
-                    c: 'Hydratatie',
-                    d: 'Gefractioneerde destillatie',
-                    e: 'Kraken'
-                },
-                correctAnswer: 'd'
-            },
-            {
-                question: 'Wat wordt bedoeld met het kooktraject in het proces van gefractioneerde destillatie?',
-                answers: {
-                    a: 'Het aantal stappen in het destillatieproces.',
-                    b: 'De chemische samenstelling van de fracties.',
-                    c: 'De druk die nodig is om aardolie te destilleren.',
-                    d: 'Het bereik van temperaturen waarbij verschillende fracties van aardolie verdampen en condenseren.',
-                    e: 'De tijd die nodig is om aardolie te verhitten.'
-                },
-                correctAnswer: 'd'
-            },
-            {
-                question: 'Wat is de definitie van duurzaamheid?',
-                answers: {
-                    a: 'Het verminderen van energieverbruik in het heden.',
-                    b: 'Het maximaliseren van de productie van duurzame grondstoffen.',
-                    c: 'Het voldoen aan de behoeften van het heden zonder de behoeften in de toekomst in gevaar te brengen.',
-                    d: 'Het recyclen van alle gebruikte materialen.',
-                    e: 'Het beperken van de economische groei om het milieu te beschermen.'
-                },
-                correctAnswer: 'c'
-            },
-            {
-                question: 'Hoe kun je bijdragen aan duurzaamheid?',
-                answers: {
-                    a: 'Door meer te consumeren.',
-                    b: 'Door fossiele brandstoffen te gebruiken.',
-                    c: 'Door technologie te vermijden.',
-                    d: 'Door duurzame grondstoffen te gebruiken of te recyclen.',
-                    e: 'Door de productie te verhogen.'
-                },
-                correctAnswer: 'd'
-            },
-            {
-                question: 'Wat geeft de atoomeconomie aan?',
-                answers: {
-                    a: 'De hoeveelheid energie die in een reactie wordt gebruikt.',
-                    b: 'Het rendement van een chemisch proces.',
-                    c: 'De snelheid van een chemische reactie.',
-                    d: 'Het percentage van alle atomen van de beginstoffen dat terugkomt in het gewenste reactieproduct.',
-                    e: 'De hoeveelheid afval die wordt geproduceerd.'
-                },
-                correctAnswer: 'd'
-            },
-            {
-                question: 'Uit welk materiaal worden biobrandstoffen gemaakt?',
-                answers: {
-                    a: 'Fossiele brandstoffen',
-                    b: 'Synthetische materialen',
-                    c: 'Biomassa',
-                    d: 'Metaal afval',
-                    e: 'Kunststof'
-                },
-                correctAnswer: 'c'
-            },
-            {
-                question: 'Wat zijn voorbeelden van biobrandstoffen?',
-                answers: {
-                    a: 'Diesel, benzine, en aardgas',
-                    b: 'Bio-ethanol, biodiesel, en biogas',
-                    c: 'Ethanol, methanol, en kerosine',
-                    d: 'Waterstof, zuurstof, en stikstof',
-                    e: 'Kolen, hout, en turf'
+                    a: 'Kraken',
+                    b: 'Gefractioneerde destillatie',
+                    c: 'Polymerisatie',
+                    d: 'Reformen'
                 },
                 correctAnswer: 'b'
             },
             {
-                question: 'Wat is een kenmerk van de eerste generatie biobrandstoffen?',
+                question: 'Wat is het kooktraject van een fractie?',
                 answers: {
-                    a: 'Ze worden geproduceerd uit voedselgewassen.',
-                    b: 'Ze worden geproduceerd uit niet-voedselgewassen.',
-                    c: 'Ze worden geproduceerd uit landbouwafval.',
-                    d: 'Ze worden geproduceerd uit synthetische materialen.',
-                    e: 'Ze worden geproduceerd uit metaalafval.'
+                    a: 'De chemische samenstelling van de fractie',
+                    b: 'Het aantal stappen in het destillatieproces',
+                    c: 'De druk waarbij je aardolie destilleert',
+                    d: 'De temperaturen waartussen de stoffen in die fractie koken'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat betekent duurzaamheid?',
+                answers: {
+                    a: 'Je zorgt voor wat mensen nu nodig hebben, zonder dat het later voor mensen in de toekomst tekortkomt',
+                    b: 'Je recyclet alle gebruikte materialen',
+                    c: 'Je laat de economie niet meer groeien',
+                    d: 'Je gebruikt zo weinig mogelijk energie'
                 },
                 correctAnswer: 'a'
             },
             {
-                question: 'Hoe wordt een chemisch productieproces weergegeven?',
+                question: 'Hoe kun je bijdragen aan duurzaamheid?',
                 answers: {
-                    a: 'Met een tabel',
-                    b: 'Met een grafiek',
-                    c: 'Met een blokschema',
-                    d: 'Met een diagram',
-                    e: 'Met een tekstbeschrijving'
+                    a: 'Meer spullen kopen',
+                    b: 'Meer fossiele brandstoffen gebruiken',
+                    c: 'Duurzame grondstoffen gebruiken of recyclen',
+                    d: 'Technologie vermijden'
                 },
                 correctAnswer: 'c'
             },
             {
-                question: 'Wat geef je aan met blokken in een blokschema?',
+                question: 'Wat zegt de atoomeconomie van een reactie?',
                 answers: {
-                    a: 'De stroomrichting van stoffen',
+                    a: 'Hoeveel procent van de atomen uit de beginstoffen in het gewenste product terechtkomt',
+                    b: 'Hoe snel de reactie verloopt',
+                    c: 'Hoeveel energie de reactie kost',
+                    d: 'Hoeveel geld de reactie kost'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Waarvan maak je biobrandstoffen?',
+                answers: {
+                    a: 'Metaalafval',
+                    b: 'Kunststof',
+                    c: 'Fossiele brandstoffen',
+                    d: 'Biomassa (planten en andere stoffen uit levende wezens)'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Welke drie stoffen zijn biobrandstoffen?',
+                answers: {
+                    a: 'Ethanol, methanol en kerosine',
+                    b: 'Bio-ethanol, biodiesel en biogas',
+                    c: 'Diesel, benzine en aardgas',
+                    d: 'Waterstof, zuurstof en stikstof'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Waarvan maak je biobrandstoffen van de eerste generatie?',
+                answers: {
+                    a: 'Planten die niet geschikt zijn als voedsel',
+                    b: 'Kunststof',
+                    c: 'Planten die we ook als voedsel gebruiken, zoals mais en suikerriet',
+                    d: 'Landbouwafval'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Waarmee geef je een chemisch productieproces weer?',
+                answers: {
+                    a: 'Met een structuurformule',
+                    b: 'Met een blokschema',
+                    c: 'Met een tabel',
+                    d: 'Met een grafiek'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat betekenen de blokken in een blokschema?',
+                answers: {
+                    a: 'De richting waarin stoffen stromen',
                     b: 'De temperatuur van het proces',
-                    c: 'De chemische reactoren waarin een reactie of scheiding plaatsvindt',
-                    d: 'De hoeveelheid geproduceerde stoffen',
-                    e: 'De tijdsduur van de reactie'
+                    c: 'Een apparaat of stap waarin een reactie of scheiding plaatsvindt',
+                    d: 'De hoeveelheid stof die ontstaat'
                 },
                 correctAnswer: 'c'
             },
             {
-                question: 'Wat geef je aan met pijlen in een blokschema?',
+                question: 'Wat betekenen de pijlen in een blokschema?',
                 answers: {
-                    a: 'De chemische reactoren waarin een reactie of scheiding plaatsvindt',
+                    a: 'De hoeveelheid stof die ontstaat',
                     b: 'De temperatuur van het proces',
-                    c: 'De stroomrichting van stoffen',
-                    d: 'De hoeveelheid geproduceerde stoffen',
-                    e: 'De tijdsduur van de reactie'
+                    c: 'Een apparaat of stap waarin een reactie of scheiding plaatsvindt',
+                    d: 'De richting waarin stoffen stromen'
                 },
-                correctAnswer: 'c'
+                correctAnswer: 'd'
             },
             {
-                question: 'Wat is de definitie van molair volume?',
+                question: 'Wat is het molair volume?',
                 answers: {
-                    a: 'Het gewicht van 1,00 mol gas onder bepaalde omstandigheden.',
-                    b: 'De temperatuur van 1,00 mol gas onder standaardomstandigheden.',
-                    c: 'Het volume dat 1,00 mol gas heeft onder bepaalde omstandigheden van temperatuur en druk.',
-                    d: 'De druk die 1,00 mol gas uitoefent onder standaardomstandigheden.',
-                    e: 'Het aantal moleculen in 1,00 mol gas.'
+                    a: 'Het volume van 1,00 mol gas bij een bepaalde temperatuur en druk',
+                    b: 'De massa van 1,00 mol gas',
+                    c: 'Het aantal moleculen in 1,00 mol gas',
+                    d: 'De druk van 1,00 mol gas'
                 },
-                correctAnswer: 'c'
+                correctAnswer: 'a'
             },
             {
-                question: 'Wat symboliseert Vm?',
+                question: 'Welke grootheid hoort bij het symbool V<sub>m</sub>?',
                 answers: {
-                    a: 'Het molair gewicht',
+                    a: 'De dichtheid van een gas',
                     b: 'Het molair volume',
-                    c: 'De molair temperatuur',
-                    d: 'De molair druk',
-                    e: 'De molair energie'
+                    c: 'Het aantal mol',
+                    d: 'De molaire massa'
                 },
                 correctAnswer: 'b'
             }
