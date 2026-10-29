@@ -206,3 +206,10 @@ Voor elk hoofdstuk dat Peter nu behandelt is minstens één KB- en één MP-pagi
 - **Ingekorte BINAS (vmbo)**, tabelnummers van Binas vmbo KGT NaSk1/NaSk2, 2e editie: Uitdeaardevmbo4Hst9 (6: tabel 41, 15, 34, 40), Zoutenvmbo4Hst10 (2: tabel 15 en 35).
 - Niet aangepast: de Nova havo 3 pagina's (daar is nog geen BINAS) en de NaSk2 Nova H1/H2 pagina's (geen vraag vraagt daar echt om een opzoektabel). Bestaande vermeldingen van BINAS in jouw eigen formulering zijn niet veranderd.
 - Getest: geen JavaScript-fouten op 1280 en 390 breed, MP geeft 15 van de 15 bij alles goed en 0 bij alles fout, KB toont het modelantwoord en "Meer vragen" werkt.
+
+## BINAS-opzoekvragen bij NaSk2 Nova H1 en H2 (29 okt 2026)
+
+- Bevestigd door Peter: de leerlingen gebruiken Binas vmbo KGT NaSk1/NaSk2, 2e editie. Alle waarden en tabelnummers zijn nagekeken in dat boekje.
+- **H1 Stoffen en mengsels** (KB 38, MP 34): 3 opzoekvragen: dichtheid van aluminium (tabel 15: 2,70 g/cm³), drijft koper op water (tabel 15 en 16: koper 8,96 en water 1,00 g/cm³), kookpunt van alcohol in kelvin (tabel 16: 351 K).
+- **H2 Water** (KB 37, MP 34): 2 opzoekvragen: dichtheid van zeewater (tabel 16: 1,02 g/cm³) en oplosbaarheid van keukenzout (tabel 35: goed oplosbaar).
+- Getest: geen JavaScript-fouten op 1280 en 390 breed, MP 15 van de 15 bij alles goed en 0 bij alles fout, KB toont het modelantwoord en "Meer vragen" werkt.
