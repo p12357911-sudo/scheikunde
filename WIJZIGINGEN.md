@@ -178,8 +178,8 @@ Voor elk hoofdstuk dat Peter nu behandelt is minstens één KB- en één MP-pagi
 |---|---|---|
 | Scheikunde 3 Nova H1 Stoffen | bestaand: Matriaalenstof1KB (+ KBAI) | nieuw: NovaHavo3H1StoffenMP (28) |
 | Scheikunde 3 Nova H2 Reacties | bestaand: ChemReactions1KB; nieuw: NovaHavo3H2Reacties2KB (26) | nieuw: NovaHavo3H2ReactiesMP (27) |
-| NaSk2 Nova H1 Stoffen en mengsels | nieuw: NovaVmbo3H1StoffenKB (29) | nieuw: NovaVmbo3H1StoffenMP (25) |
-| NaSk2 Nova H2 Water | nieuw: NovaVmbo3H2WaterKB (29) | nieuw: NovaVmbo3H2WaterMP (24) |
+| NaSk2 Nova H1 Stoffen en mengsels | nieuw: NovaVmbo3H1StoffenKB (37) | nieuw: NovaVmbo3H1StoffenMP (31) |
+| NaSk2 Nova H2 Water | nieuw: NovaVmbo3H2WaterKB (36) | nieuw: NovaVmbo3H2WaterMP (33) |
 | Natuurkunde 3 Nova H1 Elektriciteit | nieuw: NovaNatHavo3H1ElektriciteitKB (25) | nieuw: NovaNatHavo3H1ElektriciteitMP (22) |
 | Natuurkunde 3 Nova H2 Krachten | nieuw: NovaNatHavo3H2KrachtenKB (26) | nieuw: NovaNatHavo3H2KrachtenMP (23) |
 | Scheikunde 4 Polaris H1 Atoombouw | nieuw: PolarisHavo4H1AtoombouwKB (25) | nieuw: PolarisHavo4H1AtoombouwMP (26) |
@@ -189,3 +189,10 @@ Voor elk hoofdstuk dat Peter nu behandelt is minstens één KB- en één MP-pagi
 - **Titels en menutekst** bevatten geen niveau (havo/vwo/vmbo); het niveau staat alleen in de bestandsnamen.
 - **Gemaakt met** `mp/make_shells.py` (lege MP-pagina's), `mp/build.py` (MP-vragen uit `mp/data.py`), `mp/build_kb.py` (KB-pagina's uit `mp/kb_data.py`). Subscripts en superscripts (H₂O, 10⁻³) worden bij het bouwen omgezet naar `<sub>`/`<sup>`.
 - **Controle**: alle nieuwe pagina's laden zonder fouten op 1280 en 390 breed; bij MP geeft alles goed 15 van de 15 en alles fout 0 van de 15; KB toont het modelantwoord na typen en "Meer vragen" werkt; alle 449 verwijzingen op de site werken.
+
+## NaSk2 Nova H1 en H2 aangepast aan boek en antwoordenboek (29 okt 2026)
+
+- **H1 Stoffen en mengsels** (KB 37, MP 31): vragen op dezelfde volgorde als het hoofdstuk: stofeigenschappen, smeltpunt, stolpunt en kookpunt, dichtheid, toestandsaanduidingen (s) (l) (g) (aq), de zes faseovergangen, moleculen in vast en gas, zuivere stof en mengsel (smelttraject, stoltraject), oplossing, suspensie, emulsie, emulgator, oplosmiddelen, chemische reactie, beginstoffen, reactieproducten en reactieschema. Definities volgen nu het boek. Vragen over legering, verzadigd en omrekeningen zijn weggehaald. Nieuw: faseovergangen, toestandsaanduidingen, smelttraject, bezinken, oplosmiddelen (aceton, wasbenzine, spiritus) en reactieschema's.
+- **H2 Water** (KB 36, MP 33): alleen de eerste drie paragrafen (water is overal, schoonmaken met water en zeep, verzorging van huid, haar en gebit). Nieuw: functies van water, gedestilleerd water, zeewater, concentratie met eigen voorbeelden, natuurlijke en synthetische zeep, hard en zacht water, kalkzeep, ontsmetten, cosmetica, crème, shampoo, tandpasta en talg.
+- Vragen over pH, zuur en base (paragraaf 4) zijn van de pagina's gehaald en bewaard in `nask2_h2_later.md` (staat niet op de site). Ook de vragen over hydrofiel, hydrofoob en detergent zijn eruit: die woorden staan niet in het boek.
+- Getest: geen JavaScript-fouten op desktop en mobiel, volledige score klopt (15 van 15 goed).

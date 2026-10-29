@@ -38,242 +38,332 @@
     <script>
         var myQuestions = [
             {
-                question: 'Uit welk water kan een drinkwaterbedrijf drinkwater maken?',
+                question: 'Welke functie heeft water als je het toilet doortrekt?',
                 answers: {
-                    a: 'Grondwater',
-                    b: 'Water uit het zwembad',
-                    c: 'Afvalwater van een fabriek',
-                    d: 'Rioolwater'
+                    a: 'Spoelmiddel',
+                    b: 'Hulp bij de bereiding van voedsel',
+                    c: 'Oplosmiddel',
+                    d: 'Drinkwater'
                 },
                 correctAnswer: 'a'
             },
             {
-                question: 'Wat is grondwater?',
+                question: 'Welke functie heeft water als je suiker in thee oplost?',
                 answers: {
-                    a: 'Water in zee',
-                    b: 'Water uit de kraan',
-                    c: 'Water onder de grond',
-                    d: 'Water in een rivier'
+                    a: 'Hulp bij de bereiding van voedsel',
+                    b: 'Drinkwater',
+                    c: 'Oplosmiddel',
+                    d: 'Spoelmiddel'
                 },
                 correctAnswer: 'c'
             },
             {
                 question: 'Wat is oppervlaktewater?',
                 answers: {
-                    a: 'Water in de kraan',
+                    a: 'Water uit de kraan',
                     b: 'Water onder de grond',
                     c: 'Water in de lucht',
-                    d: 'Water in rivieren, meren en sloten'
+                    d: 'Water in rivieren, meren en oceanen'
                 },
                 correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is grondwater?',
+                answers: {
+                    a: 'Water uit de kraan',
+                    b: 'Water in de bodem, onder de grond',
+                    c: 'Water in rivieren en meren',
+                    d: 'Water in de lucht'
+                },
+                correctAnswer: 'b'
             },
             {
                 question: 'Regenwater zakt in de grond. Hoe heet dit water daarna?',
                 answers: {
                     a: 'Oppervlaktewater',
-                    b: 'Grondwater',
-                    c: 'Zeewater',
-                    d: 'Drinkwater'
-                },
-                correctAnswer: 'b'
-            },
-            {
-                question: 'Wat zit er in zeewater opgelost?',
-                answers: {
-                    a: 'Zeep',
-                    b: 'Olie',
-                    c: 'Zouten',
-                    d: 'Zand'
+                    b: 'Zeewater',
+                    c: 'Grondwater',
+                    d: 'Gedestilleerd water'
                 },
                 correctAnswer: 'c'
             },
             {
-                question: 'Welk water bevat (bijna) geen opgeloste zouten?',
+                question: 'Welk water bevat meestal minder vervuiling?',
+                answers: {
+                    a: 'Oppervlaktewater',
+                    b: 'Grondwater',
+                    c: 'Rioolwater',
+                    d: 'Alle water even veel'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Hoe heet water zonder opgeloste stoffen?',
                 answers: {
                     a: 'Zeewater',
-                    b: 'Zoet water',
-                    c: 'Brak water',
-                    d: 'Zout water'
-                },
-                correctAnswer: 'b'
-            },
-            {
-                question: 'Water is vaak een…',
-                answers: {
-                    a: 'Legering',
-                    b: 'Brandstof',
-                    c: 'Emulgator',
-                    d: 'Oplosmiddel'
+                    b: 'Grondwater',
+                    c: 'Drinkwater',
+                    d: 'Gedestilleerd water'
                 },
                 correctAnswer: 'd'
             },
             {
-                question: 'Suiker lost goed op in water. Hoe noem je suiker dan?',
+                question: 'Welk water bevat de hoogste concentratie zouten?',
                 answers: {
-                    a: 'Hydrofiel',
-                    b: 'Suspensie',
-                    c: 'Hydrofoob',
-                    d: 'Emulsie'
+                    a: 'Zeewater',
+                    b: 'Grondwater',
+                    c: 'Drinkwater',
+                    d: 'Gedestilleerd water'
                 },
                 correctAnswer: 'a'
             },
             {
-                question: 'Olie lost slecht op in water. Hoe noem je olie dan?',
+                question: 'Wat is de formule voor de concentratie van een oplossing?',
                 answers: {
-                    a: 'Hydrofiel',
-                    b: 'Oplossing',
-                    c: 'Zuur',
-                    d: 'Hydrofoob'
+                    a: 'concentratie = massa × volume',
+                    b: 'concentratie = volume oplossing : massa opgeloste stof',
+                    c: 'concentratie = massa − volume',
+                    d: 'concentratie = massa opgeloste stof : volume oplossing'
                 },
                 correctAnswer: 'd'
             },
             {
-                question: 'Wat gebruik je om olie en water gemengd te houden?',
+                question: 'Welke eenheid hoort bij concentratie?',
                 answers: {
-                    a: 'Een emulgator',
-                    b: 'Een filter',
-                    c: 'Een magneet',
-                    d: 'Een thermometer'
+                    a: 'g/L',
+                    b: '°C',
+                    c: 'g/cm<sup>3</sup>',
+                    d: 'L/g'
                 },
                 correctAnswer: 'a'
-            },
-            {
-                question: 'Een zeepdeeltje heeft een kop en een staart. Welk deel is hydrofiel?',
-                answers: {
-                    a: 'Allebei',
-                    b: 'Geen van beide',
-                    c: 'De kop',
-                    d: 'De staart'
-                },
-                correctAnswer: 'c'
-            },
-            {
-                question: 'Welk deel van een zeepdeeltje hecht aan vet?',
-                answers: {
-                    a: 'Allebei',
-                    b: 'De staart',
-                    c: 'De kop',
-                    d: 'Geen van beide'
-                },
-                correctAnswer: 'b'
-            },
-            {
-                question: 'Wat is een detergent?',
-                answers: {
-                    a: 'Een zuur',
-                    b: 'Een natuurlijke zeep',
-                    c: 'Een synthetische zeep',
-                    d: 'Een oplosmiddel'
-                },
-                correctAnswer: 'c'
-            },
-            {
-                question: 'Wat doet zeep met vet en water?',
-                answers: {
-                    a: 'Het maakt water zuur',
-                    b: 'Het laat vet en water mengen',
-                    c: 'Het laat vet verdampen',
-                    d: 'Het maakt van vet een gas'
-                },
-                correctAnswer: 'b'
-            },
-            {
-                question: 'Een oplossing is zuur. Wat weet je over de pH?',
-                answers: {
-                    a: 'De pH is hoger dan 7',
-                    b: 'De pH is precies 7',
-                    c: 'De pH is precies 14',
-                    d: 'De pH is lager dan 7'
-                },
-                correctAnswer: 'd'
-            },
-            {
-                question: 'Een oplossing is basisch. Wat weet je over de pH?',
-                answers: {
-                    a: 'De pH is hoger dan 7',
-                    b: 'De pH is precies 7',
-                    c: 'De pH is lager dan 7',
-                    d: 'De pH is precies 0'
-                },
-                correctAnswer: 'a'
-            },
-            {
-                question: 'Een oplossing heeft pH 7. Hoe noem je zo\'n oplossing?',
-                answers: {
-                    a: 'Zout',
-                    b: 'Basisch',
-                    c: 'Zuur',
-                    d: 'Neutraal'
-                },
-                correctAnswer: 'd'
-            },
-            {
-                question: 'Welke stof is een zuur?',
-                answers: {
-                    a: 'Ammoniak',
-                    b: 'Azijn',
-                    c: 'Soda',
-                    d: 'Zeepoplossing'
-                },
-                correctAnswer: 'b'
-            },
-            {
-                question: 'Welke stof is een base?',
-                answers: {
-                    a: 'Soda',
-                    b: 'Citroensap',
-                    c: 'Azijn',
-                    d: 'Cola'
-                },
-                correctAnswer: 'a'
-            },
-            {
-                question: 'Waarmee meet je de pH?',
-                answers: {
-                    a: 'Met een thermometer',
-                    b: 'Met een weegschaal',
-                    c: 'Met universeel indicatorpapier',
-                    d: 'Met een maatcilinder'
-                },
-                correctAnswer: 'c'
-            },
-            {
-                question: 'Er komt zuur op je huid. Wat doe je eerst?',
-                answers: {
-                    a: 'Spoelen met veel water',
-                    b: 'Wachten tot het droog is',
-                    c: 'Afvegen met een doek',
-                    d: 'Er een basisch middel op doen'
-                },
-                correctAnswer: 'a'
-            },
-            {
-                question: 'Welke stof mag je nooit bij open vuur gebruiken?',
-                answers: {
-                    a: 'Keukenzout',
-                    b: 'Suikerwater',
-                    c: 'Wasbenzine',
-                    d: 'Gewoon water'
-                },
-                correctAnswer: 'c'
-            },
-            {
-                question: 'Wat betekent 5 g/L?',
-                answers: {
-                    a: '5 gram in 5 liter',
-                    b: '5 gram stof in 1 liter oplossing',
-                    c: '5 liter in 1 gram',
-                    d: '5 gram in 1 mL'
-                },
-                correctAnswer: 'b'
             },
             {
                 question: 'Er is 20 g zout opgelost in 2 L oplossing. Wat is de concentratie?',
                 answers: {
-                    a: '0,1 g/L',
+                    a: '40 g/L',
                     b: '22 g/L',
-                    c: '40 g/L',
-                    d: '10 g/L'
+                    c: '10 g/L',
+                    d: '0,1 g/L'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Een oplossing heeft een concentratie van 4 g/L. Hoeveel gram opgeloste stof zit er in 3 L?',
+                answers: {
+                    a: '7 g',
+                    b: '12 g',
+                    c: '1,3 g',
+                    d: '0,75 g'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'In een rivier stroomt minder water. De hoeveelheid vervuiling blijft gelijk. Wat gebeurt er met de concentratie vervuiling?',
+                answers: {
+                    a: 'Die verdwijnt',
+                    b: 'Die blijft gelijk',
+                    c: 'Die wordt hoger',
+                    d: 'Die wordt lager'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Waarvan wordt natuurlijke zeep gemaakt?',
+                answers: {
+                    a: 'Aardolieproducten',
+                    b: 'Plantaardige en dierlijke oliën en vetten',
+                    c: 'Metalen',
+                    d: 'Zand en klei'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Waarvan wordt synthetische zeep gemaakt?',
+                answers: {
+                    a: 'Plantaardige oliën en vetten',
+                    b: 'Dierlijke vetten',
+                    c: 'Kalk',
+                    d: 'Aardolieproducten'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Welk deel van een zeepmolecuul lost goed op in water?',
+                answers: {
+                    a: 'De kop',
+                    b: 'De staart',
+                    c: 'Geen enkel deel',
+                    d: 'Het hele molecuul'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Welk deel van een zeepmolecuul lost goed op in vet?',
+                answers: {
+                    a: 'Geen enkel deel',
+                    b: 'De kop',
+                    c: 'Het hele molecuul',
+                    d: 'De staart'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Zeep is een…',
+                answers: {
+                    a: 'Oplosmiddel',
+                    b: 'Emulgator',
+                    c: 'Zuivere stof',
+                    d: 'Suspensie'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Je hebt vet op je handen. Wat gebruik je om je handen schoon te krijgen?',
+                answers: {
+                    a: 'Water en zeep',
+                    b: 'Alleen warm water',
+                    c: 'Alleen koud water',
+                    d: 'Alleen zand'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat betekent ontsmetten?',
+                answers: {
+                    a: 'Kalk verwijderen',
+                    b: 'Vet laten oplossen',
+                    c: 'Ziekteverwekkers onschadelijk maken',
+                    d: 'Vuil wegspoelen met water'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is hard water?',
+                answers: {
+                    a: 'Water met veel opgeloste kalk',
+                    b: 'Water met weinig opgeloste kalk',
+                    c: 'Water zonder opgeloste stoffen',
+                    d: 'Water met veel opgeloste zeep'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat ontstaat er als zeep reageert met kalk?',
+                answers: {
+                    a: 'Gedestilleerd water',
+                    b: 'Een emulsie',
+                    c: 'Kalkzeep',
+                    d: 'Keukenzout'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Je hebt hard water. Hoeveel zeep heb je nodig om iets schoon te maken, vergeleken met zacht water?',
+                answers: {
+                    a: 'Evenveel zeep',
+                    b: 'Meer zeep',
+                    c: 'Geen zeep',
+                    d: 'Minder zeep'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Welk middel is een cosmetisch middel?',
+                answers: {
+                    a: 'Afwasmiddel',
+                    b: 'Wasbenzine',
+                    c: 'Allesreiniger',
+                    d: 'Zonnebrandcrème'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is een crème?',
+                answers: {
+                    a: 'Een emulsie die je op je huid smeert',
+                    b: 'Een suspensie die je op je huid smeert',
+                    c: 'Een zuivere stof die je op je huid smeert',
+                    d: 'Een oplossing die je op je huid smeert'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat zijn de hoofdbestanddelen van een crème?',
+                answers: {
+                    a: 'Water, zeep en keukenzout',
+                    b: 'Water, schuurmiddel en zeep',
+                    c: 'Alleen water en alcohol',
+                    d: 'Water, olie of vet en een emulgator'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat zijn de hoofdbestanddelen van shampoo?',
+                answers: {
+                    a: 'Water, olie of vet en een emulgator',
+                    b: 'Water, schuurmiddel en zeep',
+                    c: 'Water, zeep en keukenzout',
+                    d: 'Alleen water en alcohol'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Welk bestanddeel zit altijd in tandpasta, naast zeep?',
+                answers: {
+                    a: 'Keukenzout',
+                    b: 'Een schuurmiddel',
+                    c: 'Alcohol',
+                    d: 'Olie'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Welk bestanddeel in tandpasta versnelt het herstel van je tandglazuur?',
+                answers: {
+                    a: 'Keukenzout',
+                    b: 'Zeep',
+                    c: 'Fluoride',
+                    d: 'Het schuurmiddel'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Waarvoor dient het schuurmiddel in tandpasta?',
+                answers: {
+                    a: 'Om een emulsie te maken',
+                    b: 'Om de tandpasta dikker te maken',
+                    c: 'Om je tanden te ontsmetten',
+                    d: 'Om je tanden schoon te poetsen'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is talg?',
+                answers: {
+                    a: 'Het vetlaagje op je huid',
+                    b: 'Een emulgator',
+                    c: 'Een soort zeep',
+                    d: 'Een soort tandpasta'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Waarom kun je talg niet met alleen water verwijderen?',
+                answers: {
+                    a: 'Talg is een zuivere stof',
+                    b: 'Talg is vet en vet lost niet op in water',
+                    c: 'Talg lost op in water maar heel langzaam',
+                    d: 'Talg is te warm'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Bacteriën in tandplak zetten suiker om in…',
+                answers: {
+                    a: 'Zeep',
+                    b: 'Zout',
+                    c: 'Fluoride',
+                    d: 'Zuur'
                 },
                 correctAnswer: 'd'
             }
