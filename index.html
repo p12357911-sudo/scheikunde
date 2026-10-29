@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>betermetpeter</title>
+    <link rel="icon" type="image/x-icon" href="123S.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script src="https://kit.fontawesome.com/d989439eae.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .w3-button.spel-open { background-color: #003A5C !important; color: #ffffff !important; }
+        body {
+            font: 400 15px Lato, sans-serif;
+            line-height: 1.8;
+            color: #111111;
+        }
+        h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #303030;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        h4 {
+            font-size: 19px;
+            line-height: 1.375em;
+            color: #303030;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+        .jumbotron {
+            background-color: #303030;
+            color: #fff;
+            padding: 100px 25px;
+            font-family: Montserrat, sans-serif;
+        }
+        .container-fluid {
+            padding: 60px 50px;
+        }
+        .bg-grey {
+            background-color: #f6f6f6;
+        }
+        .logo-small {
+            color: #2e5cb8;
+            font-size: 50px;
+        }
+        .logo {
+            color: #2e5cb8;
+            font-size: 200px;
+        }
+        .thumbnail {
+            padding: 0 0 15px 0;
+            border: none;
+            border-radius: 0;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            margin-bottom: 10px;
+        }
+        .carousel-control.right, .carousel-control.left {
+            background-image: none;
+            color: #2e5cb8;
+        }
+        .carousel-indicators li {
+            border-color: #2e5cb8;
+        }
+        .carousel-indicators li.active {
+            background-color: #2e5cb8;
+        }
+        .item h4 {
+            font-size: 19px;
+            line-height: 1.375em;
+            font-weight: 400;
+            font-style: italic;
+            margin: 70px 0;
+        }
+        .item span {
+            font-style: normal;
+        }
+        .panel {
+            border: 1px solid #2e5cb8; 
+            border-radius: 0 !important;
+            transition: box-shadow 0.5s;
+        }
+        .panel:hover {
+            box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+        }
+        .panel-footer .btn:hover {
+            border: 1px solid #2e5cb8;
+            background-color: #fff !important;
+            color: #2e5cb8;
+        }
+        .panel-heading {
+            color: #fff !important;
+            background-color: black !important;
+            padding: 25px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        .panel-footer {
+            background-color: white !important;
+        }
+        .panel-footer h3 {
+            font-size: 32px;
+        }
+        .panel-footer h4 {
+            color: #555555;
+            font-size: 14px;
+        }
+        .panel-footer .btn {
+            margin: 15px 0;
+            background-color: #2e5cb8;
+            color: #fff;
+        }
+        .navbar {
+            margin-bottom: 0;
+            background-color: #2e5cb8;
+            z-index: 9999;
+            border: 0;
+            font-size: 12px !important;
+            line-height: 1.42857143 !important;
+            letter-spacing: 4px;
+            border-radius: 0;
+            font-family: Montserrat, sans-serif;
+        }
+        .navbar li a, .navbar .navbar-brand {
+            color: #fff !important;
+        }
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+            color: #2e5cb8 !important;
+            background-color: #fff !important;
+        }
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+            color: #fff !important;
+        }
+        footer .glyphicon {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #2e5cb8;
+        }
+        .slideanim {
+            visibility: hidden;
+        }
+        .slide {
+            animation-name: slide;
+            -webkit-animation-name: slide;
+            animation-duration: 1s;
+            -webkit-animation-duration: 1s;
+            visibility: visible;
+        }
+        @keyframes slide {
+            0% {
+                opacity: 0;
+                transform: translateY(70%);
+            } 
+            100% {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+        @-webkit-keyframes slide {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(70%);
+            } 
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .col-sm-4 {
+                text-align: center;
+                margin: 25px 0;
+            }
+            .btn-lg {
+                width: 100%;
+                margin-bottom: 35px;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .logo {
+                font-size: 150px;
+            }
+        }
+    </style>
+</head>
+<body id="myPage">
+
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+
+<!-- Image Header -->
+<div class="jumbotron text-center">
+    <img class="w3-circle w3-image" src="peterpantinkerbell.png" alt="Peter Pan" width="20%" height="20%">
+    <h1>School trainer</h1> 
+    <p>De basis van het leren</p> 
+</div>
+
+<!-- Carousel section -->
+<div>
+    <div id="myCarousel" class="carousel slide text-center" data-interval="false" aria-label="Tips voor leerlingen">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <h4>"Neem je boeken, schrift en pen mee naar de les en maak aantekeningen"<br><span><i>Leren doe je zelf</i></span></h4>
+            </div>
+            <div class="item">
+                <h4>"Doe eerst je huiswerk en ga dan pas gamen, youtuben, tiktokken etc dat scheelt veel stress en geeft je energie"<br><span><i>Stress reducer</i></span></h4>
+            </div>
+            <div class="item">
+                <h4>"Zorg ervoor dat je alle vragen van deze website foutloos kunt beantwoorden"<br><span><i>Toets-proof</i></span></h4>
+            </div>
+        </div>
+        <!-- Indicators -->
+        <div>
+            <br>
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Vorige tip</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Volgende tip</span>
+        </a>
+    </div>
+</div>
+
+<!-- Vakken Container Scheikunde -->
+<div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+    <h2>Scheikunde</h2>
+    <i class="fa-solid fa-flask" style="--fa-beat-fade-opacity: 0.1;--fa-beat-fade-scale: 2.0; --fa-animation-iteration-count: 3;--fa-animation-timing: ease-in-out;"></i>
+    <p>Kies hieronder waar je jezelf op wilt trainen</p>
+    <div class="w3-row"><br>
+        <div class="w3-third">
+            <i class="fa-solid fa-flask"></i>
+            <div class="w3-container">
+                <h2>Havo/VWO 3</h2>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button w3-black">Onderwerpen</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-border">
+                        <a href="Matriaalenstof1KB.html" class="w3-bar-item w3-button">Stoffen KB</a>
+						<a href="Matriaalenstof1KBAI.html" class="w3-bar-item w3-button">Stoffen KBAI</a>
+                        <a href="ChemReactions1KB.html" class="w3-bar-item w3-button">Reacties KB</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third">
+            <i class="fa-solid fa-flask-vial"></i>
+            <h2>Havo/VWO 4</h2>
+            <div class="w3-dropdown-hover">
+                <button class="w3-button w3-black">Onderwerpen</button>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                    <a href="ChemCalcPeriodSys1KB.html" class="w3-bar-item w3-button">Chemisch rekenen KB</a>
+                    <a href="ChemBonds1KB.html" class="w3-bar-item w3-button">Chemische binding KB</a>
+					<a href="duurzaamheidMP.html" class="w3-bar-item w3-button">Duurzaamheid MP</a>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third">
+            <i class="fa-solid fa-vials"></i>
+            <h2>Havo/VWO 5</h2>
+            <div class="w3-dropdown-hover">
+                <button class="w3-button w3-black">Onderwerpen</button>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                    <a href="acidbase1MP.html" class="w3-bar-item w3-button">Zuren - basen MP</a>
+                    <a href="acidbase1KB.html" class="w3-bar-item w3-button">Zuren - basen KB</a>
+                    <a href="redox1KB.html" class="w3-bar-item w3-button">Redox KB</a>
+                    <a href="MolBouw1KB.html" class="w3-bar-item w3-button">Molecuulbouw KB</a>
+                    <a href="kunststoffenMP.html" class="w3-bar-item w3-button">Kunststoffen MP</a>
+					<a href="Kunststoffen1KB.html" class="w3-bar-item w3-button">Kunststoffen KB</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Vakken Container NaSk -->
+<div class="w3-container w3-padding-64 w3-center" id="NaSk">
+    <h2>NaSk</h2>
+    <i class="fa-solid fa-microscope" style="--fa-beat-fade-opacity: 0.1;--fa-beat-fade-scale: 2.0; --fa-animation-iteration-count: 3;--fa-animation-timing: ease-in-out;"></i>
+    <p>Kies hieronder waar je jezelf op wilt trainen</p>
+    <div class="w3-row"><br>
+        <div class="w3-half">
+            <i class="fa-solid fa-flask"></i>
+            <div class="w3-container">
+                <h2>NaSk1</h2>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button w3-black">Onderwerpen</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-border">
+                        <span class="w3-bar-item" style="color:#111111">Binnenkort</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w3-half">
+            <i class="fa-solid fa-flask"></i>
+            <div class="w3-container">
+                <h2>NaSk2</h2>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button w3-black">Onderwerpen</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-border">
+                        <!-- <a href="Stoffen1KB.html" class="w3-bar-item w3-button">Stoffen KB</a> -->
+                        <a href="Sorterenvmbo3Hst2.html" class="w3-bar-item w3-button">Stoffen sorteren KB</a>
+                        <a href="chemrekenenVMBO3MP.html" class="w3-bar-item w3-button">Rekenen aan reacties</a>
+                        <a href="Uitdeaardevmbo4Hst9.html" class="w3-bar-item w3-button">Stoffen uit de aarde KB</a>
+                        <a href="Zoutenvmbo4Hst10.html" class="w3-bar-item w3-button">Zouten KB</a>
+					 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Vakken Container Natuurkunde -->
+<div class="w3-container w3-padding-64 w3-center" id="natuurkunde">
+    <h2>Natuurkunde</h2>
+    <i class="fa-solid fa-magnet"></i>
+    <p><a href="index.html#contact">Vrijwilligers gezocht: lever vragen aan per onderwerp </a></p>
+</div>
+
+<!-- Vakken Container Biologie -->
+<div class="w3-container w3-padding-64 w3-center" id="biologie">
+    <h2>Biologie</h2>
+    <i class="fa-solid fa-dna"></i>
+    <p><a href="index.html#contact">Vrijwilligers gezocht: lever vragen aan per onderwerp </a></p>
+</div>
+
+<!-- Vakken Container NaSk -->
+<div class="w3-container w3-padding-64 w3-center" id="NED">
+    <h2>Nederlands</h2>
+    <!-- <i class="fa-solid fa-microscope" style="--fa-beat-fade-opacity: 0.1;--fa-beat-fade-scale: 2.0; --fa-animation-iteration-count: 3;--fa-animation-timing: ease-in-out;"></i> -->
+            <div class="w3-dropdown-hover">
+                    <button class="w3-button w3-black">Onderwerpen</button>
+                    <div class="w3-dropdown-content w3-bar-block w3-border">
+                    <a href="NL1.html" class="w3-bar-item w3-button">NL woordenschat Par456</a>
+           </div>
+      </div>
+</div>
+
+<!-- Thema's Container -->
+<div class="w3-container w3-padding-64 w3-center" id="themas">
+    <h2>Interessante onderwerpen</h2>
+    <i class="fa-solid fa-graduation-cap" style="--fa-beat-fade-opacity: 0.1;--fa-beat-fade-scale: 2.0; --fa-animation-iteration-count: 3;--fa-animation-timing: ease-in-out;"></i>
+    <p>Thema's bevatten een integrale presentatie met filmpjes en opdrachten over interessante onderwerpen</p>
+    <div class="w3-row"><br>
+        <i class="fa-solid fa-folder-open"></i>
+        <div class="w3-container">
+            <div class="w3-dropdown-hover">
+                <button class="w3-button w3-black">Kies hier een thema</button>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                    <a href="http://www.shorturl.at/motR0" target="_blank" class="w3-bar-item w3-button">Klimaatcrisis</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Games Container -->
+<div class="w3-container w3-padding-64 w3-center" id="games">
+    <h2>Spelen</h2>
+    <i class="fa-solid fa-puzzle-piece" style="--fa-beat-fade-opacity: 0.1;--fa-beat-fade-scale: 2.0; --fa-animation-iteration-count: 3;--fa-animation-timing: ease-in-out;"></i>
+    <p>Leuke scheikunde spelen die het lesmateriaal en leerniveau volgen</p>
+    <div class="w3-container">
+        <button onclick="myFunction('Game1')" class="w3-button w3-block w3-black w3-center-align">Klik hier en kies niveau en spel</button>
+        <div id="Game1" class="w3-hide w3-container">
+            <button onclick="myFunction('Game2')" class="w3-button w3-block w3-black w3-left-align">NaSk1</button>
+            <div id="Game2" class="w3-hide w3-container">
+                <a href="spelchemie/NaSk1/woordzoeker natuurwetenschap NaSk1.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers Natuurwetenschap</a>
+                <a href="spelchemie/NaSk1/woordzoeker stoffen NaSk1.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers stoffen</a>
+                <a href="spelchemie/NaSk1/woordzoeker heelal NaSk1.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers heelal</a>
+                <a href="spelchemie/NaSk1/woordzoeker elektriciteit NaSk1.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers elektriciteit</a>
+                <a href="spelchemie/NaSk1/kruiswoord heelal NaSk1.pdf" target="_blank" class="w3-bar-item w3-button">Kruiswoord heelal</a>
+                <a href="spelchemie/NaSk1/filippine heelal NaSk1.pdf" target="_blank" class="w3-bar-item w3-button">Filippine heelal</a>
+            </div>
+            <button onclick="myFunction('Game7')" class="w3-button w3-block w3-black w3-left-align">NaSk2</button>
+            <div id="Game7" class="w3-hide w3-container">
+                <a href="spelchemie/NaSk2/NaSk2 vmbo3 hst1 stoffen.pdf" target="_blank" class="w3-bar-item w3-button">Stoffen</a>
+                <a href="spelchemie/NaSk2/NaSk2 vmbo3 hst2 sorteren.pdf" target="_blank" class="w3-bar-item w3-button">Stoffen sorteren en scheiden</a>
+                <a href="spelchemie/NaSk2/NaSk2 vmbo4 hst7 basisscheikunde.pdf" target="_blank" class="w3-bar-item w3-button">Basis chemie herhalen</a>
+                <a href="spelchemie/NaSk2/NaSk2 vmbo4 hst9 delfstofuitdeaarde.pdf" target="_blank" class="w3-bar-item w3-button">Stoffen uit de aarde</a>
+            </div>
+            <button onclick="myFunction('Game4')" class="w3-button w3-block w3-black w3-left-align">Scheikunde 3</button>
+            <div id="Game4" class="w3-hide w3-container">
+                <a href="spelchemie/HV3/woordzoeker materialen en stoffen HV3.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoeker materialen en stoffen</a>
+                <a href="spelchemie/HV3/woordzoeker chem reacties HV3.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers chemische reacties</a>
+                <a href="spelchemie/HV3/woordzoeker atoommodel HV3.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers atoommodel </a>
+                <a href="spelchemie/HV3/kruiswoord atoommodel HV3.pdf" target="_blank" class="w3-bar-item w3-button">Kruiswoord atoommodel</a>
+                <a href="spelchemie/HV3/filippine chem reacties HV3.pdf" target="_blank" class="w3-bar-item w3-button">Filippine chemische reacties</a>
+            </div>
+            <button onclick="myFunction('Game5')" class="w3-button w3-block w3-black w3-left-align">Scheikunde 4</button>
+            <div id="Game5" class="w3-hide w3-container">
+                <a href="spelchemie/HV4/woordzoeker Chemische binding HV4.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers chemische binding</a>
+                <a href="spelchemie/HV4/woordzoeker koolstofchemie HV4.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers koolstofchemie</a>
+                <a href="spelchemie/HV4/kruiswoord Chemische binding HV4.pdf" target="_blank" class="w3-bar-item w3-button">Kruiswoord chemische binding</a>
+            </div>
+            <button onclick="myFunction('Game6')" class="w3-button w3-block w3-black w3-left-align">Scheikunde 5/6</button>
+            <div id="Game6" class="w3-hide w3-container">
+                <a href="spelchemie/HV56/woordzoeker Redox HV5.pdf" target="_blank" class="w3-bar-item w3-button">Woordzoekers Redox</a>
+                <a href="spelchemie/HV56/Redox kaartspel HV5.docx" target="_blank" class="w3-bar-item w3-button">Kaartspel Redox</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script accoordion Games -->
+<script>
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace("w3-black", "spel-open");
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace("spel-open", "w3-black");
+    }
+}
+</script>
+
+<!-- Bouw mee Container -->
+<div class="w3-container w3-padding-64 w3-center" id="bouw">
+    <h2>Bouw mee</h2>
+    <i class="fa-solid fa-hammer" style="--fa-beat-fade-opacity: 0.1;--fa-beat-fade-scale: 2.0; --fa-animation-iteration-count: 3;--fa-animation-timing: ease-in-out;"></i>
+    <p>Meebouwen is makkelijk: lever vragen en antwoorden aan en wij doen de rest</p>
+    <p>We hebben twee typen vragen: vraag-antwoord en multiple choice</p>
+    <p>Kies hieronder welk type vragen je wilt geven en volg de link</p>
+    <div class="w3-row"><br>
+        <i class="fa-solid fa-align-justify"></i>
+        <div class="w3-container">
+            <div class="w3-dropdown-hover">
+                <button class="w3-button w3-black">Kies hier het type vraag</button>
+                <div class="w3-dropdown-content w3-bar-block w3-border">
+                    <a href="http://www.shorturl.at/kCJK7" target="_blank" class="w3-bar-item w3-button">Kennis Basis vragen (KB)</a>
+                    <a href="http://www.shorturl.at/sFNSX" target="_blank" class="w3-bar-item w3-button">Multiple choice (MP)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Container -->
+<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
+    <div class="w3-row">
+        <div class="w3-col w3-padding m5">
+            <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact</span></div>
+            <h3>Momenteel alleen verkrijgbaar in Nederland</h3>
+            <p>Stuur ons een berichtje met je vragen en tips en tops! En waar gehakt wordt vallen spaanders dus zie je een foutje laat dat dan ook even weten.</p>
+            <br>
+            <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i> <a href="mailto:info@betermetpeter.nl" style="text-decoration:underline">info@betermetpeter.nl</a></p>
+            <p>Betermetpeter wil nog beter worden om op een vrije manier alle scholieren te helpen. Dat komt niet vanzelf en daar zijn donaties voor nodig. Doneer daarom en zorg dat deze website vrij te bezoeken blijft.</p>
+            <p><i class="fa fa-handshake w3-text-teal w3-xlarge"></i></p> 
+            <form action="https://www.paypal.com/donate" method="post" target="_top">
+                <input type="hidden" name="hosted_button_id" value="3PF7GYVREUHX6" />
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                <img alt="" border="0" src="https://www.paypal.com/en_NL/i/scr/pixel.gif" width="1" height="1" />
+            </form>
+        </div>
+        <div class="w3-col m7">
+            <div class="in-ontwikkeling" role="note">
+                <h3>Contactformulier volgt</h3>
+                <p>Het formulier is er nog niet. Mail ons voorlopig op <a href="mailto:info@betermetpeter.nl" style="text-decoration:underline">info@betermetpeter.nl</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+    <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+    <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+        <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+        <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span></a>
+    </div>
+</footer>
+
+<!-- Include functionality to load external page material -->
+<script>
+    w3IncludeHTML();
+</script>
+
+<script>
+    // Script for side navigation
+    function w3_open() {
+        var x = document.getElementById("mySidebar");
+        x.style.width = "300px";
+        x.style.paddingTop = "10%";
+        x.style.display = "block";
+    }
+
+    // Close side navigation
+    function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
+
+    // Used to toggle the menu on smaller screens when clicking on the menu button
+    function openNav() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else { 
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    $(document).ready(function(){
+        // Add smooth scrolling to all links in navbar + footer link
+        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 900, function(){
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+      
+        $(window).scroll(function() {
+            $(".slideanim").each(function(){
+                var pos = $(this).offset().top;
+
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 600) {
+                    $(this).addClass("slide");
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

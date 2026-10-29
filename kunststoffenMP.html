@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Polymeren</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <style>
+        .question {
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .answers label {
+            display: block;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .answers input {
+            margin-right: 10px;
+        }
+        #results {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .footer-link {
+            text-decoration: none;
+            color: #fff;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="polymeren">
+        <em>Polymeren vragen</em>
+        <br><br>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+            <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+            <i class="fa fa-chevron-circle-up"></i></span></a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: 'Wat is een initiator?',
+                answers: {
+                    a: 'Een stof die polymeren afbreekt',
+                    b: 'Een stof die de reactie start door een dubbele binding te verbreken',
+                    c: 'Een stof die water toevoegt aan de reactie',
+                    d: 'Een stof die de polymerisatie stopt',
+                    e: 'Een stof die de temperatuur verhoogt'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is het effect van uv-straling op een initiator?',
+                answers: {
+                    a: 'Het veroorzaakt de afbraak van polymeren',
+                    b: 'Het heeft geen effect op de initiator',
+                    c: 'Het veroorzaakt de reactie van de initiator',
+                    d: 'Het vermindert de activiteit van de initiator',
+                    e: 'Het verhoogt de temperatuur'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat gebeurt er tijdens condensatiereacties?',
+                answers: {
+                    a: 'Er wordt alleen een klein molecuul gevormd',
+                    b: 'Er wordt alleen een groter molecuul gevormd',
+                    c: 'Er wordt een groter molecuul gevormd en een klein molecuul afgesplitst',
+                    d: 'Er wordt geen molecuul gevormd',
+                    e: 'Er wordt een gas gevormd'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat ontstaat er bij de reactie van een zuurgroep en een hydroxylgroep?',
+                answers: {
+                    a: 'Amidebindingen en een polyamide',
+                    b: 'Amidebindingen en een polyester',
+                    c: 'Esterbindingen en een polyamide',
+                    d: 'Esterbindingen en een polyester',
+                    e: 'Hydrolyse'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat ontstaat er bij de reactie van een zuurgroep en een aminogroep?',
+                answers: {
+                    a: 'Esterbindingen en een polyamide',
+                    b: 'Esterbindingen en een polyester',
+                    c: 'Amidebindingen en een polyester',
+                    d: 'Amidebindingen en een polyamide',
+                    e: 'Hydrolyse'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat gebeurt er bij een hydrolysereactie?',
+                answers: {
+                    a: 'Een molecuul water wordt toegevoegd',
+                    b: 'Een molecuul water wordt verwijderd',
+                    c: 'Een gas wordt gevormd',
+                    d: 'Een polymeer wordt afgebroken',
+                    e: 'Een polymeer wordt gevormd'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat betekent gemiddelde ketenlengte?',
+                answers: {
+                    a: 'Het gemiddelde gewicht van een molecuul',
+                    b: 'Het gemiddelde aantal monomeereenheden in de keten',
+                    c: 'Het gemiddelde aantal moleculen in een polymeer',
+                    d: 'Het gemiddelde aantal polymeren in een molecuul',
+                    e: 'Het gemiddelde gewicht van een polymeer'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is een additiepolymeer?',
+                answers: {
+                    a: 'Een polymeer gevormd door condensatiereactie',
+                    b: 'Een polymeer gevormd door additiepolymerisatie',
+                    c: 'Een polymeer gevormd door hydrolysereactie',
+                    d: 'Een polymeer gevormd door esterbindingen',
+                    e: 'Een polymeer gevormd door amidebindingen'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is de rol van een initiator bij additiepolymerisatie?',
+                answers: {
+                    a: 'Het start de reactie door een dubbele binding te verbreken',
+                    b: 'Het stopt de reactie',
+                    c: 'Het voegt water toe aan de reactie',
+                    d: 'Het verhoogt de temperatuur',
+                    e: 'Het vermindert de activiteit van de reactie'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat ontstaat er bij de reactie van een hydroxylgroep en een zuurgroep?',
+                answers: {
+                    a: 'Amidebindingen en een polyamide',
+                    b: 'Esterbindingen en een polyester',
+                    c: 'Amidebindingen en een polyester',
+                    d: 'Esterbindingen en een polyamide',
+                    e: 'Hydrolyse'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is een polyamide?',
+                answers: {
+                    a: 'Een polymeer gevormd door esterbindingen',
+                    b: 'Een polymeer gevormd door amidebindingen',
+                    c: 'Een polymeer gevormd door condensatiereactie',
+                    d: 'Een polymeer gevormd door additiepolymerisatie',
+                    e: 'Een polymeer gevormd door hydrolysereactie'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is een hydrolysereactie?',
+                answers: {
+                    a: 'Een reactie waarbij water wordt toegevoegd',
+                    b: 'Een reactie waarbij water wordt verwijderd',
+                    c: 'Een reactie waarbij een polymeer wordt gevormd',
+                    d: 'Een reactie waarbij een polymeer wordt afgebroken',
+                    e: 'Een reactie waarbij een gas wordt gevormd'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is de definitie van ketenlengte?',
+                answers: {
+                    a: 'Het aantal moleculen in een polymeer',
+                    b: 'Het gewicht van een polymeer',
+                    c: 'Het aantal monomeereenheden in een polymeerketen',
+                    d: 'De lengte van een molecuul',
+                    e: 'De breedte van een molecuul'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is een polyester?',
+                answers: {
+                    a: 'Een polymeer gevormd door esterbindingen',
+                    b: 'Een polymeer gevormd door amidebindingen',
+                    c: 'Een polymeer gevormd door condensatiereactie',
+                    d: 'Een polymeer gevormd door additiepolymerisatie',
+                    e: 'Een polymeer gevormd door hydrolysereactie'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat ontstaat er bij de reactie van een aminogroep en een zuurgroep?',
+                answers: {
+                    a: 'Esterbindingen en een polyamide',
+                    b: 'Esterbindingen en een polyester',
+                    c: 'Amidebindingen en een polyester',
+                    d: 'Amidebindingen en een polyamide',
+                    e: 'Hydrolyse'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is ketenlengte?',
+                answers: {
+                    a: 'Het aantal monomeereenheden in een polymeerketen',
+                    b: 'Het aantal moleculen in een polymeer',
+                    c: 'Het gewicht van een polymeer',
+                    d: 'De lengte van een molecuul',
+                    e: 'De breedte van een molecuul'
+                },
+                correctAnswer: 'a'
+            }
+        ];
+
+        var quizContainer = document.getElementById('quiz');
+        var resultsContainer = document.getElementById('results');
+        var submitButton = document.getElementById('submit');
+
+        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+        function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+            function showQuestions(questions, quizContainer) {
+                var output = [];
+                var answers;
+                for (var i = 0; i < questions.length; i++) {
+                    answers = [];
+                    for (letter in questions[i].answers) {
+                        answers.push(
+                            '<label>' +
+                            '<input type="radio" name="question' + i + '" value="' + letter + '">' +
+                            letter + ': ' +
+                            questions[i].answers[letter] +
+                            '</label>'
+                        );
+                    }
+                    output.push(
+                        '<div class="question">' + questions[i].question + '</div>' +
+                        '<div class="answers">' + answers.join('') + '</div>'
+                    );
+                }
+                quizContainer.innerHTML = output.join('');
+            }
+
+            function showResults(questions, quizContainer, resultsContainer) {
+                var answerContainers = quizContainer.querySelectorAll('.answers');
+                var userAnswer = '';
+                var numCorrect = 0;
+                for (var i = 0; i < questions.length; i++) {
+                    userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+                    if (userAnswer === questions[i].correctAnswer) {
+                        numCorrect++;
+                        answerContainers[i].style.color = '#14532d';
+				markeer(answerContainers[i], true);
+                    } else {
+                        answerContainers[i].style.color = '#7f1d1d';
+				markeer(answerContainers[i], false);
+                    }
+                }
+                resultsContainer.innerHTML = numCorrect + ' van de ' + questions.length + ' goed';
+            }
+
+            showQuestions(questions, quizContainer);
+
+            submitButton.onclick = function () {
+                showResults(questions, quizContainer, resultsContainer);
+            }
+        }
+    </script>
+    <!-- Include functionality to load external page material -->
+    <script>
+        w3IncludeHTML();
+    </script>
+<script src="school.js"></script>
+</body>
+</html>

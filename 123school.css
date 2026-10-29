@@ -1,0 +1,126 @@
+body{
+	font-size: 20px;
+	font-family: sans-serif;
+	color: #111111;
+}
+.question{
+	font-weight: 600;
+}
+.answers {
+    margin-bottom: 20px;
+}
+/* anchor behavior */
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+/* ===== Leesbaarheid (v1) ===== */
+/* Rustige kleuren: donkerblauw (#003A5C) met witte tekst, lichte antwoordvakken */
+.vraag-knop {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border: 1px solid #003A5C;
+  border-radius: 4px;
+  background-color: #003A5C;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1em;
+  text-align: left;
+  cursor: pointer;
+}
+.vraag-knop:hover { background-color: #00527F; }
+.vraag-knop:focus-visible,
+.w3-button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #FFB300;
+  outline-offset: 2px;
+}
+.antwoord-box {
+  background-color: #EAF2F8;
+  color: #111111;
+  border-left: 5px solid #003A5C;
+  margin-bottom: 6px;
+}
+.knop-blauw, .w3-button.knop-blauw {
+  background-color: #003A5C;
+  color: #ffffff;
+  text-decoration: none;
+}
+.knop-blauw:hover, .w3-button.knop-blauw:hover {
+  background-color: #00527F;
+  color: #ffffff;
+}
+.knop-blauw a, .knop-blauw a:visited { color: #ffffff; }
+.uitslag {
+  font-weight: 700;
+  margin: 4px 0 0 0;
+}
+.uitslag-goed { color: #14532d; }
+.uitslag-fout { color: #7f1d1d; }
+.in-ontwikkeling {
+  background-color: #FFF4CE;
+  color: #111111;
+  border-left: 6px solid #B26A00;
+  padding: 12px 16px;
+  margin: 16px 0;
+}
+.inline-melding { color: #7f1d1d; font-weight: 600; margin: 4px 0; }
+
+/* ===== Zwevende knop "Controleer nu" (alleen op meerkeuzepagina's, zie school.js) ===== */
+/* ruimte onderaan, zodat de laatste vraag nooit achter de knop verdwijnt (op de footer, zodat er geen witte balk ontstaat) */
+body.heeft-zweefknop footer { padding-bottom: 96px; }
+.zweefknop {
+  position: fixed;
+  right: 16px;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 1000;
+  padding: 12px 20px;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  background-color: #003A5C;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  transition: none;
+}
+.zweefknop:hover { background-color: #00527F; }
+.zweefknop:focus-visible { outline: 3px solid #FFB300; outline-offset: 3px; }
+.zweefknop[hidden] { display: none; }
+@media (max-width: 600px) {
+  .zweefknop { padding: 10px 16px; right: 12px; bottom: 12px; }
+}

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Woordenschatlijst Meerkeuzevragen</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <style>
+        .question {
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .answers label {
+            display: block;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .answers input {
+            margin-right: 10px;
+        }
+        #results {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .footer-link {
+            text-decoration: none;
+            color: #fff;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="polymeren">
+        <em>Woordenschatlijst Meerkeuzevragen</em>
+        <br><br>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Klik voor resultaat</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+            <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+            <i class="fa fa-chevron-circle-up"></i></span></a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: '1. Archeologen',
+                answers: {
+                    a: 'Boekenverzamelaars',
+                    b: 'Kunstenaars',
+                    c: 'Mensen die bijen houden',
+                    d: 'Wetenschappers die overblijfselen uit het verleden bestuderen'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '2. Nederzetting',
+                answers: {
+                    a: 'Een plaats waar een groep mensen zich vestigt',
+                    b: 'Een groot schip',
+                    c: 'Een gebouw voor dieren',
+                    d: 'Een bergtop'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: '3. Hooglied',
+                answers: {
+                    a: 'Een beroemde symfonie',
+                    b: 'Een bekend schilderij',
+                    c: 'Een Bijbelboek over de liefde',
+                    d: 'Een oude munt'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '4. Kopist',
+                answers: {
+                    a: 'Iemand die schilderijen maakt',
+                    b: 'Iemand die beelden houwt',
+                    c: 'Iemand die boeken schrijft',
+                    d: 'Iemand die geschreven boeken overschrijft'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '5. Allegaartje',
+                answers: {
+                    a: 'Een soort dier',
+                    b: 'Een soort plant',
+                    c: 'Een onduidelijke mix; mengelmoes',
+                    d: 'Een duidelijk overzicht'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '6. Klankwetten',
+                answers: {
+                    a: 'Wetten over verkeersgeluid',
+                    b: 'Betrouwbare bewering over een bepaalde klankontwikkeling',
+                    c: 'Muziekregels',
+                    d: 'Regels voor theatergeluid'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '7. Reconstructie',
+                answers: {
+                    a: 'Het bouwen van nieuwe huizen',
+                    b: 'Een type machine',
+                    c: 'Een soort feest',
+                    d: 'Herbouw van de oorspronkelijke staat van iets'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '8. Overgeleverd',
+                answers: {
+                    a: 'Mondeling doorgegeven; doorverteld',
+                    b: 'Met de post verstuurd',
+                    c: 'Handgeschreven',
+                    d: 'Digitaal opgeslagen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: '9. Pennenproefsel',
+                answers: {
+                    a: 'Een manier van schrijven',
+                    b: 'Een test om te controleren of je pen werkt',
+                    c: 'Een type balpen',
+                    d: 'Een tekenwedstrijd'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '10. Samengesteld',
+                answers: {
+                    a: 'Gemengd',
+                    b: 'Gemaakt van metaal',
+                    c: 'Uit één deel bestaand',
+                    d: 'Bijeengebracht; verzameld'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '11. Liet links liggen',
+                answers: {
+                    a: 'Schreef erover',
+                    b: 'Vond het leuk',
+                    c: 'Negeerde; besteedde geen aandacht aan',
+                    d: 'Keek ernaar'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '12. Interpreteren',
+                answers: {
+                    a: 'Verduidelijken',
+                    b: 'Vertalen',
+                    c: 'Kopiëren',
+                    d: 'Uitleggen; betekenis geven aan'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '13. Exotisch',
+                answers: {
+                    a: 'Lokaal',
+                    b: 'Gewoon',
+                    c: 'Uitheems; buitenlands; door een andere cultuur voortgebracht',
+                    d: 'Inheems'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '16. Redeneren',
+                answers: {
+                    a: 'Zingen',
+                    b: 'Uitleggen van welke feiten en gedachten je uitgaat bij het maken van keuzes',
+                    c: 'Schilderen',
+                    d: 'Dansen'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '17. Zich voltrok',
+                answers: {
+                    a: 'Werd geschreven',
+                    b: 'Werd vergeten',
+                    c: 'Plaatsvond; gebeurde',
+                    d: 'Werd gezongen'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '18. Taalfamilie',
+                answers: {
+                    a: 'Een verzameling van woorden',
+                    b: 'Groep verwante talen die dezelfde geschiedenis hebben',
+                    c: 'Een boek over talen',
+                    d: 'Een school voor talen'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '19. Aanknopingspunt',
+                answers: {
+                    a: 'Een aanwijzing; iets wat je kunt gebruiken om een zaak (verder) te onderzoeken',
+                    b: 'Een muziekinstrument',
+                    c: 'Een plaats op een kaart',
+                    d: 'Een punt in een verhaal'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: '20. Klerk',
+                answers: {
+                    a: 'Politieagent',
+                    b: 'Leraar',
+                    c: 'Kantoorbediende',
+                    d: 'Dokter'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '21. Laaggeletterdheid',
+                answers: {
+                    a: 'Het kunnen lezen en schrijven',
+                    b: 'Snel kunnen lezen',
+                    c: 'Het schrijven van gedichten',
+                    d: 'Moeite hebben met lezen en/of schrijven'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '22. Remedie',
+                answers: {
+                    a: 'Een type voedsel',
+                    b: 'Een soort plant',
+                    c: 'Een muziekinstrument',
+                    d: 'Middel dat bedoeld is om iets beter te maken'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '23. Gepubliceerde',
+                answers: {
+                    a: 'Verloren',
+                    b: 'Gestolen',
+                    c: 'Uitgebrachte',
+                    d: 'Onuitgebrachte'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '24. Betoogd',
+                answers: {
+                    a: 'Geweigerd',
+                    b: 'Geprobeerd te bewijzen',
+                    c: 'Gezongen',
+                    d: 'Geleerd'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '25. Beroepsopvoeders',
+                answers: {
+                    a: 'Mensen die tuinen onderhouden',
+                    b: 'Mensen die huizen bouwen',
+                    c: 'Mensen die voor hun werk kinderen opvoeden',
+                    d: 'Mensen die boeken schrijven'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '26. Empathischer',
+                answers: {
+                    a: 'Sterker',
+                    b: 'Minder emotioneel',
+                    c: 'Beter in staat je in anderen in te leven',
+                    d: 'Sneller'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '27. Onomstotelijk',
+                answers: {
+                    a: 'Gemakkelijk te weerleggen',
+                    b: 'Twijfelachtig',
+                    c: 'Onweerlegbaar; niet tegen te spreken',
+                    d: 'Zachtjes fluisterend'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '28. Polariserende',
+                answers: {
+                    a: 'Vredelievende',
+                    b: 'Samenvoegende',
+                    c: 'Verdeelde; steeds meer tegenstellingen veroorzakend',
+                    d: 'Verbindende'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '29. Verrijkt',
+                answers: {
+                    a: 'Met minder kennis',
+                    b: 'Met minder geld',
+                    c: 'Met meer geld',
+                    d: 'Met meer kennis'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '31. Gemakshalve',
+                answers: {
+                    a: 'Voor de lol',
+                    b: 'Voor de prijs',
+                    c: 'Voor het gemak',
+                    d: 'Voor de moeite'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '32. Participeren',
+                answers: {
+                    a: 'Tegenwerken',
+                    b: 'Observeren',
+                    c: 'Ontkennen',
+                    d: 'Meedoen; deelnemen'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '33. Het tij keren',
+                answers: {
+                    a: 'De situatie negeren',
+                    b: 'De situatie veranderen',
+                    c: 'De situatie accepteren',
+                    d: 'De situatie verbeteren'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '34. Maakt zich hard',
+                answers: {
+                    a: 'Doet niets',
+                    b: 'Verzet zich',
+                    c: 'Luistert niet',
+                    d: 'Spant zich in'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '35. Initiatief',
+                answers: {
+                    a: 'Einde',
+                    b: 'Vertraging',
+                    c: 'Midden',
+                    d: 'Begin; aanzet'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '36. Neerlandistiek',
+                answers: {
+                    a: 'Wetenschap die zich bezighoudt met de Nederlandse taal en literatuur',
+                    b: 'Wetenschap over de Duitse taal',
+                    c: 'Wetenschap over dieren',
+                    d: 'Wetenschap over planten'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: '37. Opheffen',
+                answers: {
+                    a: 'Beginnen',
+                    b: 'Dubbelen',
+                    c: 'Beëindigen',
+                    d: 'Halveren'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '38. Stimuleert',
+                answers: {
+                    a: 'Verlaat',
+                    b: 'Ontmoedigt',
+                    c: 'Moedigt aan',
+                    d: 'Vermijdt'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '39. Hiertoe nemen',
+                answers: {
+                    a: 'Verliezen',
+                    b: 'Kopen',
+                    c: '(Vast) te pakken',
+                    d: 'Weggooien'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '40. Voedingsbodem',
+                answers: {
+                    a: 'Ijskoude bodem',
+                    b: 'Plaats waar iets kan ontstaan en groeien',
+                    c: 'Lege ruimte',
+                    d: 'Droge plek'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '41. Ontkennen',
+                answers: {
+                    a: 'Bevestigen',
+                    b: 'Vergeten',
+                    c: 'Een tegenargument geven; zeggen dat het niet waar is',
+                    d: 'Leren'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '42. Beaamt',
+                answers: {
+                    a: 'Negeert',
+                    b: 'Is het daarmee eens; bevestigt',
+                    c: 'Verbetert',
+                    d: 'Ontkent'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '43. Hiërarchie',
+                answers: {
+                    a: 'Gelijkheid',
+                    b: 'Rangorde',
+                    c: 'Nabijheid',
+                    d: 'Afstand'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '44. Taalverrijking',
+                answers: {
+                    a: 'Positieve ontwikkeling van een taal',
+                    b: 'Verdwijning van een taal',
+                    c: 'Verslechtering van een taal',
+                    d: 'Verandering van een taal'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: '45. Woordensmeden',
+                answers: {
+                    a: 'Nieuwe talen',
+                    b: 'Oude talen',
+                    c: 'Verzonnen woordcombinaties',
+                    d: 'Oude woorden'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '46. Geïnspireerd op',
+                answers: {
+                    a: 'Gemaakt onder invloed van; ingegeven door',
+                    b: 'Geboren uit',
+                    c: 'Gemaakt zonder bron',
+                    d: 'Gemaakt zonder invloed van'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: '47. Schiepen',
+                answers: {
+                    a: 'Vernielden',
+                    b: 'Maakten; creëerden',
+                    c: 'Ontkenden',
+                    d: 'Verknoeiden'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '48. Inlijven',
+                answers: {
+                    a: 'Verwerpen',
+                    b: 'Bij je eigen land of groep voegen; in een groter geheel opnemen',
+                    c: 'Verliezen',
+                    d: 'Weggooien'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '49. Vloot',
+                answers: {
+                    a: 'Aantal vliegtuigen',
+                    b: 'Aantal schepen',
+                    c: 'Groep dieren',
+                    d: 'Groep mensen'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '50. Deceptie',
+                answers: {
+                    a: 'Blijdschap',
+                    b: 'Teleurstelling',
+                    c: 'Verrassing',
+                    d: 'Ontkenning'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '51. Heeft het uit eerste hand',
+                answers: {
+                    a: 'Heeft het zelf verzonnen',
+                    b: 'Heeft het gekopieerd',
+                    c: 'Heeft het gehoord van iemand die erbij stond',
+                    d: 'Heeft het geraden'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '52. Verkrijgen',
+                answers: {
+                    a: 'Verliezen',
+                    b: 'Vergeten',
+                    c: 'Weggeven',
+                    d: 'Met inspanning krijgen'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '53. Bewegen tot',
+                answers: {
+                    a: 'Laten zitten',
+                    b: 'Overhalen tot',
+                    c: 'Wegjagen',
+                    d: 'Verliezen'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '54. Gebikkeld',
+                answers: {
+                    a: 'Geleerd',
+                    b: 'Gefluisterd',
+                    c: 'Geruzied over kleinigheden',
+                    d: 'Gezwommen'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '55. Initiatiefnemer',
+                answers: {
+                    a: 'Iemand die als laatste iets bedenkt',
+                    b: 'Iemand die altijd luistert',
+                    c: 'Iemand die niets doet',
+                    d: 'Iemand die als eerste iets bedacht heeft te gaan doen'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '56. Hield af',
+                answers: {
+                    a: 'Gaf door',
+                    b: 'Verkocht',
+                    c: 'Weerhield; stond niet toe',
+                    d: 'Gaf mee'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: '57. Diverse',
+                answers: {
+                    a: 'Weinig',
+                    b: 'Eén exemplaar',
+                    c: 'Eén soort',
+                    d: 'Verscheidene; een aantal'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '58. Verkoopnet',
+                answers: {
+                    a: 'Een kring van leveranciers',
+                    b: 'Een visnet',
+                    c: 'Een basketbalnet',
+                    d: 'Een verkooptent'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: '59. Klinisch',
+                answers: {
+                    a: 'Medisch',
+                    b: 'Huiselijk',
+                    c: 'Emotioneel',
+                    d: 'Met een kliniek in verband staand; in een kliniek werkend'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: '60. Fysicus',
+                answers: {
+                    a: 'Dokter',
+                    b: 'Natuurkundige',
+                    c: 'Bioloog',
+                    d: 'Chemicus'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: '61. Ondervond',
+                answers: {
+                    a: 'Leerde kennen; ervoer',
+                    b: 'Verloor',
+                    c: 'Vergat',
+                    d: 'Leerde'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: '62. Krakkemikkig',
+                answers: {
+                    a: 'Wankel; niet zo stevig',
+                    b: 'Snel',
+                    c: 'Stevig',
+                    d: 'Krachtig'
+                },
+                correctAnswer: 'a'
+            }
+        ];
+
+        var quizContainer = document.getElementById('quiz');
+        var resultsContainer = document.getElementById('results');
+        var submitButton = document.getElementById('submit');
+
+        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+        function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+            function showQuestions(questions, quizContainer) {
+                var output = [];
+                var answers;
+                for (var i = 0; i < questions.length; i++) {
+                    answers = [];
+                    for (letter in questions[i].answers) {
+                        answers.push(
+                            '<label>' +
+                            '<input type="radio" name="question' + i + '" value="' + letter + '">' +
+                            letter + ': ' +
+                            questions[i].answers[letter] +
+                            '</label>'
+                        );
+                    }
+                    output.push(
+                        '<div class="question">' + questions[i].question + '</div>' +
+                        '<div class="answers">' + answers.join('') + '</div>'
+                    );
+                }
+                quizContainer.innerHTML = output.join('');
+            }
+
+            function showResults(questions, quizContainer, resultsContainer) {
+                var answerContainers = quizContainer.querySelectorAll('.answers');
+                var userAnswer = '';
+                var numCorrect = 0;
+                for (var i = 0; i < questions.length; i++) {
+                    userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+                    if (userAnswer === questions[i].correctAnswer) {
+                        numCorrect++;
+                        answerContainers[i].style.color = '#14532d';
+				markeer(answerContainers[i], true);
+                    } else {
+                        answerContainers[i].style.color = '#7f1d1d';
+				markeer(answerContainers[i], false);
+                    }
+                }
+                resultsContainer.innerHTML = numCorrect + ' van de ' + questions.length + ' goed';
+            }
+
+            showQuestions(questions, quizContainer);
+
+            submitButton.onclick = function () {
+                showResults(questions, quizContainer, resultsContainer);
+            }
+        }
+    </script>
+    <!-- Include functionality to load external page material -->
+    <script>
+        w3IncludeHTML();
+    </script>
+<script src="school.js"></script>
+</body>
+</html>

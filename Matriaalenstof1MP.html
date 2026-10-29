@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<title>Zuur-base vragen - 123 school</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="123school.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+<style>
+
+</style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+
+<!-- Question container -->
+<div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+<em> Zuur-base vragen</em>
+<br>
+<br>
+<div id="quiz"></div>
+<button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+ <a class="w3-button knop-blauw" href="Matriaalenstof1MP.html">Opnieuw oefenen</a>
+<div id="results" role="status" aria-live="polite"></div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+<script>
+var myQuestions = [
+
+{
+  question: ' Hoe groot is de pH van een zuur? ', 
+  answers: {
+   a: ' 7 ', 
+   b: ' 1 ', 
+   c: ' Kleiner dan 7 ', 
+   d: ' 14 ', 
+   e: ' Groter dan 7 '
+  },
+  correctAnswer: 'c'
+ },
+{
+  question: ' De pH is de? ', 
+  answers: {
+   a: ' Zuurtegraad ', 
+   b: ' Concentratie van een zuur ', 
+   c: ' Hoeveelheid azijnzuur ', 
+   d: ' De petro-Hydrochemische constante ', 
+   e: ' Mate van zwakte van een zuur '
+  },
+  correctAnswer: 'a'
+ },
+{
+  question: ' Ethaanzuur is ', 
+  answers: {
+   a: ' Alcohol ', 
+   b: ' Azijnzuur ', 
+   c: ' Ethaan mono zuur ', 
+   d: ' Ethaan in zoutzuur ', 
+   e: ' Zure alcohol oplossing '
+  },
+  correctAnswer: 'b'
+ },
+{
+  question: ' Een zuur is ', 
+  answers: {
+   a: ' Een deeltje dat H+ kan afstaan ', 
+   b: ' Een deeltje dat H+ kan neutraliseren ', 
+   c: ' Een deeltje dat H+ kan opnemen ', 
+   d: ' Een oplossing met veel OH- deeltjes ', 
+   e: ' een oplossing die niet kan bevriezen '
+  },
+  correctAnswer: 'a'
+ },
+{
+  question: ' Een zure oplossing  ', 
+  answers: {
+   a: ' Bestaat uit ionen ', 
+   b: ' Bestaat uit moleculaire stoffen ', 
+   c: ' Kan geen elektriciteit geleiden ', 
+   d: ' Kan slecht kalk oplossen ', 
+   e: ' Een blauw kleurt met universeel pH papier '
+  },
+  correctAnswer: 'a'
+ },
+{
+  question: ' Met universeel pH papier kun je ', 
+  answers: {
+   a: ' Ionen aan tonen ', 
+   b: ' De zuurtegraad meten ', 
+   c: ' de water concentratie meten ', 
+   d: ' de redox potentiaal vast leggen ', 
+   e: ' De concentratie van keukenzout meten in een oplossing '
+  },
+  correctAnswer: 'b'
+ },
+{
+  question: ' Zoutzuur ', 
+  answers: {
+   a: ' is waterstof chloride (g) ', 
+   b: ' is een oplossing van HCl gas in water ', 
+   c: ' is een zwak zuur ', 
+   d: ' Kleurt groen met universeel pH papier ', 
+   e: ' is een oplossing van keukenzout en azijnzuur '
+  },
+  correctAnswer: 'b'
+ },
+{
+  question: ' Ammoniak is ', 
+  answers: {
+   a: ' Een sterk zuur ', 
+   b: ' NH3 (g) ', 
+   c: ' HNO3 (l) ', 
+   d: ' NH4+ (aq) ', 
+   e: ' NH2 (g) '
+  },
+  correctAnswer: 'b'
+ },
+{
+  question: ' In een neutrale oplossing water ', 
+  answers: {
+   a: ' zitten geen H+ en OH- deeltjes ', 
+   b: ' kun je geen zuur oplossen ', 
+   c: ' kun je geen base oplossen ', 
+   d: ' is de pH 0 ', 
+   e: ' is de pH 7 '
+  },
+  correctAnswer: 'e'
+ },
+{
+  question: ' Binas 52A: Fenol rood is bij pH=3 ', 
+  answers: {
+   a: ' rood ', 
+   b: ' groen ', 
+   c: ' blauw ', 
+   d: ' geel ', 
+   e: ' kleurloos '
+  },
+  correctAnswer: 'd'
+ },
+{
+  question: ' Binas 52A: Fenol rood is bij pH=8 ', 
+  answers: {
+   a: ' rood ', 
+   b: ' groen ', 
+   c: ' blauw ', 
+   d: ' geel ', 
+   e: ' kleurloos '
+  },
+  correctAnswer: 'a'
+ },
+{
+  question: ' Binas 52A: thymolblauw is bij pH=1 ', 
+  answers: {
+   a: ' rood ', 
+   b: ' groen ', 
+   c: ' blauw ', 
+   d: ' geel ', 
+   e: ' kleurloos '
+  },
+  correctAnswer: 'a'
+ },
+{
+  question: ' Binas 52A: thymolblauw is bij pH=5 ', 
+  answers: {
+   a: ' rood ', 
+   b: ' groen ', 
+   c: ' blauw ', 
+   d: ' geel ', 
+   e: ' kleurloos '
+  },
+  correctAnswer: 'd'
+ },
+{
+  question: ' Binas 52A: thymolblauw is bij pH=11 ', 
+  answers: {
+   a: ' rood ', 
+   b: ' groen ', 
+   c: ' blauw ', 
+   d: ' geel ', 
+   e: ' kleurloos '
+  },
+  correctAnswer: 'c'
+ },
+{
+  question: ' Wat is de tegenhanger van zuur? ', 
+  answers: {
+   a: ' Acid ', 
+   b: ' Base ', 
+   c: ' Oxidator ', 
+   d: ' Onzuur ', 
+   e: ' Reductor '
+  },
+  correctAnswer: 'b'
+ },
+{
+  question: ' Een zwakzuur… ', 
+  answers: {
+   a: ' Splitst al zijn protonen af ', 
+   b: ' Splitst een deel van zijn protonen af ', 
+   c: ' is bijvoorbeeld HCl ', 
+   d: ' een verdunde oplossing van een sterkzuur ', 
+   e: ' Ontstaat als je een base met een sterk zuur mengt '
+  },
+  correctAnswer: 'b'
+ },
+
+
+];
+
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
+
+	function showQuestions(questions, quizContainer){
+		// we'll need a place to store the output and the answer choices
+		var output = [];
+		var answers;
+
+		// for each question...
+		for(var i=0; i<questions.length; i++){
+			
+			// first reset the list of answers
+			answers = [];
+
+			// for each available answer...
+			for(letter in questions[i].answers){
+
+				// ...add an html radio button
+				answers.push(
+					'<label>'
+						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
+						+ letter + ': '
+						+ questions[i].answers[letter]
+					+ '<br></label>'
+				);
+			}
+
+			// add this question and its answers to the output
+			output.push(
+				'<div class="question">' + questions[i].question + '</div>'
+				+ '<div class="answers">' + answers.join('') + '</div>'
+			);
+		}
+
+		// finally combine our output list into one string of html and put it on the page
+		quizContainer.innerHTML = output.join('');
+	}
+
+
+	function showResults(questions, quizContainer, resultsContainer){
+		
+		// gather answer containers from our quiz
+		var answerContainers = quizContainer.querySelectorAll('.answers');
+		
+		// keep track of user's answers
+		var userAnswer = '';
+		var numCorrect = 0;
+		
+		// for each question...
+		for(var i=0; i<questions.length; i++){
+
+			// find selected answer
+			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
+			
+			// if answer is correct
+			if(userAnswer===questions[i].correctAnswer){
+				// add to the number of correct answers
+				numCorrect++;
+				
+				// color the answers green
+				answerContainers[i].style.color = '#14532d';
+				markeer(answerContainers[i], true);
+			}
+			// if answer is wrong or blank
+			else{
+				// color the answers red
+				answerContainers[i].style.color = '#7f1d1d';
+				markeer(answerContainers[i], false);
+			}
+		}
+
+		// show number of correct answers out of total
+		resultsContainer.innerHTML = numCorrect + ' van de ' + questions.length + ' goed';
+	}
+
+	// show questions right away
+	showQuestions(questions, quizContainer);
+	
+	// on submit, show results
+	submitButton.onclick = function(){
+		showResults(questions, quizContainer, resultsContainer);
+	}
+
+}
+</script>
+<!-- Include functionality to load external page material -->
+<script>
+w3IncludeHTML();
+</script>
+<script src="school.js"></script>
+</body>
+</html>

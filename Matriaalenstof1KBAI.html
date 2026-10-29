@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<title>Stoffen en materialen - 123 school</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="123school.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+<style>
+.w3-hover-light-grey:hover {
+  background-color: #D3D3D3 !important;
+  color: black !important;
+}
+</style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+</br>
+
+<!-- Accordion Knowledge Bank -->
+<div class="w3-container">
+
+<h2>Stoffen en materialen (met AI-nakijken)</h2>
+<div class="in-ontwikkeling" role="note"><strong>In ontwikkeling.</strong> Het automatisch nakijken van je typte antwoord met AI werkt nog niet. Je kunt wel zelf je antwoord vergelijken door op de blauwe vraag te klikken.</div>
+<p>Test je kennis door je antwoord in te typen en te vergelijken met het juiste antwoord, door te klikken op de vraag.</p>
+
+<div>
+  <button onclick='myFunction("Demo1")' class='vraag-knop w3-hover-light-grey'>Omschrijf composiet</button>
+  <input class='w3-input w3-border w3-round' id="inputDemo1" type='text' aria-label="Jouw antwoord op: Omschrijf composiet" placeholder='Type hier je antwoord'>
+  <button onclick='submitAnswer("Demo1", "Samengesteld materiaal, ontwikkeld door 2 of meerdere materialen te combineren")' class='w3-button knop-blauw w3-round' style='margin:8px 0'>Vergelijk antwoord (in ontwikkeling)</button>
+  <div id="resultDemo1" class='w3-container antwoord-box w3-hide'></div>
+  <div id="Demo1" class='w3-hide w3-container antwoord-box'><p>Samengesteld materiaal, ontwikkeld door 2 of meerdere materialen te combineren</p></div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo2")' class='vraag-knop w3-hover-light-grey'>Wat is dichtheid?</button>
+  <input class='w3-input w3-border w3-round' id="inputDemo2" type='text' aria-label="Jouw antwoord op: Wat is dichtheid?" placeholder='Type hier je antwoord'>
+  <button onclick='submitAnswer("Demo2", "Grootheid die aangeeft hoe licht of zwaar stoffen zijn")' class='w3-button knop-blauw w3-round' style='margin:8px 0'>Vergelijk antwoord (in ontwikkeling)</button>
+  <div id="resultDemo2" class='w3-container antwoord-box w3-hide'></div>
+  <div id="Demo2" class='w3-hide w3-container antwoord-box'><p>Grootheid die aangeeft hoe licht of zwaar stoffen zijn</p></div>
+</div>
+
+<!-- Voeg hier meer vragen toe op dezelfde manier -->
+
+<!-- Footer -->
+<div class="w3-container">
+</br>
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+</div>
+
+<script>
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+function submitAnswer(inputId, correctAnswer) {
+  // Het nakijken met AI is nog in ontwikkeling: er wordt (nog) niets naar een server gestuurd.
+  var resultDiv = document.getElementById("result" + inputId);
+  resultDiv.innerText = "Nakijken met AI is nog in ontwikkeling. Klik op de blauwe vraag om het juiste antwoord te zien.";
+  resultDiv.classList.remove("w3-hide");
+}
+</script>
+
+<!-- Include functionality to load external page material -->
+<script>
+w3IncludeHTML();
+</script>
+<script src="school.js"></script>
+</body>
+</html>

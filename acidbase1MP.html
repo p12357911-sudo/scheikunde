@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Zuur-base vragen - 123 school</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <style>
+        .question {
+            font-weight: bold;
+            text-align: left;
+        }
+        .answers label {
+            display: block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+        <em>Zuur-base vragen</em>
+        <br><br>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <!-- <button style="text-decoration: none" class="w3-button w3-black"><a href="acidbase2MP.html">Volgende</a></button> -->
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>
+            <a class="w3-button w3-theme" href="#myPage">
+                <span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: 'Hoe groot is de pH van een zuur?',
+                answers: {
+                    a: '7',
+                    b: '1',
+                    c: 'Kleiner dan 7',
+                    d: '14',
+                    e: 'Groter dan 7'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'De pH is de?',
+                answers: {
+                    a: 'Zuurtegraad',
+                    b: 'Concentratie van een zuur',
+                    c: 'Hoeveel azijnzuur',
+                    d: 'De petro-Hydrochemische constante',
+                    e: 'Mate van zwakte van een zuur'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Ethaanzuur is',
+                answers: {
+                    a: 'Alcohol',
+                    b: 'Azijnzuur',
+                    c: 'Ethaan mono zuur',
+                    d: 'Ethaan in zoutzuur',
+                    e: 'Zure alcoholoplossing'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Een zuur is',
+                answers: {
+                    a: 'Een deeltje dat H<sup>+</sup> kan afstaan',
+                    b: 'Een deeltje dat H<sup>+</sup> kan neutraliseren',
+                    c: 'Een deeltje dat H<sup>+</sup> kan opnemen',
+                    d: 'Een oplossing met veel OH<sup>-</sup> deeltjes',
+                    e: 'Een oplossing die niet kan bevriezen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Een zure oplossing',
+                answers: {
+                    a: 'Bevat ionen',
+                    b: 'Bevat geen ionen',
+                    c: 'Kan geen elektriciteit geleiden',
+                    d: 'Kan slecht kalk oplossen',
+                    e: 'Kleurt blauw met universeel pH-papier'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Met universeel pH-papier kun je',
+                answers: {
+                    a: 'Ionen aantonen',
+                    b: 'De zuurtegraad meten',
+                    c: 'De waterconcentratie meten',
+                    d: 'De redox potentiaal vastleggen',
+                    e: 'De concentratie van keukenzout meten in een oplossing'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Zoutzuur',
+                answers: {
+                    a: 'Is waterstofchloride (g)',
+                    b: 'Is een oplossing van HCl gas in water',
+                    c: 'Is een zwak zuur',
+                    d: 'Kleurt groen met universeel pH-papier',
+                    e: 'Is een oplossing van keukenzout en azijnzuur'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Ammoniak is',
+                answers: {
+                    a: 'Een sterk zuur',
+                    b: 'NH<sub>3</sub> (g)',
+                    c: 'HNO<sub>3</sub> (l)',
+                    d: 'NH<sub>4</sub><sup>+</sup> (aq)',
+                    e: 'NH<sub>2</sub> (g)'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'In een neutrale oplossing water',
+                answers: {
+                    a: 'Zitten geen H<sup>+</sup> en OH<sup>-</sup> deeltjes',
+                    b: 'Kun je geen zuur oplossen',
+                    c: 'Kun je geen base oplossen',
+                    d: 'Is de pH 0',
+                    e: 'Is de pH 7'
+                },
+                correctAnswer: 'e'
+            },
+            {
+                question: 'Binas 52A: Fenolrood is bij pH=3',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel',
+                    e: 'Kleurloos'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Binas 52A: Fenolrood is bij pH=8',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel',
+                    e: 'Kleurloos'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Binas 52A: Thymolblauw is bij pH=1',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel',
+                    e: 'Kleurloos'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Binas 52A: Thymolblauw is bij pH=5',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel',
+                    e: 'Kleurloos'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Binas 52A: Thymolblauw is bij pH=11',
+                answers: {
+                    a: 'Rood',
+                    b: 'Groen',
+                    c: 'Blauw',
+                    d: 'Geel',
+                    e: 'Kleurloos'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is de tegenhanger van zuur?',
+                answers: {
+                    a: 'Acid',
+                    b: 'Base',
+                    c: 'Oxidator',
+                    d: 'Onzuur',
+                    e: 'Reductor'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Een zwak zuur...',
+                answers: {
+                    a: 'Splitst al zijn protonen af',
+                    b: 'Splitst een deel van zijn protonen af',
+                    c: 'Is bijvoorbeeld HCl',
+                    d: 'Een verdunde oplossing van een sterk zuur',
+                    e: 'Ontstaat als je een base met een sterk zuur mengt'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'H<sub>2</sub>SO<sub>4</sub>',
+                answers: {
+                    a: 'Vierwaardig zuur',
+                    b: 'Tweewaardige base',
+                    c: 'Tweewaardig zuur',
+                    d: 'Sterke base',
+                    e: 'Zoutzuur'
+                },
+                correctAnswer: 'c'
+            }
+        ];
+
+        var quizContainer = document.getElementById('quiz');
+        var resultsContainer = document.getElementById('results');
+        var submitButton = document.getElementById('submit');
+
+        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+        function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+            function showQuestions(questions, quizContainer) {
+                var output = [];
+                var answers;
+
+                for (var i = 0; i < questions.length; i++) {
+                    answers = [];
+                    for (var letter in questions[i].answers) {
+                        answers.push(
+                            '<label>' +
+                            '<input type="radio" name="question' + i + '" value="' + letter + '">' +
+                            letter + ': ' +
+                            questions[i].answers[letter] +
+                            '</br></label>'
+                        );
+                    }
+                    output.push(
+                        '<div class="question">' + questions[i].question + '</div>' +
+                        '<div class="answers">' + answers.join('') + '</div>'
+                    );
+                }
+                quizContainer.innerHTML = output.join('');
+            }
+
+            function showResults(questions, quizContainer, resultsContainer) {
+                var answerContainers = quizContainer.querySelectorAll('.answers');
+                var userAnswer = '';
+                var numCorrect = 0;
+
+                for (var i = 0; i < questions.length; i++) {
+                    userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+
+                    if (userAnswer === questions[i].correctAnswer) {
+                        numCorrect++;
+                        answerContainers[i].style.color = '#14532d';
+				markeer(answerContainers[i], true);
+                    } else {
+                        answerContainers[i].style.color = '#7f1d1d';
+				markeer(answerContainers[i], false);
+                    }
+                }
+
+                resultsContainer.innerHTML = numCorrect + ' van de ' + questions.length + ' goed';
+            }
+
+            showQuestions(questions, quizContainer);
+
+            submitButton.onclick = function () {
+                showResults(questions, quizContainer, resultsContainer);
+            }
+        }
+    </script>
+
+    <!-- Include functionality to load external page material -->
+    <script>
+        w3IncludeHTML();
+    </script>
+<script src="school.js"></script>
+</body>
+</html>

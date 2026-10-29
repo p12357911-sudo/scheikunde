@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Duurzaamheid</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <style>
+        .question {
+            font-weight: bold;
+            text-align: left;
+        }
+        .answers label {
+            display: block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="duurzaamheid">
+        <em>Duurzaamheid vragen</em>
+        <br><br>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>
+            <a class="w3-button w3-theme" href="#myPage">
+                <span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: 'Wat is het proces waarbij aardolie op basis van kooktrajecten wordt gescheiden in verschillende fracties?',
+                answers: {
+                    a: 'Reformen',
+                    b: 'Polymerisatie',
+                    c: 'Hydratatie',
+                    d: 'Gefractioneerde destillatie',
+                    e: 'Kraken'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat wordt bedoeld met het kooktraject in het proces van gefractioneerde destillatie?',
+                answers: {
+                    a: 'Het aantal stappen in het destillatieproces.',
+                    b: 'De chemische samenstelling van de fracties.',
+                    c: 'De druk die nodig is om aardolie te destilleren.',
+                    d: 'Het bereik van temperaturen waarbij verschillende fracties van aardolie verdampen en condenseren.',
+                    e: 'De tijd die nodig is om aardolie te verhitten.'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is de definitie van duurzaamheid?',
+                answers: {
+                    a: 'Het verminderen van energieverbruik in het heden.',
+                    b: 'Het maximaliseren van de productie van duurzame grondstoffen.',
+                    c: 'Het voldoen aan de behoeften van het heden zonder de behoeften in de toekomst in gevaar te brengen.',
+                    d: 'Het recyclen van alle gebruikte materialen.',
+                    e: 'Het beperken van de economische groei om het milieu te beschermen.'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Hoe kun je bijdragen aan duurzaamheid?',
+                answers: {
+                    a: 'Door meer te consumeren.',
+                    b: 'Door fossiele brandstoffen te gebruiken.',
+                    c: 'Door technologie te vermijden.',
+                    d: 'Door duurzame grondstoffen te gebruiken of te recyclen.',
+                    e: 'Door de productie te verhogen.'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat geeft de atoomeconomie aan?',
+                answers: {
+                    a: 'De hoeveelheid energie die in een reactie wordt gebruikt.',
+                    b: 'Het rendement van een chemisch proces.',
+                    c: 'De snelheid van een chemische reactie.',
+                    d: 'Het percentage van alle atomen van de beginstoffen dat terugkomt in het gewenste reactieproduct.',
+                    e: 'De hoeveelheid afval die wordt geproduceerd.'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Uit welk materiaal worden biobrandstoffen gemaakt?',
+                answers: {
+                    a: 'Fossiele brandstoffen',
+                    b: 'Synthetische materialen',
+                    c: 'Biomassa',
+                    d: 'Metaal afval',
+                    e: 'Kunststof'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat zijn voorbeelden van biobrandstoffen?',
+                answers: {
+                    a: 'Diesel, benzine, en aardgas',
+                    b: 'Bio-ethanol, biodiesel, en biogas',
+                    c: 'Ethanol, methanol, en kerosine',
+                    d: 'Waterstof, zuurstof, en stikstof',
+                    e: 'Kolen, hout, en turf'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is een kenmerk van de eerste generatie biobrandstoffen?',
+                answers: {
+                    a: 'Ze worden geproduceerd uit voedselgewassen.',
+                    b: 'Ze worden geproduceerd uit niet-voedselgewassen.',
+                    c: 'Ze worden geproduceerd uit landbouwafval.',
+                    d: 'Ze worden geproduceerd uit synthetische materialen.',
+                    e: 'Ze worden geproduceerd uit metaalafval.'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Hoe wordt een chemisch productieproces weergegeven?',
+                answers: {
+                    a: 'Met een tabel',
+                    b: 'Met een grafiek',
+                    c: 'Met een blokschema',
+                    d: 'Met een diagram',
+                    e: 'Met een tekstbeschrijving'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat geef je aan met blokken in een blokschema?',
+                answers: {
+                    a: 'De stroomrichting van stoffen',
+                    b: 'De temperatuur van het proces',
+                    c: 'De chemische reactoren waarin een reactie of scheiding plaatsvindt',
+                    d: 'De hoeveelheid geproduceerde stoffen',
+                    e: 'De tijdsduur van de reactie'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat geef je aan met pijlen in een blokschema?',
+                answers: {
+                    a: 'De chemische reactoren waarin een reactie of scheiding plaatsvindt',
+                    b: 'De temperatuur van het proces',
+                    c: 'De stroomrichting van stoffen',
+                    d: 'De hoeveelheid geproduceerde stoffen',
+                    e: 'De tijdsduur van de reactie'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is de definitie van molair volume?',
+                answers: {
+                    a: 'Het gewicht van 1,00 mol gas onder bepaalde omstandigheden.',
+                    b: 'De temperatuur van 1,00 mol gas onder standaardomstandigheden.',
+                    c: 'Het volume dat 1,00 mol gas heeft onder bepaalde omstandigheden van temperatuur en druk.',
+                    d: 'De druk die 1,00 mol gas uitoefent onder standaardomstandigheden.',
+                    e: 'Het aantal moleculen in 1,00 mol gas.'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat symboliseert Vm?',
+                answers: {
+                    a: 'Het molair gewicht',
+                    b: 'Het molair volume',
+                    c: 'De molair temperatuur',
+                    d: 'De molair druk',
+                    e: 'De molair energie'
+                },
+                correctAnswer: 'b'
+            }
+        ];
+
+        var quizContainer = document.getElementById('quiz');
+        var resultsContainer = document.getElementById('results');
+        var submitButton = document.getElementById('submit');
+
+        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+        function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+            function showQuestions(questions, quizContainer) {
+                var output = [];
+                var answers;
+
+                for (var i = 0; i < questions.length; i++) {
+                    answers = [];
+                    for (var letter in questions[i].answers) {
+                        answers.push(
+                            '<label>' +
+                            '<input type="radio" name="question' + i + '" value="' + letter + '">' +
+                            letter + ': ' +
+                            questions[i].answers[letter] +
+                            '</br></label>'
+                        );
+                    }
+                    output.push(
+                        '<div class="question">' + questions[i].question + '</div>' +
+                        '<div class="answers">' + answers.join('') + '</div>'
+                    );
+                }
+                quizContainer.innerHTML = output.join('');
+            }
+
+            function showResults(questions, quizContainer, resultsContainer) {
+                var answerContainers = quizContainer.querySelectorAll('.answers');
+                var userAnswer = '';
+                var numCorrect = 0;
+
+                for (var i = 0; i < questions.length; i++) {
+                    userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+
+                    if (userAnswer === questions[i].correctAnswer) {
+                        numCorrect++;
+                        answerContainers[i].style.color = '#14532d';
+				markeer(answerContainers[i], true);
+                    } else {
+                        answerContainers[i].style.color = '#7f1d1d';
+				markeer(answerContainers[i], false);
+                    }
+                }
+
+                resultsContainer.innerHTML = numCorrect + ' van de ' + questions.length + ' goed';
+            }
+
+            showQuestions(questions, quizContainer);
+
+            submitButton.onclick = function () {
+                showResults(questions, quizContainer, resultsContainer);
+            }
+        }
+    </script>
+
+    <!-- Include functionality to load external page material -->
+    <script>
+        w3IncludeHTML();
+    </script>
+<script src="school.js"></script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Meerkeuzevragen</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <style>
+        .question {
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .answers label {
+            display: block;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .answers input {
+            margin-right: 10px;
+        }
+        #results {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .footer-link {
+            text-decoration: none;
+            color: #fff;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="meerkeuzevragen">
+        <h2>Meerkeuzevragen</h2>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+            <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+            <i class="fa fa-chevron-circle-up"></i></span></a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: 'Wat is reactiesnelheid?',
+                answers: {
+                    a: 'De tijd die een reactie nodig heeft om te beginnen',
+                    b: 'De snelheid waarmee stoffen verdwijnen en nieuwe stoffen ontstaan',
+                    c: 'De hoeveelheid energie die vrijkomt bij een reactie',
+                    d: 'De temperatuur waarbij een reactie plaatsvindt',
+                    e: 'De hoeveelheid druk die nodig is voor een reactie'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat gebeurt er met de reactiesnelheid als de verdelingsgraad groot is?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Hoe beïnvloedt een hoge concentratie de reactiesnelheid?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is het effect van een hoge druk op de reactiesnelheid?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Hoe beïnvloedt een katalysator een reactie?',
+                answers: {
+                    a: 'Het vertraagt de reactie',
+                    b: 'Het heeft geen effect op de reactie',
+                    c: 'Het versnelt de reactie en wordt verbruikt',
+                    d: 'Het versnelt de reactie zonder verbruikt te worden',
+                    e: 'Het stopt de reactie'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat geeft een grafiek over reactiesnelheid weer?',
+                answers: {
+                    a: 'Het verband tussen temperatuur en reactiesnelheid',
+                    b: 'Het verband tussen druk en reactiesnelheid',
+                    c: 'Het verband tussen concentratie en reactiesnelheid',
+                    d: 'Het verband tussen tijd en reactiesnelheid',
+                    e: 'Het verband tussen volume en reactiesnelheid'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat betekent een grotere concentratie in termen van reactiesnelheid?',
+                answers: {
+                    a: 'Kortere reactietijd en grotere reactiesnelheid',
+                    b: 'Langere reactietijd en grotere reactiesnelheid',
+                    c: 'Kortere reactietijd en kleinere reactiesnelheid',
+                    d: 'Langere reactietijd en kleinere reactiesnelheid',
+                    e: 'Geen effect op reactietijd en reactiesnelheid'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat is molecuulmassa?',
+                answers: {
+                    a: 'De massa van een molecuul, bepaald door de som van de atoommassa\'s',
+                    b: 'De massa van een enkel atoom',
+                    c: 'De massa van een ion',
+                    d: 'De massa van een elektron',
+                    e: 'De massa van een neutron'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat is de massaverhouding?',
+                answers: {
+                    a: 'De verhouding tussen de massa van producten en reactanten',
+                    b: 'De verhouding tussen de molecuulmassa\'s van reagerende stoffen',
+                    c: 'De verhouding tussen de massa\'s van verschillende gassen',
+                    d: 'De verhouding tussen de massa\'s van verschillende vloeistoffen',
+                    e: 'De verhouding tussen de massa van een stof en zijn volume'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Hoe bereken je de molecuulmassa?',
+                answers: {
+                    a: 'Door de atoommassa\'s bij elkaar op te tellen',
+                    b: 'Door de massa\'s van de producten af te trekken van de reactanten',
+                    c: 'Door de concentratie van de stoffen te vermenigvuldigen',
+                    d: 'Door de druk en temperatuur van de stoffen te meten',
+                    e: 'Door de massa van de elektronen te berekenen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat moet je eerst doen bij het rekenen aan reacties?',
+                answers: {
+                    a: 'De reactievergelijking opstellen',
+                    b: 'De molecuulmassa\'s berekenen',
+                    c: 'De reactietijd meten',
+                    d: 'De temperatuur en druk bepalen',
+                    e: 'De massa van de producten wegen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat betekent overmaat bij een chemische reactie?',
+                answers: {
+                    a: 'Een stof die te veel is en moet worden gezuiverd',
+                    b: 'Een stof die te weinig is en moet worden aangevuld',
+                    c: 'De optimale hoeveelheid van een stof',
+                    d: 'Een stof die niet reageert',
+                    e: 'Een stof die volledig wordt verbruikt'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat is de eerste stap in het berekenen van hoeveel stof je nodig hebt?',
+                answers: {
+                    a: 'Gegevens verzamelen',
+                    b: 'Berekeningen uitvoeren',
+                    c: 'Reactievergelijking opstellen',
+                    d: 'Meetwaarden noteren',
+                    e: 'Antwoord formuleren'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat moet je doen om de overmaat uit te rekenen?',
+                answers: {
+                    a: 'De beginmassa\'s vergelijken met de berekende massa\'s',
+                    b: 'De concentratie van de stoffen meten',
+                    c: 'De reactietijd bepalen',
+                    d: 'De temperatuur en druk van de stoffen meten',
+                    e: 'De massa van de producten wegen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat is het effect van een hogere temperatuur op de reactiesnelheid?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is een factor die de reactiesnelheid niet beïnvloedt?',
+                answers: {
+                    a: 'Verdelingsgraad',
+                    b: 'Concentratie',
+                    c: 'Katalysator',
+                    d: 'Kleur van de stof',
+                    e: 'Druk'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Hoe wordt de reactietijd beïnvloed door een hogere temperatuur?',
+                answers: {
+                    a: 'De reactietijd neemt toe',
+                    b: 'De reactietijd blijft hetzelfde',
+                    c: 'De reactietijd neemt af',
+                    d: 'De reactietijd is nul',
+                    e: 'De reactietijd varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat gebeurt er met de reactiesnelheid als een katalysator wordt gebruikt?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat betekent een hogere druk in termen van reactiesnelheid?',
+                answers: {
+                    a: 'Kortere reactietijd en grotere reactiesnelheid',
+                    b: 'Langere reactietijd en grotere reactiesnelheid',
+                    c: 'Kortere reactietijd en kleinere reactiesnelheid',
+                    d: 'Langere reactietijd en kleinere reactiesnelheid',
+                    e: 'Geen effect op reactietijd en reactiesnelheid'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Hoe beïnvloedt de soort stof de reactiesnelheid?',
+                answers: {
+                    a: 'Het heeft geen effect',
+                    b: 'Het hangt af van de stof',
+                    c: 'Het verhoogt altijd de reactiesnelheid',
+                    d: 'Het verlaagt altijd de reactiesnelheid',
+                    e: 'Het varieert met de temperatuur'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is de definitie van reactiesnelheid?',
+                answers: {
+                    a: 'De tijd die nodig is voor een reactie',
+                    b: 'De snelheid waarmee stoffen verdwijnen en nieuwe stoffen ontstaan',
+                    c: 'De hoeveelheid energie die vrijkomt bij een reactie',
+                    d: 'De temperatuur waarbij een reactie plaatsvindt',
+                    e: 'De hoeveelheid druk die nodig is voor een reactie'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat gebeurt er met de reactiesnelheid als de temperatuur hoger is?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is het gevolg van een hoge concentratie van reagentia?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is de invloed van een grote verdelingsgraad op de reactiesnelheid?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is de rol van een katalysator in een chemische reactie?',
+                answers: {
+                    a: 'Het vertraagt de reactie',
+                    b: 'Het heeft geen effect op de reactie',
+                    c: 'Het versnelt de reactie zonder verbruikt te worden',
+                    d: 'Het versnelt de reactie en wordt verbruikt',
+                    e: 'Het stopt de reactie'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Hoe wordt de reactietijd beïnvloed door een katalysator?',
+                answers: {
+                    a: 'De reactietijd neemt toe',
+                    b: 'De reactietijd blijft hetzelfde',
+                    c: 'De reactietijd neemt af',
+                    d: 'De reactietijd is nul',
+                    e: 'De reactietijd varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat gebeurt er met de reactiesnelheid bij een hoge druk?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is het effect van temperatuur op de reactietijd?',
+                answers: {
+                    a: 'De reactietijd neemt toe',
+                    b: 'De reactietijd blijft hetzelfde',
+                    c: 'De reactietijd neemt af',
+                    d: 'De reactietijd is nul',
+                    e: 'De reactietijd varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Hoe beïnvloedt de concentratie van reagentia de reactietijd?',
+                answers: {
+                    a: 'De reactietijd neemt toe',
+                    b: 'De reactietijd blijft hetzelfde',
+                    c: 'De reactietijd neemt af',
+                    d: 'De reactietijd is nul',
+                    e: 'De reactietijd varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is een voorbeeld van een factor die de reactiesnelheid beïnvloedt?',
+                answers: {
+                    a: 'Druk',
+                    b: 'Concentratie',
+                    c: 'Verdelingsgraad',
+                    d: 'Katalysator',
+                    e: 'Alle bovenstaande factoren'
+                },
+                correctAnswer: 'e'
+            },
+            {
+                question: 'Wat gebeurt er met de reactiesnelheid als de temperatuur daalt?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat is het gevolg van het gebruik van een katalysator op de reactiesnelheid?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft hetzelfde',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid is nul',
+                    e: 'De reactiesnelheid varieert'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is de definitie van massaverhouding?',
+                answers: {
+                    a: 'De verhouding tussen de massa van producten en reactanten',
+                    b: 'De verhouding tussen de molecuulmassa\'s van reagerende stoffen',
+                    c: 'De verhouding tussen de massa\'s van verschillende gassen',
+                    d: 'De verhouding tussen de massa\'s van verschillende vloeistoffen',
+                    e: 'De verhouding tussen de massa van een stof en zijn volume'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Hoe wordt de molecuulmassa berekend?',
+                answers: {
+                    a: 'Door de atoommassa\'s bij elkaar op te tellen',
+                    b: 'Door de massa\'s van de producten af te trekken van de reactanten',
+                    c: 'Door de concentratie van de stoffen te vermenigvuldigen',
+                    d: 'Door de druk en temperatuur van de stoffen te meten',
+                    e: 'Door de massa van de elektronen te berekenen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat moet je doen om de molecuulmassa\'s van stoffen te berekenen?',
+                answers: {
+                    a: 'De atoommassa\'s optellen',
+                    b: 'De massa\'s van de producten af te trekken van de reactanten',
+                    c: 'De concentratie van de stoffen te vermenigvuldigen',
+                    d: 'De druk en temperatuur van de stoffen te meten',
+                    e: 'De massa van de elektronen berekenen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Hoe bereken je de hoeveelheid stof die nodig is voor een reactie?',
+                answers: {
+                    a: 'Gegevens verzamelen',
+                    b: 'Berekeningen uitvoeren',
+                    c: 'Reactievergelijking opstellen',
+                    d: 'Meetwaarden noteren',
+                    e: 'Antwoord formuleren'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat betekent het begrip \'overmaat\' in een chemische reactie?',
+                answers: {
+                    a: 'Een stof die te veel is en moet worden gezuiverd',
+                    b: 'Een stof die te weinig is en moet worden aangevuld',
+                    c: 'De optimale hoeveelheid van een stof',
+                    d: 'Een stof die niet reageert',
+                    e: 'Een stof die volledig wordt verbruikt'
+                },
+                correctAnswer: 'a'
+            }
+        ];
+
+        var quizContainer = document.getElementById('quiz');
+        var resultsContainer = document.getElementById('results');
+        var submitButton = document.getElementById('submit');
+
+        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+        function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+            function showQuestions(questions, quizContainer) {
+                var output = [];
+                var answers;
+                for (var i = 0; i < questions.length; i++) {
+                    answers = [];
+                    for (letter in questions[i].answers) {
+                        answers.push(
+                            '<label>' +
+                            '<input type="radio" name="question' + i + '" value="' + letter + '">' +
+                            letter + ': ' +
+                            questions[i].answers[letter] +
+                            '</label>'
+                        );
+                    }
+                    output.push(
+                        '<div class="question">' + questions[i].question + '</div>' +
+                        '<div class="answers">' + answers.join('') + '</div>'
+                    );
+                }
+                quizContainer.innerHTML = output.join('');
+            }
+
+            function showResults(questions, quizContainer, resultsContainer) {
+                var answerContainers = quizContainer.querySelectorAll('.answers');
+                var userAnswer = '';
+                var numCorrect = 0;
+                for (var i = 0; i < questions.length; i++) {
+                    userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+                    if (userAnswer === questions[i].correctAnswer) {
+                        numCorrect++;
+                        answerContainers[i].style.color = '#14532d';
+				markeer(answerContainers[i], true);
+                    } else {
+                        answerContainers[i].style.color = '#7f1d1d';
+				markeer(answerContainers[i], false);
+                    }
+                }
+                resultsContainer.innerHTML = numCorrect + ' van de ' + questions.length + ' goed';
+            }
+
+            showQuestions(questions, quizContainer);
+
+            submitButton.onclick = function () {
+                showResults(questions, quizContainer, resultsContainer);
+            }
+        }
+    </script>
+    <!-- Include functionality to load external page material -->
+    <script>
+        w3IncludeHTML();
+    </script>
+<script src="school.js"></script>
+</body>
+</html>
