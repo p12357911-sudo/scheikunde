@@ -40,17 +40,14 @@ if (typeof openNav === 'undefined') {
 
 /* Zwevende knop "Controleer nu" voor de meerkeuzepagina's (MP).
    Werkt op elke pagina met een quiz (#quiz) en een controleknop (#submit): de zwevende knop klikt gewoon
-   op de bestaande knop, dus het nakijken blijft precies hetzelfde. Daarna scrollt de pagina naar de score.
+   op de bestaande knop, dus het nakijken blijft precies hetzelfde. De pagina blijft daarbij op dezelfde plek staan.
    Zodra de gewone knop zelf in beeld is, verdwijnt de zwevende knop (zodat er geen twee naast elkaar staan). */
 document.addEventListener('DOMContentLoaded', function () {
   var origineel = document.getElementById('submit');
   var uitslag = document.getElementById('results');
   if (!origineel || !uitslag || !document.getElementById('quiz')) { return; }
 
-  function naarScore() {
-    uitslag.scrollIntoView({ block: 'center', behavior: 'auto' });
-  }
-  origineel.addEventListener('click', naarScore);
+  /* Na het controleren blijft de pagina op dezelfde plek staan (wens Peter, 29 okt 2026). */
 
   var zweef = document.createElement('button');
   zweef.type = 'button';
