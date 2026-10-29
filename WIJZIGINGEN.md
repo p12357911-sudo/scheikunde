@@ -153,3 +153,19 @@ Dit heb ik niet zelf durven veranderen of ik ben er niet zeker van:
 - De MP-vraag "Je gaat rekenen aan een reactie. Wat doe je als eerste?" (De reactievergelijking opstellen) is ongewijzigd. Andere MP- of KB-vragen over het opstellen van een reactievergelijking met stappen zijn er niet.
 
 **Getest** (Playwright, Chrome, 1280×800 en 390×780): geen JavaScript-fouten op alle 20 pagina's; volgorde verschilt tussen twee keer openen; alles goed = volle score op de getoonde vragen, alles fout = 0; "Meer vragen" en de zwevende knop werken zonder dat de pagina verspringt; ingetypte antwoorden op de KB-pagina's blijven na verversen niet in een verkeerd vak staan; alle interne links en plaatjes bestaan.
+
+## Kleine schermen en tablets nagelopen (29 okt 2026)
+
+Alle 19 pagina's bekeken op 360×640, 390×844, 414×896 en 768×1024 (met aanraking). Wat er goed was: viewport-meta overal aanwezig, nergens horizontaal scrollen, geen tabellen of te grote plaatjes, tekst op de KB- en MP-pagina's al groot genoeg, de PDF-spellen (20 links) bereikbaar. Wat is verbeterd (alles in `123school.css`, `school.js` en `navbar.html`; geen losse pagina's aangepast; op een scherm van 1280 breed is elke pagina pixel-gelijk gebleven):
+
+- **Menu**: de menubalk ging op een tablet (768) over twee regels en schoof over de inhoud heen. Het hamburgermenu verschijnt nu onder 1200 px (beginpagina: onder 1000 px). Het menu sluit na een tik op een onderdeel en met Escape, en heeft `aria-expanded`. Alle menu-items zijn minimaal 48 px hoog.
+- **MP-antwoorden**: de rijen waren 30 px hoog met kleine bolletjes. Nu 48 px hoog met bolletjes van 24 px; de hele rij is aantikbaar.
+- **Knoppen** ("Controleer", "Meer vragen", "Opnieuw oefenen", "Vergelijk antwoord", vraagknoppen): minimaal 44-48 px hoog.
+- **Invoervelden**: minimaal 16 px, zodat iOS niet inzoomt; typevragen over de volle breedte.
+- **Beginpagina**: tekst op telefoon 16 px in plaats van 15 px; bolletjes van de carrousel iets groter; links in de voettekst en het e-mailadres hebben een grotere aanraakzone.
+- **Voettekst**: op KB- en MP-pagina's stond een zwart blok met rand ernaast; nu over de volle breedte op telefoon.
+- **Zwevende knop**: onder in de pagina is 96 px ruimte, zodat de laatste vraag en de knop "Meer vragen" bereikbaar blijven.
+
+Bewust gelaten: de zwevende knop ligt tijdens het scrollen over de tekst (zo ontworpen, hij verdwijnt zodra de gewone knop in beeld is); de onderindices/bovenindices (H₂O) blijven 15 px; de dropdown op de beginpagina legt zich over het volgende blok (standaard w3.css-gedrag); de docx-spellen worden op een telefoon gedownload in plaats van geopend.
+
+Voor/na-schermafbeeldingen: `screens/mobiel_voor_*.png` en `screens/mobiel_na_*.png`.

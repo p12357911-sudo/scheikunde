@@ -60,15 +60,27 @@ function myFunction(id, knop) {
 }
 
 /* Menuknop voor kleine schermen */
-function openNav() {
+function openNav(sluit) {
   var x = document.getElementById('navDemo');
   if (!x) { return; }
-  if (x.className.indexOf('w3-show') == -1) {
-    x.className += ' w3-show';
-  } else {
+  var open = x.className.indexOf('w3-show') != -1;
+  if (open) {
     x.className = x.className.replace(' w3-show', '');
+  } else if (sluit !== true) {
+    x.className += ' w3-show';
+    open = false;
   }
+  var knop = document.querySelector('[aria-controls="navDemo"]');
+  if (knop) { knop.setAttribute('aria-expanded', x.className.indexOf('w3-show') != -1 ? 'true' : 'false'); }
 }
+/* Het menu sluit zelf als je een onderdeel kiest of op Escape drukt (anders blijft het over de pagina hangen) */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest ? e.target.closest('#navDemo a') : null;
+  if (a) { openNav(true); }
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') { openNav(true); }
+});
 
 /* Zijmenu (beginpagina) */
 function w3_open() {

@@ -317,3 +317,92 @@ body.home .slide {
     font-size: 150px;
   }
 }
+
+/* ==========================================================================
+   Kleine schermen en tablets (telefoon 360-414 px breed, tablet 768 px)
+   Op een groot scherm (laptop) verandert er niets, behalve dat het menu
+   eerder in de menuknop gaat als het niet op een regel past.
+   ========================================================================== */
+
+/* Menu: volledige balk alleen als hij op één regel past, anders de menuknop (de balk liep op een tablet over twee regels en bedekte de pagina) */
+.nav-smal { display: none !important; }
+#navDemo { display: none !important; }
+@media (max-width: 1199px) {
+  body:not(.home) .nav-smal { display: block !important; }
+  body:not(.home) .nav-breed { display: none !important; }
+  body:not(.home) #navDemo.w3-show { display: block !important; }
+}
+@media (max-width: 999px) {
+  body.home .nav-smal { display: block !important; }
+  body.home .nav-breed { display: none !important; }
+  body.home #navDemo.w3-show { display: block !important; }
+}
+@media (max-width: 1199px) {
+/* Menu en knoppen: raakvlak minstens 44 px hoog */
+.w3-bar-item.w3-button,
+.w3-dropdown-content .w3-bar-item,
+.w3-dropdown-hover > .w3-button {
+  min-height: 44px;
+  box-sizing: border-box;
+}
+.w3-bar .w3-bar-item.w3-button,
+#navDemo .w3-bar-item { display: flex; align-items: center; }
+.w3-bar .nav-smal { justify-content: center; min-width: 48px; }
+.w3-dropdown-content .w3-bar-item, .w3-dropdown-hover > .w3-button { display: flex; align-items: center; }
+.w3-dropdown-hover > .w3-button { justify-content: center; }
+}
+
+/* Blijft in het beeld staan als je met Tab naar een onderdeel springt (menu boven, zwevende knop onder) */
+html { scroll-padding-top: 60px; scroll-padding-bottom: 80px; }
+/* Lange woorden en formules breken af in plaats van uit het scherm te lopen */
+.question, .answers label, .antwoord-box, .vraag-knop, .in-ontwikkeling { overflow-wrap: anywhere; }
+img, video, svg { max-width: 100%; }
+img { height: auto; }
+table { max-width: 100%; }
+.w3-responsive-tabel, .tabel-scroll { overflow-x: auto; }
+
+@media (max-width: 768px) {
+  /* Meerkeuze: de hele rij is de knop. Ronde keuzeknop groter, rij minstens 48 px hoog */
+  .answers label {
+    position: relative;
+    margin-left: 0;
+    min-height: 48px;
+    box-sizing: border-box;
+    padding: 10px 8px 10px 48px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .answers label:has(input:checked) { background-color: #EAF2F8; }
+  .answers input[type=radio] {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 0;
+  }
+  /* Typinvoer: 16 px of groter (iPhone zoomt anders in), over de volle breedte */
+  input[type=text], input:not([type]), textarea, select { font-size: max(16px, 1em); max-width: 100%; }
+  .answers { margin-bottom: 12px; }
+
+  /* Zwevende knop en Meer vragen: minstens 44 px hoog */
+  .zweefknop { min-height: 48px; min-width: 48px; }
+  .meer-vragen .w3-button, #submit { min-height: 48px; }
+  .vraag-knop { min-height: 48px; }
+  .w3-button.knop-blauw { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
+
+  /* Voettekst: over de volle breedte en met een groot raakvlak voor de link */
+  .w3-container > footer { margin-left: -16px; margin-right: -16px; }
+  footer a { display: inline-block; padding: 12px 8px; }
+  footer .w3-button { padding: 8px 16px; }
+
+  /* Beginpagina: tekst 16 px, links in tekst groter raakvlak */
+  body.home { font-size: 16px; }
+  body.home .container-fluid { padding: 40px 16px; }
+  body.home .jumbotron { padding: 60px 16px; }
+  body.home .w3-container p a { display: inline-block; padding: 12px 4px; }
+  body.home .carousel-indicators li { width: 14px; height: 14px; margin: 0 5px; }
+  body.home .w3-dropdown-content { max-width: calc(100vw - 32px); }
+  body.home .w3-bar-item, body.home .w3-button { font-size: 16px; }
+}
