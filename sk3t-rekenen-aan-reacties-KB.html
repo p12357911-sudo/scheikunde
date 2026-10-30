@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<title>Rekenen aan reacties - 123 school</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="123school.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+</br>
+
+<!-- Accordion Knowledge Bank -->
+<div class="w3-container">
+
+<h2>Rekenen aan reacties</h2>
+<p>Test je kennis door je antwoord in te typen en te vergelijken met het juiste antwoord, door te klikken op de vraag.</p>
+<p>Bij elke som staan de atoommassa's in de vraag.</p>
+
+<div>
+  <button onclick='myFunction("Demo1", this)' class='vraag-knop'> Welke wet zegt dat de totale massa bij een reactie gelijk blijft?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke wet zegt dat de totale massa bij een reactie gelijk blijft?" placeholder='Type hier je antwoord'>
+  <div id="Demo1" class='w3-hide w3-container antwoord-box'>
+    <p> De wet van behoud van massa</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo2", this)' class='vraag-knop'> Wat is stap 1 bij chemisch rekenen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is stap 1 bij chemisch rekenen?" placeholder='Type hier je antwoord'>
+  <div id="Demo2" class='w3-hide w3-container antwoord-box'>
+    <p> De reactievergelijking opstellen (en kloppend maken)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo3", this)' class='vraag-knop'> Bereken de molecuulmassa van H<sub>2</sub>O. Atoommassa's: H = 1,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken de molecuulmassa van H2O. Atoommassa&#x27;s: H = 1,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo3" class='w3-hide w3-container antwoord-box'>
+    <p> 2 × 1,0 + 16,0 = 18,0 u</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo4", this)' class='vraag-knop'> Bereken de molecuulmassa van CO<sub>2</sub>. Atoommassa's: C = 12,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken de molecuulmassa van CO2. Atoommassa&#x27;s: C = 12,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo4" class='w3-hide w3-container antwoord-box'>
+    <p> 12,0 + 2 × 16,0 = 44,0 u</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo5", this)' class='vraag-knop'> Bereken de molecuulmassa van NH<sub>3</sub>. Atoommassa's: H = 1,0 u; N = 14,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken de molecuulmassa van NH3. Atoommassa&#x27;s: H = 1,0 u; N = 14,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo5" class='w3-hide w3-container antwoord-box'>
+    <p> 14,0 + 3 × 1,0 = 17,0 u</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo6", this)' class='vraag-knop'> Bereken de molecuulmassa van CH<sub>4</sub>. Atoommassa's: H = 1,0 u; C = 12,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken de molecuulmassa van CH4. Atoommassa&#x27;s: H = 1,0 u; C = 12,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo6" class='w3-hide w3-container antwoord-box'>
+    <p> 12,0 + 4 × 1,0 = 16,0 u</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo7", this)' class='vraag-knop'> Bereken de molecuulmassa van H<sub>2</sub>SO<sub>4</sub>. Atoommassa's: H = 1,0 u; O = 16,0 u; S = 32,1 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken de molecuulmassa van H2SO4. Atoommassa&#x27;s: H = 1,0 u; O = 16,0 u; S = 32,1 u." placeholder='Type hier je antwoord'>
+  <div id="Demo7" class='w3-hide w3-container antwoord-box'>
+    <p> 2 × 1,0 + 32,1 + 4 × 16,0 = 98,1 u</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo8", this)' class='vraag-knop'> Bereken de formulemassa van NaCl. Atoommassa's: Na = 23,0 u; Cl = 35,5 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken de formulemassa van NaCl. Atoommassa&#x27;s: Na = 23,0 u; Cl = 35,5 u." placeholder='Type hier je antwoord'>
+  <div id="Demo8" class='w3-hide w3-container antwoord-box'>
+    <p> 23,0 + 35,5 = 58,5 u</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo9", this)' class='vraag-knop'> Bereken de formulemassa van CaCO<sub>3</sub>. Atoommassa's: C = 12,0 u; O = 16,0 u; Ca = 40,1 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken de formulemassa van CaCO3. Atoommassa&#x27;s: C = 12,0 u; O = 16,0 u; Ca = 40,1 u." placeholder='Type hier je antwoord'>
+  <div id="Demo9" class='w3-hide w3-container antwoord-box'>
+    <p> 40,1 + 12,0 + 3 × 16,0 = 100,1 u</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo10", this)' class='vraag-knop'> Bereken de formulemassa van Fe<sub>2</sub>O<sub>3</sub>. Atoommassa's: O = 16,0 u; Fe = 55,8 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken de formulemassa van Fe2O3. Atoommassa&#x27;s: O = 16,0 u; Fe = 55,8 u." placeholder='Type hier je antwoord'>
+  <div id="Demo10" class='w3-hide w3-container antwoord-box'>
+    <p> 2 × 55,8 + 3 × 16,0 = 159,6 u</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo11", this)' class='vraag-knop'> Bij de reactie 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O reageert 4,0 g waterstof met 32,0 g zuurstof. Hoeveel g water ontstaat er?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij de reactie 2 H2 + O2 → 2 H2O reageert 4,0 g waterstof met 32,0 g zuurstof. Hoeveel g water ontstaat er?" placeholder='Type hier je antwoord'>
+  <div id="Demo11" class='w3-hide w3-container antwoord-box'>
+    <p> 4,0 + 32,0 = 36,0 g (wet van behoud van massa)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo12", this)' class='vraag-knop'> Wat is de massaverhouding waterstof : zuurstof : water bij 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O? Atoommassa's: H = 1,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de massaverhouding waterstof : zuurstof : water bij 2 H2 + O2 → 2 H2O? Atoommassa&#x27;s: H = 1,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo12" class='w3-hide w3-container antwoord-box'>
+    <p> 2 × 2,0 = 4,0 g H<sub>2</sub>; 32,0 g O<sub>2</sub>; 2 × 18,0 = 36,0 g H<sub>2</sub>O</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo13", this)' class='vraag-knop'> Wat is de massaverhouding koolstof : zuurstof : koolstofdioxide bij C + O<sub>2</sub> → CO<sub>2</sub>? Atoommassa's: C = 12,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de massaverhouding koolstof : zuurstof : koolstofdioxide bij C + O2 → CO2? Atoommassa&#x27;s: C = 12,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo13" class='w3-hide w3-container antwoord-box'>
+    <p> 12,0 : 32,0 : 44,0</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo14", this)' class='vraag-knop'> Bij C + O<sub>2</sub> → CO<sub>2</sub> verbrand je 6,0 g koolstof. Hoeveel g zuurstof is er minstens nodig? Atoommassa's: C = 12,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij C + O2 → CO2 verbrand je 6,0 g koolstof. Hoeveel g zuurstof is er minstens nodig? Atoommassa&#x27;s: C = 12,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo14" class='w3-hide w3-container antwoord-box'>
+    <p> 12,0 g C hoort bij 32,0 g O<sub>2</sub>. 6,0 g C hoort bij 6,0 / 12,0 × 32,0 = 16,0 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo15", this)' class='vraag-knop'> Bij C + O<sub>2</sub> → CO<sub>2</sub> verbrand je 6,0 g koolstof volledig. Hoeveel g koolstofdioxide ontstaat er? Atoommassa's: C = 12,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij C + O2 → CO2 verbrand je 6,0 g koolstof volledig. Hoeveel g koolstofdioxide ontstaat er? Atoommassa&#x27;s: C = 12,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo15" class='w3-hide w3-container antwoord-box'>
+    <p> 12,0 g C geeft 44,0 g CO<sub>2</sub>. 6,0 g C geeft 6,0 / 12,0 × 44,0 = 22,0 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo16", this)' class='vraag-knop'> Bij de reactie 2 Mg + O<sub>2</sub> → 2 MgO: hoeveel g magnesiumoxide ontstaat er uit 24,3 g magnesium? Atoommassa's: O = 16,0 u; Mg = 24,3 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij de reactie 2 Mg + O2 → 2 MgO: hoeveel g magnesiumoxide ontstaat er uit 24,3 g magnesium? Atoommassa&#x27;s: O = 16,0 u; Mg = 24,3 u." placeholder='Type hier je antwoord'>
+  <div id="Demo16" class='w3-hide w3-container antwoord-box'>
+    <p> 48,6 g Mg geeft 80,6 g MgO. 24,3 g Mg geeft 40,3 g MgO</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo17", this)' class='vraag-knop'> Hoeveel g zuurstof reageert met 24,3 g magnesium volledig? (2 Mg + O<sub>2</sub> → 2 MgO) Atoommassa's: O = 16,0 u; Mg = 24,3 u. Atoommassa's: O = 16,0 u; Mg = 24,3 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel g zuurstof reageert met 24,3 g magnesium volledig? (2 Mg + O2 → 2 MgO) Atoommassa&#x27;s: O = 16,0 u; Mg = 24,3 u. Atoommassa&#x27;s: O = 16,0 u; Mg = 24,3 u." placeholder='Type hier je antwoord'>
+  <div id="Demo17" class='w3-hide w3-container antwoord-box'>
+    <p> 48,6 g Mg reageert met 32,0 g O<sub>2</sub>. 24,3 g Mg met 16,0 g O<sub>2</sub></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo18", this)' class='vraag-knop'> Je verbrandt 4,0 g waterstof volledig met genoeg zuurstof (2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O). Hoeveel g water ontstaat er?. Atoommassa's: H = 1,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je verbrandt 4,0 g waterstof volledig met genoeg zuurstof (2 H2 + O2 → 2 H2O). Hoeveel g water ontstaat er?. Atoommassa&#x27;s: H = 1,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo18" class='w3-hide w3-container antwoord-box'>
+    <p> 2 H<sub>2</sub> = 4,0 g geeft 2 H<sub>2</sub>O = 36,0 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo19", this)' class='vraag-knop'> Bij 2 H<sub>2</sub>O → 2 H<sub>2</sub> + O<sub>2</sub> wordt 36 g water ontleed. Hoeveel g waterstof en zuurstof ontstaan er samen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij 2 H2O → 2 H2 + O2 wordt 36 g water ontleed. Hoeveel g waterstof en zuurstof ontstaan er samen?" placeholder='Type hier je antwoord'>
+  <div id="Demo19" class='w3-hide w3-container antwoord-box'>
+    <p> De massa blijft gelijk: 36 g (4 g waterstof en 32 g zuurstof)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo20", this)' class='vraag-knop'> Bij het verhitten van CaCO<sub>3</sub> ontstaat CaO en CO<sub>2</sub>: CaCO<sub>3</sub> → CaO + CO<sub>2</sub>. Je verhit 10,0 g kalk. Er ontstaat 4,4 g CO<sub>2</sub>. Hoeveel g CaO blijft er over?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij het verhitten van CaCO3 ontstaat CaO en CO2: CaCO3 → CaO + CO2. Je verhit 10,0 g kalk. Er ontstaat 4,4 g CO2. Hoeveel g CaO blijft er over?" placeholder='Type hier je antwoord'>
+  <div id="Demo20" class='w3-hide w3-container antwoord-box'>
+    <p> 10,0 − 4,4 = 5,6 g (wet van behoud van massa)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo21", this)' class='vraag-knop'> In water (H<sub>2</sub>O) zit waterstof en zuurstof in de massaverhouding 1 : 8. Hoeveel g zuurstof zit er in 45 g water?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: In water (H2O) zit waterstof en zuurstof in de massaverhouding 1 : 8. Hoeveel g zuurstof zit er in 45 g water?" placeholder='Type hier je antwoord'>
+  <div id="Demo21" class='w3-hide w3-container antwoord-box'>
+    <p> 1 + 8 = 9 delen. 8/9 × 45 = 40 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo22", this)' class='vraag-knop'> Bij de verbranding van methaan (CH<sub>4</sub> + 2 O<sub>2</sub> → CO<sub>2</sub> + 2 H<sub>2</sub>O) reageert 16,0 g methaan met 64,0 g zuurstof. Hoeveel g koolstofdioxide en water ontstaan er samen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij de verbranding van methaan (CH4 + 2 O2 → CO2 + 2 H2O) reageert 16,0 g methaan met 64,0 g zuurstof. Hoeveel g koolstofdioxide en water ontstaan er samen?" placeholder='Type hier je antwoord'>
+  <div id="Demo22" class='w3-hide w3-container antwoord-box'>
+    <p> 16,0 + 64,0 = 80,0 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo23", this)' class='vraag-knop'> Bij de verbranding van methaan ontstaat uit 16,0 g methaan 44,0 g koolstofdioxide. Hoeveel g zuurstof is er nodig als er ook 36,0 g water ontstaat?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij de verbranding van methaan ontstaat uit 16,0 g methaan 44,0 g koolstofdioxide. Hoeveel g zuurstof is er nodig als er ook 36,0 g water ontstaat?" placeholder='Type hier je antwoord'>
+  <div id="Demo23" class='w3-hide w3-container antwoord-box'>
+    <p> 44,0 + 36,0 = 80,0 g rechts. Links: 80,0 − 16,0 = 64,0 g zuurstof</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo24", this)' class='vraag-knop'> Bereken het massapercentage waterstof in water (H<sub>2</sub>O). Atoommassa's: H = 1,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken het massapercentage waterstof in water (H2O). Atoommassa&#x27;s: H = 1,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo24" class='w3-hide w3-container antwoord-box'>
+    <p> 2,0 / 18,0 × 100% = 11,1%</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo25", this)' class='vraag-knop'> Bereken het massapercentage zuurstof in water (H<sub>2</sub>O). Atoommassa's: H = 1,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken het massapercentage zuurstof in water (H2O). Atoommassa&#x27;s: H = 1,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo25" class='w3-hide w3-container antwoord-box'>
+    <p> 16,0 / 18,0 × 100% = 88,9%</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo26", this)' class='vraag-knop'> Bereken het massapercentage koolstof in koolstofdioxide (CO<sub>2</sub>). Atoommassa's: C = 12,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken het massapercentage koolstof in koolstofdioxide (CO2). Atoommassa&#x27;s: C = 12,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo26" class='w3-hide w3-container antwoord-box'>
+    <p> 12,0 / 44,0 × 100% = 27,3%</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo27", this)' class='vraag-knop'> Bereken het massapercentage stikstof in ammoniak (NH<sub>3</sub>). Atoommassa's: H = 1,0 u; N = 14,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken het massapercentage stikstof in ammoniak (NH3). Atoommassa&#x27;s: H = 1,0 u; N = 14,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo27" class='w3-hide w3-container antwoord-box'>
+    <p> 14,0 / 17,0 × 100% = 82,4%</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo28", this)' class='vraag-knop'> Bereken het massapercentage ijzer in Fe<sub>2</sub>O<sub>3</sub>. Atoommassa's: O = 16,0 u; Fe = 55,8 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bereken het massapercentage ijzer in Fe2O3. Atoommassa&#x27;s: O = 16,0 u; Fe = 55,8 u." placeholder='Type hier je antwoord'>
+  <div id="Demo28" class='w3-hide w3-container antwoord-box'>
+    <p> 111,6 / 159,6 × 100% = 69,9%</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo29", this)' class='vraag-knop'> Hoeveel g ijzer kun je maximaal halen uit 100 g Fe<sub>2</sub>O<sub>3</sub>? Atoommassa's: O = 16,0 u; Fe = 55,8 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel g ijzer kun je maximaal halen uit 100 g Fe2O3? Atoommassa&#x27;s: O = 16,0 u; Fe = 55,8 u." placeholder='Type hier je antwoord'>
+  <div id="Demo29" class='w3-hide w3-container antwoord-box'>
+    <p> 111,6 / 159,6 × 100 = 69,9 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo30", this)' class='vraag-knop'> Je laat 24,3 g magnesium reageren met 32,0 g zuurstof (2 Mg + O<sub>2</sub> → 2 MgO). Voor 24,3 g Mg is 16,0 g O<sub>2</sub> nodig. Welke stof is in overmaat en hoeveel g blijft er over?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je laat 24,3 g magnesium reageren met 32,0 g zuurstof (2 Mg + O2 → 2 MgO). Voor 24,3 g Mg is 16,0 g O2 nodig. Welke stof is in overmaat en hoeveel g blijft er over?" placeholder='Type hier je antwoord'>
+  <div id="Demo30" class='w3-hide w3-container antwoord-box'>
+    <p> Er is 32,0 g O<sub>2</sub> en er is 16,0 g nodig. Er blijft 16,0 g O<sub>2</sub> over.</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo31", this)' class='vraag-knop'> Hoeveel g koolstofdioxide ontstaat als je 12,0 g koolstof laat reageren met 64,0 g zuurstof? (C + O<sub>2</sub> → CO<sub>2</sub>). Atoommassa's: C = 12,0 u; O = 16,0 u.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel g koolstofdioxide ontstaat als je 12,0 g koolstof laat reageren met 64,0 g zuurstof? (C + O2 → CO2). Atoommassa&#x27;s: C = 12,0 u; O = 16,0 u." placeholder='Type hier je antwoord'>
+  <div id="Demo31" class='w3-hide w3-container antwoord-box'>
+    <p> 12,0 g C reageert met 32,0 g O<sub>2</sub> tot 44,0 g CO<sub>2</sub>. Er blijft 32,0 g O<sub>2</sub> over (overmaat).</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo32", this)' class='vraag-knop'> In 250 mL alcoholhoudende drank zit 40 mL alcohol. Wat is het volumepercentage alcohol?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: In 250 mL alcoholhoudende drank zit 40 mL alcohol. Wat is het volumepercentage alcohol?" placeholder='Type hier je antwoord'>
+  <div id="Demo32" class='w3-hide w3-container antwoord-box'>
+    <p> 40 / 250 × 100% = 16%</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo33", this)' class='vraag-knop'> Een mengsel van 300 mL bevat 15 volume% aceton. Hoeveel mL aceton zit erin?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een mengsel van 300 mL bevat 15 volume% aceton. Hoeveel mL aceton zit erin?" placeholder='Type hier je antwoord'>
+  <div id="Demo33" class='w3-hide w3-container antwoord-box'>
+    <p> 0,15 × 300 = 45 mL</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo34", this)' class='vraag-knop'> Hoeveel gram zout zit er in 2,0 kg zeewater met 3,5 massa% zout?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel gram zout zit er in 2,0 kg zeewater met 3,5 massa% zout?" placeholder='Type hier je antwoord'>
+  <div id="Demo34" class='w3-hide w3-container antwoord-box'>
+    <p> 2,0 kg = 2000 g. 0,035 × 2000 = 70 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo35", this)' class='vraag-knop'> In een erts van 500 g zit 70 massa% ijzeroxide. Hoeveel g ijzeroxide zit erin?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: In een erts van 500 g zit 70 massa% ijzeroxide. Hoeveel g ijzeroxide zit erin?" placeholder='Type hier je antwoord'>
+  <div id="Demo35" class='w3-hide w3-container antwoord-box'>
+    <p> 0,70 × 500 = 350 g</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Next button -->
+<div class="w3-container w3-padding-64 w3-center">
+<a class="w3-button knop-blauw" href="sk3t-rekenen-aan-reacties-KB.html">Opnieuw oefenen</a>
+</div>
+<!-- Footer -->
+<div class="w3-container">
+</br>
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+</div>
+
+<script src="school.js"></script>
+</body>
+</html>
