@@ -128,27 +128,6 @@ body.heeft-zweefknop footer { padding-bottom: 96px; }
 .meer-vragen { margin: 24px 0; }
 .question:focus { outline: none; }
 
-/* ===== AI-nakijken (alleen pagina's met data-ai; zie school.js) ===== */
-.ai-regel { margin: 8px 0 4px 0; }
-.ai-knop[disabled] { opacity: 0.7; cursor: wait; }
-.ai-uitslag {
-  margin: 6px 0 8px 0;
-  padding: 10px 16px;
-  border-left: 5px solid #003A5C;
-  background-color: #EAF2F8;
-  color: #111111;
-  border-radius: 0 4px 4px 0;
-}
-.ai-uitslag p { margin: 4px 0 0 0; }
-.ai-uitslag[hidden] { display: none; }
-.ai-goed { background-color: #E6F4EA; border-left-color: #14532d; }
-.ai-half { background-color: #FFF4CE; border-left-color: #B26A00; }
-.ai-fout { background-color: #F7ECEC; border-left-color: #7f1d1d; }
-.ai-info { background-color: #EAF2F8; border-left-color: #003A5C; }
-@media (max-width: 600px) {
-  .ai-knop { display: block; width: 100%; }
-}
-
 /* ===== Alleen pagina "Stoffen KBAI" (was eigen <style>) ===== */
 .vraag-knop.w3-hover-light-grey:hover {
   background-color: #D3D3D3 !important;

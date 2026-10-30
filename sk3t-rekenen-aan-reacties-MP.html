@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Rekenen aan reacties - 123 school</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="meerkeuzevragen">
+        <h2>Meerkeuzevragen</h2>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+            <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+            <i class="fa fa-chevron-circle-up"></i></span></a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: 'Wat is de reactiesnelheid?',
+                answers: {
+                    a: 'Bij welke temperatuur de reactie plaatsvindt',
+                    b: 'Hoe lang de reactie duurt',
+                    c: 'Hoeveel warmte er bij de reactie vrijkomt',
+                    d: 'Hoe snel de beginstoffen verdwijnen en de nieuwe stoffen ontstaan'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Wat is de reactietijd?',
+                answers: {
+                    a: 'Hoe snel de beginstoffen verdwijnen',
+                    b: 'Hoe lang de reactie duurt',
+                    c: 'Hoeveel warmte er bij de reactie vrijkomt',
+                    d: 'Hoeveel stof er na afloop over is'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Een reactie gaat sneller. Wat gebeurt er met de reactietijd?',
+                answers: {
+                    a: 'De reactietijd wordt korter',
+                    b: 'Dat hangt af van de stof',
+                    c: 'De reactietijd wordt langer',
+                    d: 'De reactietijd blijft gelijk'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat gebeurt er met de reactiesnelheid als je de temperatuur verhoogt?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid blijft gelijk',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactie stopt'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat gebeurt er met de reactiesnelheid als je de temperatuur verlaagt?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactiesnelheid neemt toe',
+                    c: 'De reactie stopt meteen',
+                    d: 'De reactiesnelheid blijft gelijk'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat gebeurt er met de reactiesnelheid als je de concentratie van een beginstof groter maakt?',
+                answers: {
+                    a: 'De reactiesnelheid neemt af',
+                    b: 'De reactie stopt',
+                    c: 'De reactiesnelheid neemt toe',
+                    d: 'De reactiesnelheid blijft gelijk'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Je maakt een vaste stof fijner, bijvoorbeeld poeder in plaats van een brok (grotere verdelingsgraad). Wat gebeurt er met de reactiesnelheid?',
+                answers: {
+                    a: 'De reactie stopt',
+                    b: 'De reactiesnelheid neemt af',
+                    c: 'De reactiesnelheid blijft gelijk',
+                    d: 'De reactiesnelheid neemt toe'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Bij een reactie tussen gassen verhoog je de druk. Wat gebeurt er met de reactiesnelheid?',
+                answers: {
+                    a: 'De reactie stopt',
+                    b: 'De reactiesnelheid neemt toe',
+                    c: 'De reactiesnelheid neemt af',
+                    d: 'De reactiesnelheid blijft gelijk'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat doet een katalysator?',
+                answers: {
+                    a: 'Hij versnelt de reactie en is aan het eind niet verbruikt',
+                    b: 'Hij heeft geen effect op de reactie',
+                    c: 'Hij versnelt de reactie en is aan het eind op',
+                    d: 'Hij vertraagt de reactie'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Je verhoogt de temperatuur. Wat gebeurt er met de reactietijd?',
+                answers: {
+                    a: 'De reactietijd blijft gelijk',
+                    b: 'De reactietijd wordt korter',
+                    c: 'De reactietijd wordt nul',
+                    d: 'De reactietijd wordt langer'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Je voegt een katalysator toe. Wat gebeurt er met de reactietijd?',
+                answers: {
+                    a: 'De reactietijd wordt nul',
+                    b: 'De reactietijd blijft gelijk',
+                    c: 'De reactietijd wordt korter',
+                    d: 'De reactietijd wordt langer'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Je maakt de concentratie van een beginstof groter. Wat gebeurt er met de reactietijd?',
+                answers: {
+                    a: 'De reactietijd blijft gelijk',
+                    b: 'De reactietijd wordt nul',
+                    c: 'De reactietijd wordt langer',
+                    d: 'De reactietijd wordt korter'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Heeft de soort stof invloed op de reactiesnelheid?',
+                answers: {
+                    a: 'Ja, sommige stoffen reageren van nature sneller dan andere',
+                    b: 'Nee, alleen de temperatuur telt',
+                    c: 'Nee, alle reacties gaan even snel',
+                    d: 'Ja, maar alleen bij een hoge temperatuur'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Welke van deze dingen heeft invloed op de reactiesnelheid?',
+                answers: {
+                    a: 'Het merk van de weegschaal',
+                    b: 'De kleur van het bekerglas',
+                    c: 'De tijd op de klok',
+                    d: 'De temperatuur'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Je ziet een grafiek van de hoeveelheid beginstof tegen de tijd. De lijn loopt steil omlaag. Wat betekent dat?',
+                answers: {
+                    a: 'Er ontstaat geen nieuw product',
+                    b: 'De reactie gaat langzaam',
+                    c: 'De reactie gaat snel',
+                    d: 'De reactie is nog niet begonnen'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Wat is de molecuulmassa?',
+                answers: {
+                    a: 'De massa van alle moleculen samen',
+                    b: 'De massa van één molecuul',
+                    c: 'De massa van één elektron',
+                    d: 'De massa van één atoom'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Hoe bereken je de molecuulmassa?',
+                answers: {
+                    a: 'Je telt de atoommassa\'s van alle atomen in het molecuul bij elkaar op',
+                    b: 'Je meet de druk en de temperatuur',
+                    c: 'Je vermenigvuldigt de concentraties van de stoffen',
+                    d: 'Je trekt de massa van de producten af van de massa van de beginstoffen'
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: 'Wat is de massaverhouding van een reactie?',
+                answers: {
+                    a: 'De verhouding tussen de aantallen moleculen die reageren',
+                    b: 'De verhouding tussen de massa en het volume van een stof',
+                    c: 'De verhouding tussen de massa\'s van de stoffen die met elkaar reageren en ontstaan',
+                    d: 'De verhouding tussen de massa van een stof en de tijd die de reactie duurt'
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: 'Je gaat rekenen aan een reactie. Wat doe je als eerste?',
+                answers: {
+                    a: 'Het antwoord opschrijven',
+                    b: 'De reactievergelijking opstellen',
+                    c: 'De molecuulmassa\'s berekenen',
+                    d: 'De massa van het product wegen'
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: 'Wat is een overmaat?',
+                answers: {
+                    a: 'Een stof die niet meedoet aan de reactie',
+                    b: 'Een beginstof die na de reactie helemaal op is',
+                    c: 'De ideale hoeveelheid van een stof',
+                    d: 'Een beginstof waarvan na de reactie nog wat over is'
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: 'Hoe ontdek je welke beginstof in overmaat is?',
+                answers: {
+                    a: 'Je weegt alleen de producten',
+                    b: 'Je rekent uit hoeveel je van de ene stof nodig hebt voor de andere en vergelijkt dat met wat je hebt',
+                    c: 'Je meet de reactietijd',
+                    d: 'Je meet de concentratie van de stoffen'
+                },
+                correctAnswer: 'b'
+            }
+        ];
+    </script>
+    <script src="school.js"></script>
+</body>
+</html>
