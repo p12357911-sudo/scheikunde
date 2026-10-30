@@ -213,3 +213,12 @@ Voor elk hoofdstuk dat Peter nu behandelt is minstens één KB- en één MP-pagi
 - **H1 Stoffen en mengsels** (KB 38, MP 34): 3 opzoekvragen: dichtheid van aluminium (tabel 15: 2,70 g/cm³), drijft koper op water (tabel 15 en 16: koper 8,96 en water 1,00 g/cm³), kookpunt van alcohol in kelvin (tabel 16: 351 K).
 - **H2 Water** (KB 37, MP 34): 2 opzoekvragen: dichtheid van zeewater (tabel 16: 1,02 g/cm³) en oplosbaarheid van keukenzout (tabel 35: goed oplosbaar).
 - Getest: geen JavaScript-fouten op 1280 en 390 breed, MP 15 van de 15 bij alles goed en 0 bij alles fout, KB toont het modelantwoord en "Meer vragen" werkt.
+
+## AI-nakijken (branch `ai-nakijken`, nog niet live)
+
+- `Matriaalenstof1KBAI.html` heeft nu dezelfde 52 vragen als Matriaalenstof1KB (door elkaar, 15 tegelijk, "Meer vragen"). De twee demovragen zijn vervangen.
+- Nieuw in `school.js` en `123school.css`: een optionele AI-nakijkfunctie (alleen op pagina's met `data-ai` op de body). Per vraag komt een knop "Laat AI nakijken". De leerling krijgt "goed", "bijna goed" of "nog niet goed" met een korte tip en mag het een tweede keer proberen. Na de tweede poging (of bij "goed") klapt het juiste antwoord open.
+- De functie praat met een Cloudflare Worker (map `ai-worker`, los van de site, zie daar de README). Het adres staat in `Matriaalenstof1KBAI.html` bij `var AI_URL`.
+- Zolang `AI_URL` nog `JOUW-SUBDOMEIN` bevat, is AI-nakijken uit en blijft de melding "In ontwikkeling" staan. De pagina werkt dan als een gewone KB-pagina.
+- Lukt het nakijken niet (Worker niet bereikbaar, gratis limiet op, fout), dan toont de pagina gewoon het juiste antwoord.
+- De oude demo-functie `submitAnswer` is verwijderd; andere pagina's zijn niet aangepast.
