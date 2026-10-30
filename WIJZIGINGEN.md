@@ -219,6 +219,6 @@ Voor elk hoofdstuk dat Peter nu behandelt is minstens één KB- en één MP-pagi
 - `Matriaalenstof1KBAI.html` heeft nu dezelfde 52 vragen als Matriaalenstof1KB (door elkaar, 15 tegelijk, "Meer vragen"). De twee demovragen zijn vervangen.
 - Nieuw in `school.js` en `123school.css`: een optionele AI-nakijkfunctie (alleen op pagina's met `data-ai` op de body). Per vraag komt een knop "Laat AI nakijken". De leerling krijgt "goed", "bijna goed" of "nog niet goed" met een korte tip en mag het een tweede keer proberen. Na de tweede poging (of bij "goed") klapt het juiste antwoord open.
 - De functie praat met een Cloudflare Worker (map `ai-worker`, los van de site, zie daar de README). Het adres staat in `Matriaalenstof1KBAI.html` bij `var AI_URL`.
-- Zolang `AI_URL` nog `JOUW-SUBDOMEIN` bevat, is AI-nakijken uit en blijft de melding "In ontwikkeling" staan. De pagina werkt dan als een gewone KB-pagina.
+- Zolang `AI_URL` leeg is of nog `JOUW-SUBDOMEIN` bevat, is AI-nakijken uit en blijft de melding "In ontwikkeling" staan. De pagina werkt dan als een gewone KB-pagina.
 - Lukt het nakijken niet (Worker niet bereikbaar, gratis limiet op, fout), dan toont de pagina gewoon het juiste antwoord.
 - De oude demo-functie `submitAnswer` is verwijderd; andere pagina's zijn niet aangepast.
