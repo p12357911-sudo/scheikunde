@@ -1,153 +1,29 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <title>Polymeren</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="123school.css">
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+<title>123 school</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="any"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="123school.css?v=20261102c">
+<script src="i18n.js?v=20261102c"></script>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-    <!-- Navbar -->
-    <div w3-include-html="navbar.html"></div>
+<body id="myPage" data-pagina="mp" data-inhoud="kunststoffenMP">
+<!-- Alle tekst komt uit lang/<taal>/ui.json en lang/<taal>/kunststoffenMP.json (i18n.js) -->
+<div id="navbar"></div>
 
-    <!-- Question container -->
-    <div class="w3-container w3-padding-64 w3-center" id="polymeren">
-        <em>Polymeren vragen</em>
-        <br><br>
-        <div id="quiz"></div>
-        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
-        <div id="results" role="status" aria-live="polite"></div>
-    </div>
+<div class="w3-container w3-padding-64 w3-center" id="polymeren">
+    <em id="mp-kop"></em>
+    <br><br>
+    <div id="quiz"></div>
+    <button id="submit" class="w3-button knop-blauw"></button>
+    <div id="results" role="status" aria-live="polite"></div>
+</div>
+<div id="voet"></div>
 
-    <!-- Footer -->
-    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
-        <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
-        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
-            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
-            <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
-            <i class="fa fa-chevron-circle-up"></i></span></a>
-        </div>
-    </footer>
-
-    <script>
-        var myQuestions = [
-            {
-                question: 'Wat is een initiator?',
-                answers: {
-                    a: 'Een stof die de polymerisatie stopt',
-                    b: 'Een stof die de polymerisatie start: de dubbele binding gaat open',
-                    c: 'Een stof die polymeren afbreekt',
-                    d: 'Een stof die water toevoegt aan de reactie'
-                },
-                correctAnswer: 'b'
-            },
-            {
-                question: 'Je gebruikt uv-licht bij een polymerisatie. Wat doet het uv-licht met de initiator?',
-                answers: {
-                    a: 'De initiator gaat reageren en start zo de polymerisatie',
-                    b: 'Het verhoogt alleen de temperatuur',
-                    c: 'Het heeft geen effect op de initiator',
-                    d: 'De initiator wordt minder actief'
-                },
-                correctAnswer: 'a'
-            },
-            {
-                question: 'Wat gebeurt er bij een condensatiereactie?',
-                answers: {
-                    a: 'Er ontstaat alleen een groter molecuul',
-                    b: 'Er ontstaat alleen een klein molecuul',
-                    c: 'Er ontstaat geen nieuw molecuul',
-                    d: 'Er ontstaat een groter molecuul en er komt een klein molecuul vrij (bijvoorbeeld water)'
-                },
-                correctAnswer: 'd'
-            },
-            {
-                question: 'Zuurgroepen (-COOH) reageren met hydroxylgroepen (-OH). Wat ontstaat er?',
-                answers: {
-                    a: 'Esterbindingen en een polyamide',
-                    b: 'Amidebindingen en een polyester',
-                    c: 'Esterbindingen en een polyester',
-                    d: 'Amidebindingen en een polyamide'
-                },
-                correctAnswer: 'c'
-            },
-            {
-                question: 'Zuurgroepen (-COOH) reageren met aminogroepen (-NH<sub>2</sub>). Wat ontstaat er?',
-                answers: {
-                    a: 'Esterbindingen en een polyamide',
-                    b: 'Esterbindingen en een polyester',
-                    c: 'Amidebindingen en een polyester',
-                    d: 'Amidebindingen en een polyamide'
-                },
-                correctAnswer: 'd'
-            },
-            {
-                question: 'Wat is hydrolyse?',
-                answers: {
-                    a: 'Een polymeer wordt verbrand',
-                    b: 'Monomeren koppelen aan elkaar en er komt water vrij',
-                    c: 'Een polymeer wordt met water afgebroken tot kleinere moleculen',
-                    d: 'Monomeren met een dubbele binding koppelen aan elkaar en er komt niets vrij'
-                },
-                correctAnswer: 'c'
-            },
-            {
-                question: 'Een polymeer heeft een gemiddelde ketenlengte van 1000. Wat betekent dat?',
-                answers: {
-                    a: 'Er zitten 1000 polymeren in één molecuul',
-                    b: 'Een keten bestaat gemiddeld uit 1000 monomeereenheden',
-                    c: 'Het polymeer bestaat uit 1000 verschillende moleculen',
-                    d: 'Een molecuul weegt gemiddeld 1000 u'
-                },
-                correctAnswer: 'b'
-            },
-            {
-                question: 'Hoe ontstaat een additiepolymeer?',
-                answers: {
-                    a: 'Monomeren met een dubbele binding koppelen aan elkaar en er komt niets vrij',
-                    b: 'Monomeren koppelen aan elkaar via esterbindingen',
-                    c: 'Een polymeer wordt met water afgebroken',
-                    d: 'Monomeren koppelen aan elkaar en er komt water vrij'
-                },
-                correctAnswer: 'a'
-            },
-            {
-                question: 'Wat is een polyamide?',
-                answers: {
-                    a: 'Een polymeer dat bestaat uit alleen koolstof en waterstof',
-                    b: 'Een polymeer waarin de monomeren met amidebindingen aan elkaar zitten',
-                    c: 'Een polymeer dat alleen door additie ontstaat',
-                    d: 'Een polymeer waarin de monomeren met esterbindingen aan elkaar zitten'
-                },
-                correctAnswer: 'b'
-            },
-            {
-                question: 'Wat is een polyester?',
-                answers: {
-                    a: 'Een polymeer waarin de monomeren met esterbindingen aan elkaar zitten',
-                    b: 'Een polymeer waarin de monomeren met amidebindingen aan elkaar zitten',
-                    c: 'Een polymeer dat alleen door additie ontstaat',
-                    d: 'Een polymeer dat bestaat uit alleen koolstof en waterstof'
-                },
-                correctAnswer: 'a'
-            },
-            {
-                question: 'Wat is de ketenlengte van een polymeer?',
-                answers: {
-                    a: 'Het aantal atomen in één monomeer',
-                    b: 'Het aantal moleculen in het polymeer',
-                    c: 'Het aantal monomeereenheden in één keten',
-                    d: 'De massa van het polymeer'
-                },
-                correctAnswer: 'c'
-            }
-        ];
-    </script>
-    <script src="school.js"></script>
+<script src="school.js?v=20261102c"></script>
 </body>
 </html>

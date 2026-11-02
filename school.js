@@ -1,6 +1,6 @@
 /* ==========================================================================
    123 school - gedeeld script voor alle pagina's (v2)
-   Bevat: antwoord openklappen (KB), optioneel AI-nakijken van getypte antwoorden (alleen met data-ai), menuknop, toegankelijkheid, meerkeuze-quiz (MP) met
+   Bevat: antwoord openklappen (KB), menuknop, toegankelijkheid, meerkeuze-quiz (MP) met
    willekeurige volgorde en pagina's van 15 vragen, zwevende knop "Controleer nu", en
    de scripts van de beginpagina. Alleen frontend, geen server nodig.
    Derde-partijbibliotheken (w3.js, w3data.js, jQuery, Bootstrap) staan nog steeds in de HTML.
@@ -10,12 +10,18 @@ var VRAGEN_PER_PAGINA = 15;
 
 /* Voer een functie uit zodra de pagina geladen is (ook als dat al gebeurd is). */
 function klaar(fn) {
+  /* Met i18n.js (window.i18nKlaar) wachten we tot de tekst uit de JSON-bestanden in de pagina staat. */
+  var start = function () { if (window.i18nKlaar) { window.i18nKlaar.then(fn); } else { fn(); } };
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fn);
+    document.addEventListener('DOMContentLoaded', start);
   } else {
-    fn();
+    start();
   }
 }
+
+/* Tekst in de taal van de pagina (lang/<taal>/ui.json via i18n.js). */
+function T(sleutel, vars) { return window.i18n ? window.i18n.t(sleutel, vars) : sleutel; }
+function taalIsEN() { return !!window.i18n && window.i18n.lang === 'en'; }
 
 /* Schud een lijst willekeurig (Fisher-Yates). Geeft een nieuwe lijst terug. */
 function schud(lijst) {
@@ -45,7 +51,7 @@ function myFunction(id, knop) {
         melding.setAttribute('role', 'alert');
         input.parentNode.insertBefore(melding, input.nextSibling);
       }
-      melding.textContent = 'Typ eerst je antwoord. Dan kun je het juiste antwoord bekijken.';
+      melding.textContent = T('kb.typ_eerst');
       return;
     }
   }
@@ -101,12 +107,12 @@ function markeer(container, goed) {
   if (oud) { oud.parentNode.removeChild(oud); }
   var el = document.createElement('div');
   el.className = 'uitslag ' + (goed ? 'uitslag-goed' : 'uitslag-fout');
-  el.textContent = goed ? '\u2713 Goed' : '\u2717 Niet goed';
+  el.textContent = goed ? T('res.goed') : T('res.fout');
   container.appendChild(el);
 }
 
 /* Externe pagina's laden (menu) met w3data.js */
-if (typeof w3IncludeHTML === 'function') { w3IncludeHTML(); }
+/* (pilot: menu en voet komen uit i18n.js, geen w3IncludeHTML nodig) */
 
 /* ---------- Toegankelijkheid voor de vraag-antwoordpagina's (KB) ---------- */
 klaar(function () {
@@ -142,7 +148,7 @@ function maakPaginering(blokken, ouder, anker, focusDoel) {
   wrap.appendChild(knop);
   ouder.insertBefore(wrap, anker);
 
-  function label() { knop.textContent = 'Meer vragen (nog ' + (totaal - getoond) + ')'; }
+  function label() { knop.textContent = T('meer', { n: totaal - getoond }); }
   label();
   knop.addEventListener('click', function () {
     var eerste = getoond;
@@ -177,134 +183,344 @@ klaar(function () {
   maakPaginering(gehusseld, ouder, anker, function (blok) { return blok.querySelector('button.vraag-knop'); });
 });
 
-/* ---------- AI-nakijken van getypte antwoorden (KB-pagina's met data-ai op de body) ----------
-   Opt-in: alleen als <body data-ai> en de pagina een echte AI_URL instelt (var AI_URL = 'https://...').
-   Is AI_URL leeg of nog een plaatshouder (JOUW-SUBDOMEIN), dan doet dit niets en werkt de pagina als gewone KB-pagina.
-   Per vraag komt er een knop "Laat AI nakijken". De pagina stuurt alleen {question, modelAnswer, studentAnswer, attempt}
-   naar de Worker (geen namen). Krijgt de leerling "goed", "half" of "fout" met een korte tip, dan mag hij het een tweede keer proberen;
-   na de tweede poging (of bij "goed") klapt het juiste antwoord vanzelf open. Lukt het nakijken niet, dan staat het juiste antwoord er gewoon. */
+/* ---------- KB-pagina's: zwevende knop "Controleer antwoorden" ----------
+   Kijkt alleen de ingevulde antwoorden na (lege vragen blijven dicht). Per vraag: goed of niet goed, het juiste antwoord
+   en de uitleg verschijnen onder de vraag. Het vergelijken is ruimhartig: hoofdletters, spaties, komma of punt,
+   een ontbrekende eenheid en schrijfwijzen van machten van 10 maken niet uit. Lange tekstantwoorden worden niet
+   automatisch beoordeeld: daar staat "Vergelijk zelf met het juiste antwoord". */
+var SUPERS = { '\u2070': '0', '\u00b9': '1', '\u00b2': '2', '\u00b3': '3', '\u2074': '4', '\u2075': '5', '\u2076': '6', '\u2077': '7', '\u2078': '8', '\u2079': '9', '\u207b': '-', '\u207a': '+' };
+
+function kbTekstVanAntwoord(box) {
+  var kopie = box.cloneNode(true);
+  Array.prototype.forEach.call(kopie.querySelectorAll('.uitleg, .uitslag'), function (e) { e.parentNode.removeChild(e); });
+  Array.prototype.forEach.call(kopie.querySelectorAll('sup'), function (e) { e.textContent = '^' + e.textContent; });
+  return (kopie.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function kbNormaal(t) {
+  t = String(t).toLowerCase();
+  /* EN: komma = duizendtalscheiding ("1,000" = 1000); NL: komma is de decimaalteken en blijft zo */
+  if (taalIsEN()) { t = t.replace(/(^|[^0-9.,])([0-9]{1,3}(?:,[0-9]{3})+)(?![0-9,])/g, function (m, v, g) { return v + g.replace(/,/g, ''); }); }
+  t = t.replace(/[\u2070\u00b9\u00b2\u00b3\u2074-\u207b]/g, function (c) { return SUPERS[c] === undefined ? c : (/[0-9]/.test(SUPERS[c]) || SUPERS[c] === '-' || SUPERS[c] === '+' ? SUPERS[c] : c); });
+  t = t.replace(/[\s\u00a0]+/g, '').replace(/[\u2212\u2013\u2014]/g, '-').replace(/,/g, '.').replace(/[\u00b7\u00d7*]/g, 'x');
+  return t;
+}
+
+/* Getal + eenheid: "10.0g", "3.40x10-3mol", "5/6", "25%" */
+function kbGetal(t) {
+  var s = kbNormaal(t).replace(/[\^{}()]/g, '');
+  var m = /^(-?\d+(?:\.\d+)?(?:\/\d+)?(?:x10-?\d+)?)(.*)$/.exec(s);
+  return m ? { getal: m[1], eenheid: m[2].replace(/[^a-z0-9%\/\u00b0]/g, '') } : null;
+}
+
+function kbWaarde(g) {
+  var m = /^(-?\d+(?:\.\d+)?)(?:\/(\d+))?(?:x10(-?\d+))?$/.exec(g);
+  if (!m) { return NaN; }
+  return parseFloat(m[1]) / (m[2] ? parseFloat(m[2]) : 1) * Math.pow(10, m[3] ? parseInt(m[3], 10) : 0);
+}
+
+/* Beoordeelt een antwoord tegen een antwoordbox.
+   1. data-goed="39,5 g|40 g": elk van die opties is goed.
+   2. Zonder data-goed: de hele tekst van de box, en bij een uitgewerkt rekenantwoord ("a x b = c g (d g in 2 significante
+      cijfers)") ook het eindantwoord (na het laatste "=") en de waarden in haakjes. Een leerling die alleen het getal typt is dus goed;
+      het eerste getal van de uitwerking (een tussenstap) niet. Dit gebeurt lokaal, voordat de AI eraan te pas komt. */
+function kbBeoordeelBox(ingevuld, box) {
+  var lijst = box.getAttribute('data-goed');
+  if (lijst) {
+    var eerste = null;
+    var opties = lijst.split('|');
+    for (var n = 0; n < opties.length; n++) {
+      var r0 = kbBeoordeel(ingevuld, opties[n]);
+      if (r0.oordeel === 'goed') { return r0; }
+      if (!eerste) { eerste = r0; }
+    }
+    return eerste;
+  }
+  var verwacht = kbTekstVanAntwoord(box);
+  var r = kbBeoordeel(ingevuld, verwacht);
+  if (r.oordeel === 'goed') { return r; }
+  var eind = kbEindantwoorden(verwacht);
+  if (!eind.length) { return r; }
+  var beste = null;
+  for (var k = 0; k < eind.length; k++) {
+    var x = kbVergelijkGetal(ingevuld, kbGetal(eind[k]));
+    if (x.oordeel === 'goed') { return x; }
+    if (x.oordeel === 'half' && !beste) { beste = x; }
+  }
+  if (beste) { return beste; }
+  if (/^\s*(?:[A-Za-z\u0370-\u03ff][A-Za-z0-9_]{0,3}\s*=\s*)?[-\u2212]?\d/.test(ingevuld)) { return { oordeel: 'fout', hint: '', numeriek: true }; }
+  return r;
+}
+
+/* TIJDELIJKE TWEAK (alleen EN-pilot): staat er een "=" in het antwoord ("8x2.5=20", "x = 20", "8 x 2,5 = 20 g"), dan telt alleen
+   wat na het laatste "=" staat (getrimd). Het deel ervoor (de berekening) wordt dus niet beoordeeld; "20=8x2.5" wordt daarom
+   als "8x2.5" gelezen en blijft fout bij een verwacht antwoord 20. Alleen in het lokale getallen-pad; het AI-pad krijgt de volledige tekst. */
+function kbNaLaatsteIs(ingevuld) {
+  var t = String(ingevuld), k = t.lastIndexOf('=');
+  return k === -1 ? t : t.slice(k + 1).trim();
+}
+
+/* Vergelijkt wat de leerling typte met een verwacht getal v = kbGetal(...): komma of punt, eenheid mag ontbreken,
+   schrijfwijze van machten van 10 maakt niet uit. Zelfde waarde maar andere afronding of eenheid = 'half'. */
+function kbVergelijkGetal(ingevuld, v) {
+  var i = kbGetal(kbNaLaatsteIs(ingevuld).replace(/^\s*[A-Za-z\u0370-\u03ff][A-Za-z0-9_]{0,3}\s*=\s*/, ''));
+  if (i && i.getal === v.getal && (i.eenheid === '' || v.eenheid === '' || i.eenheid.replace(/x/g, '') === v.eenheid.replace(/x/g, ''))) { return { oordeel: 'goed', hint: '', numeriek: true }; }
+  if (i && i.getal === v.getal) { return { oordeel: 'half', hint: T('kb.hint_eenheid'), numeriek: true }; }
+  if (i && i.getal !== v.getal && Math.abs(kbWaarde(i.getal) - kbWaarde(v.getal)) < 1e-12 * Math.max(1, Math.abs(kbWaarde(v.getal))) && v.getal.indexOf('/') === -1) {
+    return { oordeel: 'half', hint: T('kb.hint_afronding'), numeriek: true };
+  }
+  return { oordeel: 'fout', hint: '', numeriek: true };
+}
+
+/* Eindantwoorden uit een uitgewerkt model: "39,5 g" uit "0,79 x 50 = 39,5 g (40 g in 2 significante cijfers)".
+   Geeft de lijst getal-opties: de waarde na het laatste "=" (zonder haakjes) en elke waarde in haakjes die voor
+   "in N significante cijfers" staat. Lege lijst = geen uitgewerkt rekenantwoord (dan geldt de hele tekst). */
+function kbEindantwoorden(verwacht) {
+  var t = String(verwacht);
+  var uit = [];
+  /* Lijstantwoorden als "K = 2, L = 8, M = 7" zijn geen uitgewerkt rekenantwoord */
+  if (/\b[A-Za-z]\s*=\s*[0-9.,]+\s*[,;]\s*[A-Za-z]\s*=/.test(t)) { return uit; }
+  function toevoegen(x) {
+    x = String(x).replace(/[.;:,]+\s*$/, '').trim();
+    var g = kbGetal(x);
+    if (g && g.eenheid.length <= 14 && uit.indexOf(x) === -1) { uit.push(x); }
+  }
+  var haakjes = t.match(/\([^()]*\)/g) || [];
+  haakjes.forEach(function (h) {
+    var m = /^\(\s*([^()]*?)\s+in\s+[0-9]+\s+significant/i.exec(h);
+    if (m) { toevoegen(m[1]); }
+  });
+  /* Haakjes met uitleg weg, maar eenheden als mol/(L·s) blijven staan */
+  var kaal = t.replace(/\([^()]*\)/g, function (h) { return /^\(\s*[A-Za-z\u00b5\u03a9\u00b0]{1,3}\s*[\u00b7\/*\u00d7]\s*[A-Za-z\u00b5\u03a9\u00b0]{1,3}[0-9^]*\s*\)$/.test(h) ? h : ' '; }).replace(/\s+/g, ' ').trim();
+  var p = kaal.lastIndexOf('=');
+  if (p !== -1) {
+    var eind = kaal.slice(p + 1).trim();
+    var d = eind.split(new RegExp(',?\\s+(?:' + T('kb.dus_regex') + ')\\s+', 'i'));   /* "10,8, dus 11 MJ": beide mogen */
+    d.reverse().forEach(toevoegen);
+    /* Antwoord vooraan, uitwerking erachter: "48 s: 50 -> 30 ..., dus 12 s x 4 = 48 s" */
+    if (uit.length) {
+      var v = /^([^:=\s][^:=]{0,24}?):\s+(?=[A-Za-z\u0394\u03a3(])/.exec(kaal);
+      if (v && kbGetal(v[1])) { toevoegen(v[1]); }
+    }
+  }
+  return uit;
+}
+
+/* Geeft { oordeel: 'goed' | 'half' | 'fout' | 'zelf', hint: '', numeriek: true/false }
+   half = de waarde klopt, maar de eenheid of de afronding niet (lokaal bepaald, zonder AI) */
+/* Is dit een getal met hooguit een korte eenheid ("3,40 mol", "5 g/cm3") en niet een zin als "10 N naar rechts"? */
+function kbIsGetalMetEenheid(verwacht, v) {
+  if (!v || v.eenheid.length > 7 || /[()]/.test(verwacht)) { return false; }
+  var rest = String(verwacht).replace(/[x\u00d7\u00b7*]\s*10\s*\^?\s*[-\u2212]?\s*[0-9\u2070-\u2079\u207b]+/i, ' ').replace(/^[\s\-\u2212]*[0-9]+(?:[.,][0-9]+)?(?:\s*\/\s*[0-9]+)?/, ' ');
+  return rest.trim().split(/\s+/).filter(function (t) { return t; }).length <= 2;
+}
+function kbBeoordeel(ingevuld, verwacht) {
+  var v = kbGetal(verwacht);
+  if (kbIsGetalMetEenheid(verwacht, v)) { return kbVergelijkGetal(ingevuld, v); }
+  /* letters, cijfers, Griekse letters en rekentekens tellen mee; spaties en leestekens niet */
+  var tekst = function (x) { return kbNormaal(x).replace(/[^a-z0-9\u00e0-\u00ff\u0370-\u03ff=+\-\u2212*:\/\u00d7\u00b7<>%]/g, ''); };
+  var ruw = verwacht.replace(/\^/g, '');
+  var delen = ruw.indexOf('=') === -1 ? ruw.split(new RegExp('\\s+(?:' + T('kb.of_regex') + ')\\s+|\\/')).filter(function (d) { return tekst(d).length >= 4; }) : [];
+  var opties = [ruw, ruw.replace(/\([^)]*\)/g, '')].concat(delen);
+  opties = opties.map(tekst).filter(function (o) { return o.length > 0; });
+  if (!opties.length) { return { oordeel: 'zelf', hint: '', numeriek: false }; }
+  if (opties.indexOf(tekst(ingevuld)) !== -1) { return { oordeel: 'goed', hint: '', numeriek: false }; }
+  if (tekst(ruw).length > 30) { return { oordeel: 'zelf', hint: '', numeriek: false }; }
+  return { oordeel: 'fout', hint: '', numeriek: false };
+}
+
 klaar(function () {
-  if (!document.body.hasAttribute('data-ai')) { return; }
-  if (typeof AI_URL !== 'string' || !/^https?:\/\//.test(AI_URL) || AI_URL.indexOf('JOUW-') !== -1) { return; }
+  var knoppen = Array.prototype.slice.call(document.querySelectorAll('button.vraag-knop'));
+  var blokken = knoppen.map(function (k) { return k.parentNode; }).filter(function (b) {
+    return b.querySelector('input[type=text]') && b.querySelector('.antwoord-box');
+  });
+  if (!blokken.length) { return; }
+  var ouder = blokken[0].parentNode;
+  var laatste = blokken.filter(function (b) { return b.parentNode === ouder; }).pop();
+  var wrap = laatste.nextElementSibling && laatste.nextElementSibling.classList.contains('meer-vragen') ? laatste.nextElementSibling : laatste;
+  var ref = wrap.nextSibling;
 
-  /* Pagina is actief: de melding "in ontwikkeling" maakt plaats voor de uitleg */
-  var melding = document.getElementById('ai-melding');
-  if (melding) { melding.parentNode.removeChild(melding); }
-  var intro = document.getElementById('ai-intro');
-  if (intro) { intro.hidden = false; }
-  var vergelijk = document.getElementById('ai-vergelijk');
-  if (vergelijk) { vergelijk.parentNode.removeChild(vergelijk); }
+  var onder = document.createElement('div');
+  onder.className = 'kb-controle w3-center';
+  var origineel = document.createElement('button');
+  origineel.type = 'button';
+  origineel.id = 'kb-controleer';
+  origineel.className = 'w3-button knop-blauw';
+  origineel.textContent = T('kb.controleer');
+  var uitslag = document.createElement('div');
+  uitslag.id = 'kb-uitslag';
+  uitslag.setAttribute('role', 'status');
+  uitslag.setAttribute('aria-live', 'polite');
+  onder.appendChild(origineel); onder.appendChild(uitslag);
+  ouder.insertBefore(onder, ref);
 
-  var TITELS = { goed: '\u2713 Goed', half: '\u25CB Bijna goed', fout: '\u2717 Nog niet goed' };
+  function wis(blok) {
+    var inp = blok.querySelector('input[type=text]');
+    inp.classList.remove('kb-goed', 'kb-fout');
+    inp.removeAttribute('aria-invalid');
+    var oud = blok.querySelector('.kb-oordeel');
+    if (oud) { oud.parentNode.removeChild(oud); }
+  }
+  function sluit(blok) {
+    var box = blok.querySelector('.antwoord-box');
+    box.className = box.className.replace(' w3-show', '');
+    var k = blok.querySelector('button.vraag-knop');
+    if (k) { k.setAttribute('aria-expanded', 'false'); }
+  }
+  blokken.forEach(function (blok) {
+    /* Wijzig je je antwoord, dan verdwijnt de uitslag bij die vraag en gaat het juiste antwoord weer dicht */
+    blok.querySelector('input[type=text]').addEventListener('input', function () { wis(blok); sluit(blok); });
+  });
 
-  function toonAntwoord(blok) {
-    var knop = blok.querySelector('button.vraag-knop');
-    var doel = blok.querySelector('.antwoord-box');
-    if (knop && doel && doel.className.indexOf('w3-show') === -1) { knop.click(); }
+  var TITELS = { goed: T('res.goed'), half: T('res.half'), fout: T('res.fout'), zelf: T('res.zelf'), bezig: T('res.bezig') };
+  var KLASSEN = { goed: 'uitslag-goed', half: 'uitslag-half', fout: 'uitslag-fout', zelf: 'uitslag-zelf', bezig: 'uitslag-zelf' };
+  function toonOordeel(blok, oordeel, extra, openAntwoord) {
+    var inp = blok.querySelector('input[type=text]');
+    var box = blok.querySelector('.antwoord-box');
+    wis(blok);
+    var el = document.createElement('div');
+    el.className = 'kb-oordeel uitslag ' + KLASSEN[oordeel];
+    var kop = document.createElement('span');
+    kop.textContent = TITELS[oordeel];
+    el.appendChild(kop);
+    if (extra) {
+      var tip = document.createElement('span');
+      tip.className = 'kb-tip';
+      tip.textContent = ' ' + extra;
+      el.appendChild(tip);
+    }
+    inp.classList.remove('kb-half');
+    if (oordeel === 'goed' || oordeel === 'half' || oordeel === 'fout') {
+      inp.classList.add(oordeel === 'goed' ? 'kb-goed' : (oordeel === 'half' ? 'kb-half' : 'kb-fout'));
+      if (oordeel === 'fout') { inp.setAttribute('aria-invalid', 'true'); }
+    }
+    inp.parentNode.insertBefore(el, box);
+    var k = blok.querySelector('button.vraag-knop');
+    if (openAntwoord) {
+      if (box.className.indexOf('w3-show') === -1) { box.className += ' w3-show'; }
+      if (k) { k.setAttribute('aria-expanded', 'true'); }
+    } else {
+      sluit(blok);
+    }
   }
 
-  document.querySelectorAll('button.vraag-knop').forEach(function (vraagKnop) {
-    var blok = vraagKnop.parentNode;
-    var invoer = blok.querySelector('input[type=text]');
-    var antwoordBox = blok.querySelector('.antwoord-box');
-    if (!invoer || !antwoordBox) { return; }
-
-    var rij = document.createElement('div');
-    rij.className = 'ai-regel';
-    var knop = document.createElement('button');
-    knop.type = 'button';
-    knop.className = 'w3-button knop-blauw w3-round ai-knop';
-    knop.textContent = 'Laat AI nakijken';
-    rij.appendChild(knop);
-    var uitslag = document.createElement('div');
-    uitslag.className = 'ai-uitslag';
-    uitslag.setAttribute('role', 'status');
-    uitslag.setAttribute('aria-live', 'polite');
-    uitslag.hidden = true;
-    invoer.parentNode.insertBefore(rij, antwoordBox);
-    invoer.parentNode.insertBefore(uitslag, antwoordBox);
-
-    var pogingen = 0;
-    var bezig = false;
-
-    function melding(tekst, klasse) {
-      uitslag.className = 'ai-uitslag ' + (klasse || '');
-      uitslag.textContent = '';
-      var p = document.createElement('p');
-      p.textContent = tekst;
-      uitslag.appendChild(p);
-      uitslag.hidden = false;
-    }
-
-    function uitkomstTonen(u) {
-      uitslag.className = 'ai-uitslag ai-' + u.verdict;
-      uitslag.textContent = '';
-      var kop = document.createElement('strong');
-      kop.textContent = TITELS[u.verdict];
-      uitslag.appendChild(kop);
-      if (u.tip) {
-        var tip = document.createElement('p');
-        tip.textContent = u.tip;
-        uitslag.appendChild(tip);
-      }
-      uitslag.hidden = false;
-    }
-
-    function nakijken() {
-      if (bezig) { return; }
-      var antwoord = invoer.value.trim();
-      if (!antwoord) { melding('Typ eerst je antwoord. Dan kan de AI het nakijken.', 'ai-info'); return; }
-      bezig = true;
-      knop.disabled = true;
-      knop.textContent = 'Bezig met nakijken...';
-      melding('Even geduld, je antwoord wordt nagekeken.', 'ai-info');
-
-      var poging = Math.min(pogingen + 1, 2);
-      var stop = typeof AbortController === 'function' ? new AbortController() : null;
-      var timer = setTimeout(function () { if (stop) { stop.abort(); } }, 22000);
-
-      fetch(AI_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          question: vraagKnop.textContent.trim(),
-          modelAnswer: antwoordBox.textContent.replace(/\s+/g, ' ').trim(),
-          studentAnswer: antwoord,
-          attempt: poging
-        }),
-        signal: stop ? stop.signal : undefined
-      }).then(function (r) {
-        if (!r.ok) { throw new Error('status ' + r.status); }
-        return r.json();
-      }).then(function (u) {
-        if (!u || ['goed', 'half', 'fout'].indexOf(u.verdict) === -1) { throw new Error('antwoord onbekend'); }
-        u.tip = typeof u.tip === 'string' ? u.tip.slice(0, 240) : '';
-        pogingen++;
-        uitkomstTonen(u);
-        if (u.verdict === 'goed' || pogingen >= 2) {
-          toonAntwoord(blok);
+  var bezigMetAI = false;
+  origineel.addEventListener('click', function () {
+    if (bezigMetAI) { return; }
+    var lijst = [];   /* alle ingevulde vragen */
+    var vragenAI = []; /* de vragen die de AI mag nakijken (alleen als ai-nakijken.js op de pagina staat) */
+    var ai = window.kbAI && typeof window.kbAI.nakijken === 'function' ? window.kbAI : null;
+    blokken.forEach(function (blok) {
+      if (blok.hidden) { return; }
+      var inp = blok.querySelector('input[type=text]');
+      var box = blok.querySelector('.antwoord-box');
+      var tekst = inp.value.replace(/\s+/g, ' ').trim();
+      wis(blok);
+      if (!tekst) { return; }
+      var verwacht = kbTekstVanAntwoord(box);
+      var r = kbBeoordeelBox(tekst, box);
+      var it = { blok: blok, tekst: tekst, verwacht: verwacht, r: r, oordeel: r.oordeel, extra: r.hint };
+      lijst.push(it);
+      if (ai && r.oordeel !== 'goed' && ai.komtInAanmerking({ local: r.oordeel, numeriek: r.numeriek, verwacht: verwacht, ingevuld: tekst })) {
+        var eerder = blok._kbAI && blok._kbAI.tekst === tekst ? blok._kbAI : null;
+        if (eerder) {
+          it.oordeel = eerder.verdict; it.extra = eerder.tip; it.klaar = true;
         } else {
-          var extra = document.createElement('p');
-          extra.textContent = 'Pas je antwoord aan en laat het opnieuw nakijken.';
-          uitslag.appendChild(extra);
+          it.ai = true; vragenAI.push(it);
         }
-      }).catch(function () {
-        /* Terugvallen op het oude gedrag: het juiste antwoord tonen, zodat de leerling zelf kan vergelijken */
-        melding('Nakijken met AI lukt nu niet. Vergelijk je antwoord zelf met het juiste antwoord hieronder.', 'ai-info');
-        toonAntwoord(blok);
-      }).then(function () {
-        clearTimeout(timer);
-        bezig = false;
-        knop.disabled = false;
-        knop.textContent = pogingen > 0 ? 'Opnieuw nakijken' : 'Laat AI nakijken';
-      });
+      }
+    });
+    if (!lijst.length) {
+      uitslag.innerHTML = '<p class="inline-melding">' + T('kb.vul_in') + '</p>';
+      return;
     }
+    function tonenAntwoord(it) {
+      if (it.ai || it.klaar) { return it.oordeel === 'goed' || (it.blok._kbPoging || 0) >= 2 || it.oordeel === 'zelf'; }
+      return true;
+    }
+    function weergeven() {
+      lijst.forEach(function (it) {
+        var extra = it.extra;
+        if ((it.ai || it.klaar) && (it.oordeel === 'half' || it.oordeel === 'fout') && !tonenAntwoord(it)) {
+          extra = (extra ? extra + ' ' : '') + T('kb.pas_aan');
+        }
+        toonOordeel(it.blok, it.oordeel, extra, tonenAntwoord(it));
+      });
+      var n = { goed: 0, half: 0, fout: 0, zelf: 0 };
+      lijst.forEach(function (it) { n[it.oordeel]++; });
+      var rest = 0;
+      blokken.forEach(function (b) { if (!b.hidden && !b.querySelector('input[type=text]').value.trim()) { rest++; } });
+      uitslag.textContent = T('kb.uitslag', { goed: n.goed, n: lijst.length }) +
+        (n.half ? T('kb.uitslag_half', { n: n.half }) : '') + (n.zelf ? T('kb.uitslag_zelf', { n: n.zelf }) : '') +
+        (rest ? T('kb.uitslag_rest', { n: rest }) : '');
+    }
+    /* Eerst de lokale uitslag: goed/niet goed meteen, de AI-vragen krijgen "Wordt nagekeken" */
+    lijst.forEach(function (it) {
+      if (it.ai) { toonOordeel(it.blok, 'bezig', '', false); } else if (!it.klaar) { toonOordeel(it.blok, it.oordeel, it.extra, true); } else { toonOordeel(it.blok, it.oordeel, it.extra, tonenAntwoord(it)); }
+    });
+    if (!vragenAI.length) { weergeven(); return; }
 
-    knop.addEventListener('click', nakijken);
-    invoer.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') { e.preventDefault(); nakijken(); }
+    bezigMetAI = true;
+    var oudeTekst = origineel.textContent;
+    origineel.disabled = true; zweef.disabled = true;
+    origineel.textContent = T('kb.bezig'); zweef.textContent = T('kb.bezig');
+    uitslag.textContent = T('kb.even_geduld');
+    var verzoek = vragenAI.map(function (it, n) {
+      it.id = 'v' + n;
+      return { id: it.id, question: it.blok.querySelector('button.vraag-knop').textContent.replace(/\s+/g, ' ').trim(),
+               modelAnswer: it.verwacht, studentAnswer: it.tekst, attempt: Math.min((it.blok._kbPoging || 0) + 1, 2) };
+    });
+    var fout = false;
+    var belofte;
+    try { belofte = ai.nakijken(verzoek); } catch (e) { belofte = Promise.reject(e); }
+    Promise.resolve(belofte).then(function (res) {
+      vragenAI.forEach(function (it) {
+        var x = res && res[it.id];
+        if (x && ['goed', 'half', 'fout'].indexOf(x.verdict) !== -1) {
+          it.oordeel = x.verdict; it.extra = typeof x.tip === 'string' ? x.tip.slice(0, 240) : '';
+          it.blok._kbPoging = verzoek[vragenAI.indexOf(it)].attempt;
+          it.blok._kbAI = { tekst: it.tekst, verdict: x.verdict, tip: it.extra };
+        } else {
+          it.oordeel = 'zelf'; it.extra = T('kb.ai_fout'); it.ai = true; fout = true;
+        }
+      });
+    }, function () {
+      vragenAI.forEach(function (it) { it.oordeel = 'zelf'; it.extra = T('kb.ai_fout'); });
+    }).then(function () {
+      bezigMetAI = false;
+      origineel.disabled = false; zweef.disabled = false;
+      origineel.textContent = oudeTekst; zweef.textContent = oudeTekst;
+      weergeven();
     });
   });
+
+  var zweef = document.createElement('button');
+  zweef.type = 'button';
+  zweef.id = 'zweefknop';
+  zweef.className = 'zweefknop';
+  zweef.textContent = T('kb.controleer');
+  zweef.setAttribute('aria-label', T('kb.controleer_aria'));
+  zweef.addEventListener('click', function () { origineel.click(); });
+  document.body.appendChild(zweef);
+  document.body.classList.add('heeft-zweefknop', 'zweef-hoog');
+  /* Bedekt de zwevende knop het invoerveld waarin je typt (toetsenbord op een smal scherm)? Dan gaat de knop even weg. */
+  function knopBedektInvoer() {
+    var a = document.activeElement;
+    var tekstveld = a && a.matches && a.matches('input[type=text]');
+    var weg = false;
+    if (tekstveld && !zweef.hidden) {
+      document.body.classList.remove('zweef-typen');
+      var k = zweef.getBoundingClientRect(), r = a.getBoundingClientRect();
+      weg = k.width > 0 && !(k.right < r.left || k.left > r.right || k.bottom < r.top || k.top > r.bottom);
+    }
+    document.body.classList.toggle('zweef-typen', weg);
+  }
+  document.addEventListener('focusin', function () { setTimeout(knopBedektInvoer, 350); });
+  document.addEventListener('focusout', function () { document.body.classList.remove('zweef-typen'); });
+  if (window.visualViewport) { window.visualViewport.addEventListener('resize', knopBedektInvoer); }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (items) { zweef.hidden = items[0].isIntersecting; }).observe(origineel);
+  }
 });
 
 /* ---------- Meerkeuzepagina's (MP): willekeurige volgorde, pagina's van 15, nakijken ----------
@@ -342,15 +558,16 @@ klaar(function () {
       var antwoorden = blokken[i].querySelector('.answers');
       var gekozen = antwoorden.querySelector('input:checked');
       var juist = gekozen && vragen[i].opties[letters.indexOf(gekozen.value)].goed;
-      if (juist) {
-        goed++;
-        antwoorden.style.color = '#14532d';
-      } else {
-        antwoorden.style.color = '#7f1d1d';
-      }
+      /* Alleen het gekozen antwoord krijgt een kleur: goed = groen en vet, fout = rood en rustig.
+         Het juiste antwoord wordt bij een fout niet verklapt, zodat een tweede ronde mogelijk blijft. */
+      Array.prototype.forEach.call(antwoorden.querySelectorAll('label'), function (l) {
+        l.classList.remove('optie-goed', 'optie-fout');
+      });
+      if (gekozen) { gekozen.parentNode.classList.add(juist ? 'optie-goed' : 'optie-fout'); }
+      if (juist) { goed++; }
       markeer(antwoorden, !!juist);
     }
-    uitslag.innerHTML = goed + ' van de ' + aantal + ' goed';
+    uitslag.innerHTML = T('mp.uitslag', { goed: goed, n: aantal });
   };
 });
 
@@ -366,11 +583,11 @@ klaar(function () {
   zweef.type = 'button';
   zweef.id = 'zweefknop';
   zweef.className = 'zweefknop';
-  zweef.textContent = 'Controleer nu';
-  zweef.setAttribute('aria-label', 'Controleer nu: kijk je antwoorden na en toon je score');
+  zweef.textContent = T('mp.controleer');
+  zweef.setAttribute('aria-label', T('mp.controleer_aria'));
   zweef.addEventListener('click', function () { origineel.click(); });
   document.body.appendChild(zweef);
-  document.body.classList.add('heeft-zweefknop');
+  document.body.classList.add('heeft-zweefknop', 'zweef-hoog');
 
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (items) {
@@ -402,3 +619,17 @@ if (window.jQuery) {
     });
   });
 }
+
+/* KB-vragen: elke vraag met eigen invoerveld, antwoord en terugkoppeling in een eigen kader (zie .kb-item in 123school.css) */
+klaar(function () {
+  var knoppen = document.querySelectorAll('button.vraag-knop');
+  for (var i = 0; i < knoppen.length; i++) {
+    var ouder = knoppen[i].parentNode;
+    if (ouder && ouder !== document.body && ouder.tagName === 'DIV') { ouder.classList.add('kb-item'); }
+  }
+  /* kort eindantwoord in het antwoordvak: markeren, zodat het in 123school.css opvalt (voorvoegsel 'Antwoord:' via CSS, tekst blijft ongewijzigd) */
+  var eerste = document.querySelectorAll('.antwoord-box > p:first-child');
+  for (var j = 0; j < eerste.length; j++) {
+    if (!eerste[j].classList.contains('uitleg') && eerste[j].textContent.replace(/\s+/g, ' ').trim().length <= 60) { eerste[j].classList.add('eindantwoord'); }
+  }
+});

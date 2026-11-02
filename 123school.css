@@ -1,6 +1,6 @@
 body{
 	font-size: 20px;
-	font-family: sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	color: #111111;
 }
 .question{
@@ -52,6 +52,41 @@ a:focus-visible {
   outline: 3px solid #FFB300;
   outline-offset: 2px;
 }
+.kb-controle { margin: 24px 0; }
+#kb-uitslag { font-weight: bold; margin-top: 16px; color: #111111; }
+input.kb-goed { background-color: #E6F4EA; border: 2px solid #14532d; }
+input.kb-fout { background-color: #FBEDED; border: 2px solid #7f1d1d; }
+input.kb-half { background-color: #FFF4CE; border: 2px solid #8a5200; }
+.kb-oordeel { margin: 6px 0; font-weight: 700; }
+.uitslag-zelf { color: #111111; font-weight: 400; }
+
+/* Wisselknop boven elk KB/MP-paar: Open vragen | Meerkeuzevragen (ruimte voor de vaste menubalk) */
+.oefen-wissel {
+  display: flex;
+  gap: 0;
+  max-width: 560px;
+  margin: 100px auto 8px;
+  padding: 0 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.oefen-wissel a {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 2px solid #003A5C;
+  background-color: #ffffff;
+  color: #111111;
+  text-align: center;
+  text-decoration: none;
+}
+.oefen-wissel a:first-child { border-radius: 4px 0 0 4px; }
+.oefen-wissel a:last-child { border-radius: 0 4px 4px 0; margin-left: -2px; }
+.oefen-wissel a:hover { background-color: #EAF2F8; }
+.oefen-wissel a[aria-current="page"] { background-color: #EAF2F8; font-weight: bold; box-shadow: inset 0 -4px 0 #003A5C; }
+.oefen-wissel a:focus-visible { outline: 3px solid #FFB300; outline-offset: 2px; position: relative; }
+@media (max-width: 768px) { .oefen-wissel { margin-top: 62px; } }
+
 .antwoord-box {
   background-color: #EAF2F8;
   color: #111111;
@@ -74,6 +109,13 @@ a:focus-visible {
 }
 .uitslag-goed { color: #14532d; }
 .uitslag-fout { color: #7f1d1d; }
+.uitslag-half { color: #8a5200; }
+.kb-tip { color: #111111; font-weight: 400; }
+#ai-intro { color: #111111; }
+/* Meerkeuze na nakijken: gekozen goed antwoord groen en vet, gekozen fout antwoord rood en rustig */
+.answers label.optie-goed, .answers label.optie-goed:has(input:checked) { color: #14532d; font-weight: 700; background-color: #E6F4EA; border-radius: 4px; }
+.answers label.optie-fout, .answers label.optie-fout:has(input:checked) { color: #7f1d1d; font-weight: 400; text-decoration: line-through; text-decoration-thickness: 1px; background-color: #FBEDED; border-radius: 4px; }
+.uitslag-fout { font-weight: 400; }
 .in-ontwikkeling {
   background-color: #FFF4CE;
   color: #111111;
@@ -96,7 +138,7 @@ body.heeft-zweefknop footer { padding-bottom: 96px; }
   padding: 12px 20px;
   border: 2px solid #ffffff;
   border-radius: 8px;
-  background-color: #003A5C;
+  background-color: #1565C0;
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -106,11 +148,37 @@ body.heeft-zweefknop footer { padding-bottom: 96px; }
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
   transition: none;
 }
-.zweefknop:hover { background-color: #00527F; }
+.zweefknop:hover, .zweefknop:focus-visible { background-color: #0D47A1; }
 .zweefknop:focus-visible { outline: 3px solid #FFB300; outline-offset: 3px; }
 .zweefknop[hidden] { display: none; }
 @media (max-width: 600px) {
   .zweefknop { padding: 10px 16px; right: 12px; bottom: 12px; }
+}
+
+/* KB-pagina's: de knop zit hoger, dichter bij de vragen (niet op de onderrand van het scherm) */
+body.zweef-hoog .zweefknop {
+  bottom: 22vh;
+  bottom: max(88px, 22vh);
+  right: 24px;
+  right: max(24px, env(safe-area-inset-right));
+}
+body.zweef-hoog footer { padding-bottom: 24px; }
+
+/* Controleknoppen (zwevend en vast): helder blauw dat opvalt naast de donkerblauwe koppen. Wit op #1565C0 = 5,75 : 1 (WCAG AA), hover #0D47A1 = 9,7 : 1 */
+#kb-controleer, .w3-button#kb-controleer, #submit, .w3-button#submit {
+  background-color: #1565C0;
+  color: #ffffff;
+  font-weight: bold;
+}
+#kb-controleer:hover, #kb-controleer:focus-visible, #submit:hover, #submit:focus-visible,
+.w3-button#kb-controleer:hover, .w3-button#submit:hover {
+  background-color: #0D47A1 !important;
+  color: #ffffff !important;
+}
+@media (max-width: 600px) {
+  /* op een telefoon: kleiner en net boven de onderkant, zodat de invoervelden vrij blijven */
+  body.zweef-typen .zweefknop { display: none; }
+  body.zweef-hoog .zweefknop { bottom: 84px; right: 10px; padding: 10px 14px; font-size: 15px; }
 }
 
 /* ===== Meerkeuzepagina's (MP): was eerst per pagina een eigen <style> ===== */
@@ -128,27 +196,6 @@ body.heeft-zweefknop footer { padding-bottom: 96px; }
 .meer-vragen { margin: 24px 0; }
 .question:focus { outline: none; }
 
-/* ===== AI-nakijken (alleen pagina's met data-ai; zie school.js) ===== */
-.ai-regel { margin: 8px 0 4px 0; }
-.ai-knop[disabled] { opacity: 0.7; cursor: wait; }
-.ai-uitslag {
-  margin: 6px 0 8px 0;
-  padding: 10px 16px;
-  border-left: 5px solid #003A5C;
-  background-color: #EAF2F8;
-  color: #111111;
-  border-radius: 0 4px 4px 0;
-}
-.ai-uitslag p { margin: 4px 0 0 0; }
-.ai-uitslag[hidden] { display: none; }
-.ai-goed { background-color: #E6F4EA; border-left-color: #14532d; }
-.ai-half { background-color: #FFF4CE; border-left-color: #B26A00; }
-.ai-fout { background-color: #F7ECEC; border-left-color: #7f1d1d; }
-.ai-info { background-color: #EAF2F8; border-left-color: #003A5C; }
-@media (max-width: 600px) {
-  .ai-knop { display: block; width: 100%; }
-}
-
 /* ===== Alleen pagina "Stoffen KBAI" (was eigen <style>) ===== */
 .vraag-knop.w3-hover-light-grey:hover {
   background-color: #D3D3D3 !important;
@@ -160,21 +207,21 @@ body.home .w3-button.spel-open {
   background-color: #003A5C !important; color: #ffffff !important;
 }
 body.home {
-  font: 400 15px Lato, sans-serif;
+  font: 400 15px Arial, Helvetica, sans-serif;
   line-height: 1.8;
   color: #111111;
 }
 body.home h2 {
   font-size: 24px;
   text-transform: uppercase;
-  color: #303030;
+  color: #003A5C;
   font-weight: 600;
   margin-bottom: 30px;
 }
 body.home h4 {
   font-size: 19px;
   line-height: 1.375em;
-  color: #303030;
+  color: #111111;
   font-weight: 400;
   margin-bottom: 30px;
 }
@@ -182,7 +229,7 @@ body.home .jumbotron {
   background-color: #303030;
   color: #fff;
   padding: 100px 25px;
-  font-family: Montserrat, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 body.home .container-fluid {
   padding: 60px 50px;
@@ -275,7 +322,7 @@ body.home .navbar {
   line-height: 1.42857143 !important;
   letter-spacing: 4px;
   border-radius: 0;
-  font-family: Montserrat, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 body.home .navbar li a, body.home .navbar .navbar-brand {
   color: #fff !important;
@@ -426,4 +473,158 @@ table { max-width: 100%; }
   body.home .carousel-indicators li { width: 14px; height: 14px; margin: 0 5px; }
   body.home .w3-dropdown-content { max-width: calc(100vw - 32px); }
   body.home .w3-bar-item, body.home .w3-button { font-size: 16px; }
+}
+
+/* verhoudingstabel in antwoorden van rekenvragen */
+.rekentabel { width: auto; max-width: 100%; margin: 8px 0; }
+.rekentabel th, .rekentabel td { padding: 6px 8px; text-align: center; font-size: 15px; overflow-wrap: normal; word-break: normal; }
+.rekentabel th:first-child, .rekentabel td:first-child { text-align: left; }
+.rekenregel { margin-top: 8px; font-weight: bold; }
+
+/* Rekenvaardigheden: korte uitwerking onder het antwoord */
+.antwoord-box .uitleg { font-size: 10pt; color: #111111; margin-top: 0; }
+
+/* Eindantwoord in het antwoordvak: duidelijk herkenbaar (alleen het antwoord is vet) */
+.antwoord-box > p.eindantwoord { font-weight: bold; color: #003A5C; margin: 10px 0 6px 0; font-size: 12pt; }
+.antwoord-box > p.eindantwoord::before { content: var(--tekst-antwoord, "Antwoord:\00a0"); }  /* tekst komt uit i18n.js (lang/<taal>/ui.json: kb.antwoord) */
+.antwoord-box > p.eindantwoord + p.uitleg { margin-top: 0; }
+
+/* KB-vragen: elke vraag, het invoerveld, de terugkoppeling en het antwoord staan samen in één kader */
+.kb-item {
+  border: 1.3pt solid #003A5C;
+  border-radius: 6px;
+  background-color: #ffffff;
+  margin: 0 0 32px 0;
+  padding: 0 0 14px 0;
+  overflow: hidden;
+}
+.kb-item > .vraag-knop { margin-top: 0; border: 0; border-radius: 0; }
+.kb-item > input[type="text"] { width: calc(100% - 28px); margin: 14px 14px 0 14px; }
+.kb-item > .kb-oordeel, .kb-item > .uitslag { margin: 10px 14px 0 14px; }
+.kb-item > .antwoord-box { margin: 10px 14px 0 14px; }
+.kb-item > .inline-melding { margin: 10px 14px 0 14px; }
+@media (max-width: 768px) { .kb-item { margin-bottom: 28px; } }
+
+
+/* ---- NL/EN-knop (i18n.js) ---- */
+.taal-wissel { display: flex; align-items: center; height: 51px; padding: 0 8px; gap: 4px; }
+.taal-knop {
+  font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1;
+  min-width: 48px; min-height: 40px; padding: 0 10px;
+  color: #ffffff; background: transparent; border: 1.3px solid #ffffff; border-radius: 4px; cursor: pointer;
+}
+.taal-knop:hover { background-color: #EAF2F8; color: #003A5C; }
+.taal-knop[aria-pressed="true"] { background-color: #ffffff; color: #003A5C; font-weight: bold; }
+.taal-knop:focus-visible { outline: 3px solid #FFB300; outline-offset: 2px; }
+
+/* Jaar-aanduiding tussen haakjes (EN): kleiner dan de kop, minimaal 10 pt, zwart, niet grijs */
+.jaar-klein { font-size: 14px; color: #111111; }
+
+/* ===== KB-pagina: kader om titel en uitleg boven de vragen (rustig: Arial, #111111, kop #003A5C, kader 1,3 pt = 1,75 px) ===== */
+.kb-intro {
+  border: 1.3pt solid #003A5C;
+  border-radius: 6px;
+  background-color: #F2F7FA;
+  padding: 18px 24px 14px 24px;
+  margin: 34px 0 28px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  line-height: 1.6;
+  color: #111111;
+}
+.kb-intro h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20pt;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #003A5C;
+  margin: 0 0 14px 0;
+  padding: 0;
+}
+.kb-intro p { font-size: 12pt; color: #111111; margin: 0 0 10px 0; }
+.kb-intro p.kb-privacy {
+  font-weight: 700;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #003A5C;
+}
+@media (max-width: 600px) {
+  .kb-intro { padding: 14px 16px 10px 16px; margin: 34px 0 22px 0; }
+  .kb-intro h2 { font-size: 17pt; }
+}
+
+/* Melding op een pagina die nog niet vertaald is (i18n.js) */
+.niet-vertaald { margin: 12px 24px; padding: 10px 16px; border: 1.3pt solid #003A5C; border-radius: 6px; background: #F2F7FA; color: #111111; font-family: Arial, Helvetica, sans-serif; font-size: 12pt; }
+
+/* Ingebed contactformulier (Google Form) */
+
+/* ==========================================================================
+   COMPACT (laptop) - rustiger en korter, zonder inhoud te veranderen
+   Alles is een override, dus terugdraaien = dit blok weghalen.
+   Kleuren, lettertype en kaders blijven volgens de opmaakstandaard (Arial, #111111, kop #003A5C, kader 1,3 pt).
+   ========================================================================== */
+
+/* -- Alle schermen: minder lege ruimte onder en boven blokken -- */
+.w3-padding-64 { padding-top: 32px !important; padding-bottom: 32px !important; }
+footer.w3-padding-32 { padding-top: 14px !important; padding-bottom: 14px !important; position: relative; }
+footer.w3-container p { margin: 0; }
+/* de "naar boven"-knop hing 100 px boven de voet en maakte hem onnodig hoog: nu rechtsonder in de voet zelf */
+footer .w3-tooltip { position: absolute !important; bottom: 8px !important; right: 12px !important; }
+footer .w3-tooltip .w3-button { padding: 4px 10px; }
+.kb-controle { margin: 14px 0; }
+.meer-vragen { margin: 14px 0; }
+#results { margin-top: 12px; }
+
+/* -- Laptop en groter (>= 1200 px) -- */
+@media (min-width: 1200px) {
+  /* menu: een regel in plaats van twee (de balk liep over twee regels en bedekte de kop van de pagina) */
+  body:not(.home) .w3-bar .w3-bar-item.w3-button { font-size: 15px; padding: 8px 14px; line-height: 1.5; }
+  .taal-wissel { height: 40px; }
+  .taal-knop { min-height: 30px; min-width: 44px; font-size: 15px; }
+  .oefen-wissel { margin-top: 56px; max-width: 520px; }
+  .oefen-wissel a { min-height: 38px; padding: 7px 12px; font-size: 16px; }
+}
+
+/* -- Laptop en groter (>= 1100 px): lezen en typen in een rustige kolom -- */
+@media (min-width: 1100px) {
+  /* kolom van 900 px in het midden; de blauwe controleknop rechts blijft vrij van de tekst */
+  body[data-pagina="kb"] #inhoud, body[data-pagina="mp"] #scheikunde { max-width: 900px; margin-left: auto; margin-right: auto; }
+  body[data-pagina="mp"] #scheikunde { padding-top: 16px !important; padding-bottom: 8px !important; }
+  body[data-pagina="kb"] > br { display: none; }
+  body[data-pagina="kb"] > .w3-padding-64, body[data-pagina="puzzel"] > .w3-padding-32 { padding-top: 8px !important; padding-bottom: 24px !important; }
+
+  /* KB: kop en uitleg kleiner, vragen dichter bij elkaar maar nog steeds elk in een eigen kader */
+  .kb-intro { margin: 14px 0 18px 0; padding: 12px 20px 8px 20px; }
+  .kb-intro h2 { font-size: 18pt; margin-bottom: 8px; }
+  .kb-intro p { margin-bottom: 8px; }
+  .kb-intro p.kb-privacy { margin-top: 8px; padding-top: 8px; }
+  .kb-item { margin-bottom: 24px; padding-bottom: 12px; }
+  .vraag-knop { padding: 8px 16px; }
+  .kb-item > input[type="text"] { margin-top: 12px; }
+
+  /* MP: de vier antwoorden in twee kolommen (a b / c d), elke vraag blijft duidelijk een blok */
+  #mp-kop { display: block; margin-bottom: 4px; }
+  body[data-pagina="mp"] #scheikunde > p { margin: 0 0 14px 0; }
+  .vraag-blok { margin-bottom: 16px; }
+  .question { margin-bottom: 6px; }
+  .answers { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; margin-bottom: 0; }
+  .answers label { margin-left: 8px; padding: 3px 6px; }
+  .answers > :not(label) { grid-column: 1 / -1; }
+}
+
+/* -- Beginpagina op laptop -- */
+@media (min-width: 1000px) {
+  body.home .jumbotron { padding: 66px 25px 28px 25px; margin-bottom: 0; }
+  body.home .jumbotron h1 { font-size: 46px; margin: 10px 0 4px 0; }
+  body.home .jumbotron p { font-size: 18px; margin: 0; }
+  body.home .item h4 { margin: 28px 0 18px 0; }
+  body.home .carousel-indicators { bottom: 0; }
+  body.home h2 { margin-bottom: 12px; margin-top: 0; }
+  body.home .w3-row { margin-top: 0; }
+  body.home .w3-row h2 { margin-top: 0; }
+  body.home .w3-row > br:first-child { display: none; }
+  body.home #contact { padding-top: 24px !important; padding-bottom: 24px !important; }
+  body.home #contact .w3-col.m5 { width: 100%; max-width: 760px; }
+  /* pictogrammen boven de secties en kolommen: groter (40 px), dezelfde donkerblauwe kleur als de koppen, nauwelijks extra hoogte */
+  body.home i.fa-solid { display: block; font-size: 40px; line-height: 1; color: #003A5C; margin: 4px auto 8px auto; }
 }
