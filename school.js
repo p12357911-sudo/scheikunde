@@ -458,7 +458,7 @@ klaar(function () {
     lijst.forEach(function (it) {
       if (it.ai) { toonOordeel(it.blok, 'bezig', '', false); } else if (!it.klaar) { toonOordeel(it.blok, it.oordeel, it.extra, true); } else { toonOordeel(it.blok, it.oordeel, it.extra, tonenAntwoord(it)); }
     });
-    if (!vragenAI.length) { weergeven(); return; }
+    if (!vragenAI.length) { weergeven(); if (zweef && zweef.herplaats) { zweef.herplaats(); } return; }
 
     bezigMetAI = true;
     var oudeTekst = origineel.textContent;
@@ -490,7 +490,7 @@ klaar(function () {
       bezigMetAI = false;
       origineel.disabled = false; zweef.disabled = false;
       origineel.textContent = oudeTekst; zweef.textContent = oudeTekst;
-      weergeven();
+      weergeven(); if (zweef && zweef.herplaats) { zweef.herplaats(); }
     });
   });
 
@@ -503,21 +503,7 @@ klaar(function () {
   zweef.addEventListener('click', function () { origineel.click(); });
   document.body.appendChild(zweef);
   document.body.classList.add('heeft-zweefknop', 'zweef-hoog');
-  /* Bedekt de zwevende knop het invoerveld waarin je typt (toetsenbord op een smal scherm)? Dan gaat de knop even weg. */
-  function knopBedektInvoer() {
-    var a = document.activeElement;
-    var tekstveld = a && a.matches && a.matches('input[type=text]');
-    var weg = false;
-    if (tekstveld && !zweef.hidden) {
-      document.body.classList.remove('zweef-typen');
-      var k = zweef.getBoundingClientRect(), r = a.getBoundingClientRect();
-      weg = k.width > 0 && !(k.right < r.left || k.left > r.right || k.bottom < r.top || k.top > r.bottom);
-    }
-    document.body.classList.toggle('zweef-typen', weg);
-  }
-  document.addEventListener('focusin', function () { setTimeout(knopBedektInvoer, 350); });
-  document.addEventListener('focusout', function () { document.body.classList.remove('zweef-typen'); });
-  if (window.visualViewport) { window.visualViewport.addEventListener('resize', knopBedektInvoer); }
+  zweefBijAanraking(zweef);
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (items) { zweef.hidden = items[0].isIntersecting; }).observe(origineel);
   }
@@ -568,8 +554,80 @@ klaar(function () {
       markeer(antwoorden, !!juist);
     }
     uitslag.innerHTML = T('mp.uitslag', { goed: goed, n: aantal });
+    var zk = document.getElementById('zweefknop'); if (zk && zk.herplaats) { zk.herplaats(); }
   };
 });
+
+/* ---------- Zwevende knop op telefoon/tablet: blijft boven het toetsenbord en bedekt nooit het invoerveld ----------
+   Alleen bij een smal scherm of aanraakscherm (zelfde voorwaarde als in 123school.css); op de computer doet dit niets.
+   - Toetsenbord open (window.visualViewport wordt kleiner): de knop gaat omhoog tot boven het toetsenbord, de balk met pijltjes en de adresbalk van Safari.
+   - Zou de knop het invoerveld bedekken waarin je typt? Dan gaat hij naar de bovenkant van het zichtbare scherm (onder het menu).
+   - Past dat ook niet (heel klein scherm)? Pas dan verdwijnt hij even (klasse zweef-typen); dat is de laatste uitweg. */
+function zweefBijAanraking(zweef) {
+  if (!window.matchMedia) { return; }
+  var mq = window.matchMedia('(max-width: 600px), (pointer: coarse)');
+  var vv = window.visualViewport;
+  var RAND = 12;          /* ruimte boven alles wat het toetsenbord erbij brengt */
+  var ADRESBALK = 88;     /* veiligheidsruimte: de balk met pijltjes/vinkje (ca. 45 pt) en de zwevende Safari-adresbalk (ca. 40 pt) zitten niet in visualViewport; samen ca. 100 px boven het toetsenbord */
+  var wacht = false;
+  function tekstveld() {
+    var a = document.activeElement;
+    return a && a.matches && a.matches('input[type=text], input:not([type]), textarea') ? a : null;
+  }
+  function raakt(k, r, ruimte) {
+    return !(k.right < r.left - ruimte || k.left > r.right + ruimte || k.bottom < r.top - ruimte || k.top > r.bottom + ruimte);
+  }
+  function menuHoogte() {
+    var n = document.querySelector('#navbar .w3-top, #navbar nav, .w3-top');
+    if (!n) { return 0; }
+    var r = n.getBoundingClientRect();
+    return (getComputedStyle(n).position === 'fixed' || getComputedStyle(n).position === 'sticky') ? Math.max(0, r.bottom) : 0;
+  }
+  function wis() {
+    zweef.style.bottom = ''; zweef.style.top = ''; document.body.classList.remove('zweef-typen');
+  }
+  function plaats() {
+    wacht = false;
+    if (!mq.matches) { wis(); return; }
+    /* steeds dezelfde maat: onderkant van het zichtbare deel = vv.offsetTop + vv.height (in dezelfde coordinaten als position: fixed) */
+    var hoogte = window.innerHeight;
+    var kb = 0, bovenkant = 0;
+    if (vv && vv.scale <= 1.01) {
+      kb = Math.max(0, hoogte - (vv.offsetTop + vv.height));
+      bovenkant = vv.offsetTop;
+    }
+    var veld = tekstveld();
+    zweef.style.top = 'auto';
+    if (kb > 80) { zweef.style.bottom = Math.round(kb + RAND + ADRESBALK) + 'px'; } else { zweef.style.bottom = ''; }
+    document.body.classList.remove('zweef-typen');
+    if (!veld || zweef.hidden) { if (!veld) { zweef.style.top = ''; } return; }
+    var k = zweef.getBoundingClientRect(), r = veld.getBoundingClientRect();
+    if (k.width === 0 || !raakt(k, r, 8)) { return; }
+    /* naar boven: onder het menu, bovenin het zichtbare deel */
+    zweef.style.bottom = 'auto';
+    zweef.style.top = Math.round(Math.max(bovenkant, 0) + Math.max(menuHoogte(), 0) + 8) + 'px';
+    k = zweef.getBoundingClientRect();
+    if (raakt(k, r, 8)) { document.body.classList.add('zweef-typen'); }
+  }
+  function plan() { if (!wacht) { wacht = true; (window.requestAnimationFrame || setTimeout)(plaats); } }
+  /* iOS laat het toetsenbord en het scrollen naar het veld met een animatie zien; de eerste meting is dan vaak te vroeg.
+     Daarom meten we een paar keer opnieuw, en zolang er een tekstveld actief is ook elke 250 ms (goedkoop; stopt bij verlaten). */
+  function planLater() { plan(); [100, 300, 600, 1000].forEach(function (ms) { setTimeout(plan, ms); }); }
+  var tik = null;
+  function bewaak() {
+    if (tik === null) { tik = setInterval(function () { if (tekstveld()) { plan(); } else { clearInterval(tik); tik = null; plan(); } }, 250); }
+  }
+  document.addEventListener('focusin', function () { planLater(); if (tekstveld()) { bewaak(); } });
+  document.addEventListener('focusout', function () { setTimeout(plan, 120); setTimeout(plan, 400); });
+  /* na het nakijken verandert de pagina (uitleg en oordeel erbij): opnieuw plaatsen */
+  zweef.herplaats = planLater;
+  window.addEventListener('scroll', plan, { passive: true });
+  window.addEventListener('resize', plan);
+  window.addEventListener('orientationchange', planLater);
+  if (vv) { vv.addEventListener('resize', plan); vv.addEventListener('scroll', plan); }
+  if (mq.addEventListener) { mq.addEventListener('change', plan); }
+  plan();
+}
 
 /* ---------- Zwevende knop "Controleer nu" voor de meerkeuzepagina's (MP) ----------
    Klikt op de gewone knop, dus het nakijken blijft precies hetzelfde en de pagina blijft op dezelfde plek staan.
@@ -588,6 +646,7 @@ klaar(function () {
   zweef.addEventListener('click', function () { origineel.click(); });
   document.body.appendChild(zweef);
   document.body.classList.add('heeft-zweefknop', 'zweef-hoog');
+  zweefBijAanraking(zweef);
 
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (items) {
