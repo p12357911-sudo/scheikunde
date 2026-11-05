@@ -515,6 +515,34 @@ table { max-width: 100%; }
   line-height: 1.4;
   field-sizing: content; /* moderne browsers; JS vangt de rest op */
 }
+
+/* KB: kleine ₂ / ² knopjes onder het antwoordvak (Unicode, geen editor) */
+.kb-subsup {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 6px 14px 0 14px;
+}
+.kb-subsup-knop {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  min-width: 40px;
+  min-height: 36px;
+  padding: 4px 10px;
+  color: #003A5C;
+  background: #F2F7FA;
+  border: 1.3px solid #003A5C;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.kb-subsup-knop:hover { background: #EAF2F8; }
+.kb-subsup-knop:focus-visible { outline: 3px solid #FFB300; outline-offset: 2px; }
+@media (min-width: 1100px) {
+  .kb-subsup { margin-top: 4px; }
+  .kb-subsup-knop { min-height: 32px; min-width: 36px; font-size: 15px; }
+}
+
 .kb-item > .kb-oordeel, .kb-item > .uitslag { margin: 10px 14px 0 14px; }
 .kb-item > .antwoord-box { margin: 10px 14px 0 14px; }
 .kb-item > .inline-melding { margin: 10px 14px 0 14px; }

@@ -39,6 +39,97 @@ function kbAutoHoogte(el) {
 }
 
 
+/* Subscript/superscript-hulp bij KB-antwoordvakken: Unicode (geen HTML).
+   Selecteer tekst en tik ₂ of ². Alleen tekens met een Unicode-variant worden omgezet. */
+var KB_NAAR_SUB = {
+  '0': '\u2080', '1': '\u2081', '2': '\u2082', '3': '\u2083', '4': '\u2084',
+  '5': '\u2085', '6': '\u2086', '7': '\u2087', '8': '\u2088', '9': '\u2089',
+  '+': '\u208a', '-': '\u208b', '\u2212': '\u208b',
+  'a': '\u2090', 'A': '\u2090', 'e': '\u2091', 'E': '\u2091',
+  'h': '\u2095', 'H': '\u2095', 'i': '\u1d62', 'I': '\u1d62',
+  'j': '\u2c7c', 'J': '\u2c7c', 'k': '\u2096', 'K': '\u2096',
+  'l': '\u2097', 'L': '\u2097', 'm': '\u2098', 'M': '\u2098',
+  'n': '\u2099', 'N': '\u2099', 'o': '\u2092', 'O': '\u2092',
+  'p': '\u209a', 'P': '\u209a', 'r': '\u1d63', 'R': '\u1d63',
+  's': '\u209b', 'S': '\u209b', 't': '\u209c', 'T': '\u209c',
+  'u': '\u1d64', 'U': '\u1d64', 'v': '\u1d65', 'V': '\u1d65',
+  'x': '\u2093', 'X': '\u2093'
+};
+var KB_NAAR_SUP = {
+  '0': '\u2070', '1': '\u00b9', '2': '\u00b2', '3': '\u00b3', '4': '\u2074',
+  '5': '\u2075', '6': '\u2076', '7': '\u2077', '8': '\u2078', '9': '\u2079',
+  '+': '\u207a', '-': '\u207b', '\u2212': '\u207b',
+  'n': '\u207f', 'N': '\u207f'
+};
+/* Omgekeerde map voor nakijken: Unicode-subscripts terug naar gewone tekens. */
+var SUBS = {
+  '\u2080': '0', '\u2081': '1', '\u2082': '2', '\u2083': '3', '\u2084': '4',
+  '\u2085': '5', '\u2086': '6', '\u2087': '7', '\u2088': '8', '\u2089': '9',
+  '\u208a': '+', '\u208b': '-',
+  '\u2090': 'a', '\u2091': 'e', '\u2095': 'h', '\u1d62': 'i', '\u2c7c': 'j',
+  '\u2096': 'k', '\u2097': 'l', '\u2098': 'm', '\u2099': 'n', '\u2092': 'o',
+  '\u209a': 'p', '\u1d63': 'r', '\u209b': 's', '\u209c': 't', '\u1d64': 'u',
+  '\u1d65': 'v', '\u2093': 'x'
+};
+
+function kbUnicodeZet(tekst, map) {
+  var uit = '', i, c;
+  for (i = 0; i < tekst.length; i++) {
+    c = tekst.charAt(i);
+    uit += (map[c] !== undefined) ? map[c] : c;
+  }
+  return uit;
+}
+
+function kbPlaatsUnicode(el, map) {
+  if (!el || el.tagName !== 'TEXTAREA') { return; }
+  var start = el.selectionStart;
+  var end = el.selectionEnd;
+  if (typeof start !== 'number' || typeof end !== 'number') { return; }
+  if (start === end) { return; } /* selecteer eerst tekst; anders doen we niets */
+  var val = el.value;
+  var nieuw = kbUnicodeZet(val.slice(start, end), map);
+  el.value = val.slice(0, start) + nieuw + val.slice(end);
+  el.selectionStart = start;
+  el.selectionEnd = start + nieuw.length;
+  try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+  kbAutoHoogte(el);
+  try { el.dispatchEvent(new Event('input', { bubbles: true })); } catch (e2) { /* oude browsers */ }
+}
+
+function kbMaakSubSupBalk(inp) {
+  if (!inp || inp.tagName !== 'TEXTAREA' || !inp.classList.contains('kb-antwoord')) { return; }
+  if (inp.getAttribute('data-kb-subsup') === '1') { return; }
+  inp.setAttribute('data-kb-subsup', '1');
+  var balk = document.createElement('div');
+  balk.className = 'kb-subsup';
+  balk.setAttribute('role', 'group');
+  balk.setAttribute('aria-label', 'Subscript en superscript');
+  function knop(label, title, map) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'kb-subsup-knop';
+    b.textContent = label;
+    b.title = title;
+    b.setAttribute('aria-label', title);
+    /* mousedown: selectie bewaren (anders verdwijnt die bij focus-verlies) */
+    b.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    b.addEventListener('click', function () { kbPlaatsUnicode(inp, map); });
+    return b;
+  }
+  balk.appendChild(knop('\u2082', 'Subscript (selecteer tekst, dan tikken)', KB_NAAR_SUB));
+  balk.appendChild(knop('\u00b2', 'Superscript (selecteer tekst, dan tikken)', KB_NAAR_SUP));
+  if (inp.nextSibling) { inp.parentNode.insertBefore(balk, inp.nextSibling); }
+  else { inp.parentNode.appendChild(balk); }
+}
+
+function kbInitSubSup(root) {
+  var plek = root && root.querySelectorAll ? root : document;
+  Array.prototype.forEach.call(plek.querySelectorAll('textarea.kb-antwoord'), kbMaakSubSupBalk);
+}
+
+
+
 /* Schud een lijst willekeurig (Fisher-Yates). Geeft een nieuwe lijst terug. */
 function schud(lijst) {
   var a = lijst.slice();
@@ -187,16 +278,18 @@ klaar(function () {
   knoppen.forEach(function (k) {
     if (k.parentNode.parentNode === ouder) { blokken.push(k.parentNode); }
   });
-  if (blokken.length < 2) { return; }
-
   /* Browsers onthouden getypte antwoorden op positie; na het husselen zou dat verkeerd gaan. */
   document.querySelectorAll('textarea.kb-antwoord, input.kb-antwoord, input[type=text]').forEach(function (inp) {
     inp.setAttribute('autocomplete', 'off');
     if (inp.tagName === 'TEXTAREA') {
       kbAutoHoogte(inp);
       inp.addEventListener('input', function () { kbAutoHoogte(inp); });
+      kbMaakSubSupBalk(inp);
     }
   });
+  kbInitSubSup();
+
+  if (blokken.length < 2) { return; }
 
   var anker = blokken[blokken.length - 1].nextSibling;
   var gehusseld = schud(blokken);
@@ -224,6 +317,8 @@ function kbNormaal(t) {
   /* EN: komma = duizendtalscheiding ("1,000" = 1000); NL: komma is de decimaalteken en blijft zo */
   if (taalIsEN()) { t = t.replace(/(^|[^0-9.,])([0-9]{1,3}(?:,[0-9]{3})+)(?![0-9,])/g, function (m, v, g) { return v + g.replace(/,/g, ''); }); }
   t = t.replace(/[\u2070\u00b9\u00b2\u00b3\u2074-\u207b]/g, function (c) { return SUPERS[c] === undefined ? c : (/[0-9]/.test(SUPERS[c]) || SUPERS[c] === '-' || SUPERS[c] === '+' ? SUPERS[c] : c); });
+  t = t.replace(/[\u2080-\u208e\u2090-\u209c\u1d62\u1d63\u1d64\u1d65\u2c7c]/g, function (c) { return SUBS[c] === undefined ? c : SUBS[c]; });
+  t = t.replace(/\u207f/g, 'n'); /* superscript n */
   t = t.replace(/[\s\u00a0]+/g, '').replace(/[\u2212\u2013\u2014]/g, '-').replace(/,/g, '.').replace(/[\u00b7\u00d7*]/g, 'x');
   return t;
 }
