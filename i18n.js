@@ -153,7 +153,7 @@
       var vrij = vrijAttr === 'alle' || vrijLijst.indexOf(i) !== -1;
       var label = (t('kb.jouw_antwoord_op') + ' ' + alsTekst(q.q)).replace(/"/g, '&quot;');
       h += '<div>\n  <button onclick=\'myFunction("' + id + '"' + (vrij ? '' : ', this') + ')\' class=\'vraag-knop\'> ' + q.q + '</button>\n' +
-           '  <input class=\'w3-input w3-border w3-round\' name=\'first\' type=\'text\' aria-label="' + label + '" placeholder=\'' + t('kb.placeholder').replace(/'/g, '&#39;') + '\'>\n' +
+           '  <textarea class=\'w3-input w3-border w3-round kb-antwoord\' name=\'first\' rows=\'2\' aria-label="' + label + '" placeholder=\'' + t('kb.placeholder').replace(/'/g, '&#39;') + '\'></textarea>\n' +
            '  <div id="' + id + '" class=\'w3-hide w3-container antwoord-box\'' + (q.goed ? ' data-goed="' + q.goed.join('|').replace(/"/g, '&quot;') + '"' : '') + '>\n' +
            (q.tabel ? '    ' + q.tabel + '\n' : '') + '    <p' + (q.pc ? ' class="' + q.pc + '"' : '') + '> ' + q.a + '</p>\n' + (q.e ? '    <p class="uitleg">' + t('kb.uitleg') + ' ' + q.e + '</p>\n' : '') + '  </div>\n</div>\n';
     });

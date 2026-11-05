@@ -23,6 +23,22 @@ function klaar(fn) {
 function T(sleutel, vars) { return window.i18n ? window.i18n.t(sleutel, vars) : sleutel; }
 function taalIsEN() { return !!window.i18n && window.i18n.lang === 'en'; }
 
+
+/* Antwoordveld van een KB-vraag: textarea (nieuw) of oud input[type=text]. */
+function kbAntwoordVeld(blok) {
+  return blok.querySelector('textarea.kb-antwoord, input.kb-antwoord, input[type=text]');
+}
+
+/* Laat een antwoord-textarea meegroeien met de tekst (geen horizontale scroll). */
+function kbAutoHoogte(el) {
+  if (!el || el.tagName !== 'TEXTAREA') { return; }
+  el.style.height = 'auto';
+  var h = el.scrollHeight;
+  if (h < 40) { h = 40; }
+  el.style.height = h + 'px';
+}
+
+
 /* Schud een lijst willekeurig (Fisher-Yates). Geeft een nieuwe lijst terug. */
 function schud(lijst) {
   var a = lijst.slice();
@@ -174,7 +190,13 @@ klaar(function () {
   if (blokken.length < 2) { return; }
 
   /* Browsers onthouden getypte antwoorden op positie; na het husselen zou dat verkeerd gaan. */
-  document.querySelectorAll('input[type=text]').forEach(function (inp) { inp.setAttribute('autocomplete', 'off'); });
+  document.querySelectorAll('textarea.kb-antwoord, input.kb-antwoord, input[type=text]').forEach(function (inp) {
+    inp.setAttribute('autocomplete', 'off');
+    if (inp.tagName === 'TEXTAREA') {
+      kbAutoHoogte(inp);
+      inp.addEventListener('input', function () { kbAutoHoogte(inp); });
+    }
+  });
 
   var anker = blokken[blokken.length - 1].nextSibling;
   var gehusseld = schud(blokken);
@@ -332,7 +354,7 @@ function kbBeoordeel(ingevuld, verwacht) {
 klaar(function () {
   var knoppen = Array.prototype.slice.call(document.querySelectorAll('button.vraag-knop'));
   var blokken = knoppen.map(function (k) { return k.parentNode; }).filter(function (b) {
-    return b.querySelector('input[type=text]') && b.querySelector('.antwoord-box');
+    return kbAntwoordVeld(b) && b.querySelector('.antwoord-box');
   });
   if (!blokken.length) { return; }
   var ouder = blokken[0].parentNode;
@@ -355,8 +377,8 @@ klaar(function () {
   ouder.insertBefore(onder, ref);
 
   function wis(blok) {
-    var inp = blok.querySelector('input[type=text]');
-    inp.classList.remove('kb-goed', 'kb-fout');
+    var inp = kbAntwoordVeld(blok);
+    inp.classList.remove('kb-goed', 'kb-fout', 'kb-half');
     inp.removeAttribute('aria-invalid');
     var oud = blok.querySelector('.kb-oordeel');
     if (oud) { oud.parentNode.removeChild(oud); }
@@ -369,13 +391,13 @@ klaar(function () {
   }
   blokken.forEach(function (blok) {
     /* Wijzig je je antwoord, dan verdwijnt de uitslag bij die vraag en gaat het juiste antwoord weer dicht */
-    blok.querySelector('input[type=text]').addEventListener('input', function () { wis(blok); sluit(blok); });
+    kbAntwoordVeld(blok).addEventListener('input', function () { wis(blok); sluit(blok); });
   });
 
   var TITELS = { goed: T('res.goed'), half: T('res.half'), fout: T('res.fout'), zelf: T('res.zelf'), bezig: T('res.bezig') };
   var KLASSEN = { goed: 'uitslag-goed', half: 'uitslag-half', fout: 'uitslag-fout', zelf: 'uitslag-zelf', bezig: 'uitslag-zelf' };
   function toonOordeel(blok, oordeel, extra, openAntwoord) {
-    var inp = blok.querySelector('input[type=text]');
+    var inp = kbAntwoordVeld(blok);
     var box = blok.querySelector('.antwoord-box');
     wis(blok);
     var el = document.createElement('div');
@@ -412,7 +434,7 @@ klaar(function () {
     var ai = window.kbAI && typeof window.kbAI.nakijken === 'function' ? window.kbAI : null;
     blokken.forEach(function (blok) {
       if (blok.hidden) { return; }
-      var inp = blok.querySelector('input[type=text]');
+      var inp = kbAntwoordVeld(blok);
       var box = blok.querySelector('.antwoord-box');
       var tekst = inp.value.replace(/\s+/g, ' ').trim();
       wis(blok);
@@ -449,7 +471,7 @@ klaar(function () {
       var n = { goed: 0, half: 0, fout: 0, zelf: 0 };
       lijst.forEach(function (it) { n[it.oordeel]++; });
       var rest = 0;
-      blokken.forEach(function (b) { if (!b.hidden && !b.querySelector('input[type=text]').value.trim()) { rest++; } });
+      blokken.forEach(function (b) { if (!b.hidden && !kbAntwoordVeld(b).value.trim()) { rest++; } });
       uitslag.textContent = T('kb.uitslag', { goed: n.goed, n: lijst.length }) +
         (n.half ? T('kb.uitslag_half', { n: n.half }) : '') + (n.zelf ? T('kb.uitslag_zelf', { n: n.zelf }) : '') +
         (rest ? T('kb.uitslag_rest', { n: rest }) : '');
@@ -692,3 +714,54 @@ klaar(function () {
     if (!eerste[j].classList.contains('uitleg') && eerste[j].textContent.replace(/\s+/g, ' ').trim().length <= 60) { eerste[j].classList.add('eindantwoord'); }
   }
 });
+
+/* ---------- Startpagina: Onderwerpen-menu's klik/tik (blijft open bij scrollen) ----------
+   Open/dicht met tik op de knop; dicht met tik erbuiten of Escape. Scrollen sluit niet. */
+klaar(function () {
+  var drops = document.querySelectorAll('.w3-dropdown-click');
+  if (!drops.length) { return; }
+
+  function sluitAlles(behalve) {
+    Array.prototype.forEach.call(drops, function (drop) {
+      if (drop === behalve) { return; }
+      var menu = drop.querySelector('.w3-dropdown-content');
+      var knop = drop.querySelector('button, .w3-button');
+      if (menu) { menu.classList.remove('w3-show'); }
+      drop.classList.remove('is-open');
+      if (knop) { knop.setAttribute('aria-expanded', 'false'); }
+    });
+  }
+
+  Array.prototype.forEach.call(drops, function (drop) {
+    var knop = null, menu = null, i, kind;
+    for (i = 0; i < drop.children.length; i++) {
+      kind = drop.children[i];
+      if (!knop && (kind.tagName === 'BUTTON' || (kind.classList && kind.classList.contains('w3-button')))) { knop = kind; }
+      if (!menu && kind.classList && kind.classList.contains('w3-dropdown-content')) { menu = kind; }
+    }
+    if (!knop || !menu) { return; }
+    knop.setAttribute('aria-haspopup', 'true');
+    knop.setAttribute('aria-expanded', 'false');
+    knop.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var open = menu.classList.contains('w3-show');
+      sluitAlles(null);
+      if (!open) {
+        menu.classList.add('w3-show');
+        drop.classList.add('is-open');
+        knop.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    var inDrop = e.target.closest ? e.target.closest('.w3-dropdown-click') : null;
+    if (inDrop) { return; } /* link in menu mag navigeren; knop handelt zelf */
+    sluitAlles(null);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { sluitAlles(null); }
+  });
+});
+

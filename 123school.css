@@ -54,9 +54,9 @@ a:focus-visible {
 }
 .kb-controle { margin: 24px 0; }
 #kb-uitslag { font-weight: bold; margin-top: 16px; color: #111111; }
-input.kb-goed { background-color: #E6F4EA; border: 2px solid #14532d; }
-input.kb-fout { background-color: #FBEDED; border: 2px solid #7f1d1d; }
-input.kb-half { background-color: #FFF4CE; border: 2px solid #8a5200; }
+input.kb-goed, textarea.kb-goed { background-color: #E6F4EA; border: 2px solid #14532d; }
+input.kb-fout, textarea.kb-fout { background-color: #FBEDED; border: 2px solid #7f1d1d; }
+input.kb-half, textarea.kb-half { background-color: #FFF4CE; border: 2px solid #8a5200; }
 .kb-oordeel { margin: 6px 0; font-weight: 700; }
 .uitslag-zelf { color: #111111; font-weight: 400; }
 
@@ -410,15 +410,15 @@ body.home .slide {
 /* Menu en knoppen: raakvlak minstens 44 px hoog */
 .w3-bar-item.w3-button,
 .w3-dropdown-content .w3-bar-item,
-.w3-dropdown-hover > .w3-button {
+.w3-dropdown-click > .w3-button {
   min-height: 44px;
   box-sizing: border-box;
 }
 .w3-bar .w3-bar-item.w3-button,
 #navDemo .w3-bar-item { display: flex; align-items: center; }
 .w3-bar .nav-smal { justify-content: center; min-width: 48px; }
-.w3-dropdown-content .w3-bar-item, .w3-dropdown-hover > .w3-button { display: flex; align-items: center; }
-.w3-dropdown-hover > .w3-button { justify-content: center; }
+.w3-dropdown-content .w3-bar-item, .w3-dropdown-click > .w3-button { display: flex; align-items: center; }
+.w3-dropdown-click > .w3-button { justify-content: center; }
 }
 
 /* Blijft in het beeld staan als je met Tab naar een onderdeel springt (menu boven, zwevende knop onder) */
@@ -500,7 +500,21 @@ table { max-width: 100%; }
   overflow: hidden;
 }
 .kb-item > .vraag-knop { margin-top: 0; border: 0; border-radius: 0; }
-.kb-item > input[type="text"] { width: calc(100% - 28px); margin: 14px 14px 0 14px; }
+.kb-item > input[type="text"],
+.kb-item > textarea.kb-antwoord {
+  width: calc(100% - 28px);
+  margin: 14px 14px 0 14px;
+  box-sizing: border-box;
+  resize: none;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  min-height: 2.6em;
+  line-height: 1.4;
+  field-sizing: content; /* moderne browsers; JS vangt de rest op */
+}
 .kb-item > .kb-oordeel, .kb-item > .uitslag { margin: 10px 14px 0 14px; }
 .kb-item > .antwoord-box { margin: 10px 14px 0 14px; }
 .kb-item > .inline-melding { margin: 10px 14px 0 14px; }
@@ -601,7 +615,7 @@ footer .w3-tooltip .w3-button { padding: 4px 10px; }
   .kb-intro p.kb-privacy { margin-top: 8px; padding-top: 8px; }
   .kb-item { margin-bottom: 24px; padding-bottom: 12px; }
   .vraag-knop { padding: 8px 16px; }
-  .kb-item > input[type="text"] { margin-top: 12px; }
+  .kb-item > input[type="text"], .kb-item > textarea.kb-antwoord { margin-top: 12px; }
 
   /* MP: de vier antwoorden in twee kolommen (a b / c d), elke vraag blijft duidelijk een blok */
   #mp-kop { display: block; margin-bottom: 4px; }
@@ -652,18 +666,19 @@ body[data-pagina="kb"]:not(:has(.oefen-wissel)), body[data-pagina="mp"]:not(:has
   .rij-compact > br { display: none; }
   /* kop bovenaan, knop onderaan: alle knoppen in een rij op dezelfde hoogte */
   .rij-compact > div > .w3-container { display: flex; flex-direction: column; align-items: center; height: 100%; box-sizing: border-box; }
-  .rij-compact > div > .w3-container > .w3-dropdown-hover { margin-top: auto; }
+  .rij-compact > div > .w3-container > .w3-dropdown-click { margin-top: auto; }
 }
 /* kleine ondertitel onder een kolomkop (bijv. Basis / leerjaar 3 en 4) */
 .kolom-sub { margin: -0.4em 0 0.8em; font-size: 14px; font-weight: normal; text-transform: none; }
 
 /* 'Onderwerpen'-knoppen: duidelijk klikbaar (zwart/wit, met pijltje, hover- en focusstatus) */
-.w3-container .w3-dropdown-hover > button.w3-button.w3-black { border-radius: 6px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; border: 2px solid #000; transition: background-color .15s, color .15s; }
-.w3-container .w3-dropdown-hover > button.w3-button.w3-black::after { content: " \25BE"; text-decoration: none; display: inline-block; margin-left: .3em; }
-.w3-container .w3-dropdown-hover:hover > button.w3-button.w3-black,
-.w3-container .w3-dropdown-hover:focus-within > button.w3-button.w3-black { background-color: #fff !important; color: #000 !important; }
-.w3-container .w3-dropdown-hover > button.w3-button.w3-black:focus-visible { outline: 3px solid #0b57d0; outline-offset: 2px; }
-.w3-dropdown-hover:focus-within > .w3-dropdown-content { display: block; }
+.w3-container .w3-dropdown-click > button.w3-button.w3-black { border-radius: 6px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; border: 2px solid #000; transition: background-color .15s, color .15s; }
+.w3-container .w3-dropdown-click > button.w3-button.w3-black::after { content: " \25BE"; text-decoration: none; display: inline-block; margin-left: .3em; }
+.w3-container .w3-dropdown-click:hover > button.w3-button.w3-black,
+.w3-container .w3-dropdown-click.is-open > button.w3-button.w3-black { background-color: #fff !important; color: #000 !important; }
+.w3-container .w3-dropdown-click > button.w3-button.w3-black:focus-visible { outline: 3px solid #0b57d0; outline-offset: 2px; }
+/* open via JS (class w3-show); niet via focus-within — anders sluit scrollen op touch het menu */
+.w3-dropdown-click > .w3-dropdown-content.w3-show { display: block; }
 
 /* -- Peter Pan-plaatje op de beginpagina: zachte, vervaagde rand (zit in de PNG zelf) i.p.v. een harde ellips -- */
 body.home .jumbotron img.pp-hero { border-radius: 0; background: none; }
