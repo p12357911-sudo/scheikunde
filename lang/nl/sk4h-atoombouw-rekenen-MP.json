@@ -1,0 +1,317 @@
+{
+ "title": "Chemisch rekenen - 123 school",
+ "heading": "Chemisch rekenen",
+ "intro": [],
+ "questions": [
+  {
+   "question": "Welke drie deeltjes vind je in een atoom?",
+   "answers": {
+    "a": "Protonen, neutronen en elektronen",
+    "b": "Protonen, ionen en moleculen",
+    "c": "Neutronen, fotonen en elektronen",
+    "d": "Protonen, neutronen en ionen"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "Welke deeltjes geven het atoom voornamelijk zijn massa?",
+   "answers": {
+    "a": "Alleen elektronen",
+    "b": "Protonen en neutronen",
+    "c": "Alleen protonen",
+    "d": "Elektronen en fotonen"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "In welke eenheid druk je de massa van atomen uit?",
+   "answers": {
+    "a": "gram (g)",
+    "b": "kilogram (kg)",
+    "c": "atomaire massaeenheid (u)",
+    "d": "newton (N)"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Waardoor wordt het atoomnummer bepaald?",
+   "answers": {
+    "a": "Door het aantal neutronen",
+    "b": "Door het aantal elektronen in de buitenste schil",
+    "c": "Door de massa van het atoom",
+    "d": "Door het aantal protonen in de kern"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "Wat geeft het massagetal weer?",
+   "answers": {
+    "a": "Het aantal protonen + neutronen",
+    "b": "Alleen het aantal protonen",
+    "c": "Alleen het aantal elektronen",
+    "d": "Het aantal schillen"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "Hoe heet het overzicht van alle atomen?",
+   "answers": {
+    "a": "De reactietabel",
+    "b": "Het periodiek systeem",
+    "c": "De BINAS-index",
+    "d": "Het ionenschema"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Waarom zijn er in een neutraal atoom evenveel protonen als elektronen?",
+   "answers": {
+    "a": "Omdat protonen en elektronen even zwaar zijn",
+    "b": "Omdat neutronen de lading bepalen",
+    "c": "Omdat protonen 1+ en elektronen 1− hebben; het atoom is neutraal",
+    "d": "Omdat er altijd evenveel neutronen zijn"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Wat is een verschil tussen het atoommodel van Rutherford en dat van Bohr?",
+   "answers": {
+    "a": "Rutherford heeft geen kern; Bohr wel",
+    "b": "Bij Rutherford bewegen elektronen in één wolk; bij Bohr in schillen",
+    "c": "Bij Bohr zitten protonen in schillen",
+    "d": "Bij Rutherford bestaan er geen elektronen"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Waar bevinden protonen, neutronen en elektronen zich?",
+   "answers": {
+    "a": "Alle drie in de kern",
+    "b": "Alle drie in schillen",
+    "c": "p en n in de kern; elektronen in schillen buiten de kern",
+    "d": "Elektronen in de kern; p en n in schillen"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Hoe heten de buitenste elektronen?",
+   "answers": {
+    "a": "Kern elektronen",
+    "b": "Vrije neutronen",
+    "c": "Foto-elektronen",
+    "d": "Valentie-elektronen"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "Hoeveel elektronen passen maximaal in de K-, L- en M-schil?",
+   "answers": {
+    "a": "2, 8 en 18",
+    "b": "8, 8 en 8",
+    "c": "2, 8 en 8",
+    "d": "2, 18 en 32"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "Wat is een edelgasconfiguratie?",
+   "answers": {
+    "a": "Een configuratie met alleen protonen in de kern",
+    "b": "Een elektronenconfiguratie waarbij de schillen maximaal gevuld zijn",
+    "c": "Een configuratie met evenveel neutronen als protonen",
+    "d": "Een configuratie zonder valentie-elektronen"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Hoeveel valentie-elektronen heeft magnesium? (BINAS tabel 99)",
+   "answers": {
+    "a": "12",
+    "b": "8",
+    "c": "2",
+    "d": "0"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Wat moet magnesium doen om de edelgasconfiguratie te bereiken?",
+   "answers": {
+    "a": "Twee elektronen opnemen → Mg<sup>2−</sup>",
+    "b": "Eén elektron afstaan → Mg<sup>+</sup>",
+    "c": "Acht elektronen opnemen",
+    "d": "Twee elektronen afstaan → Mg<sup>2+</sup>"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "Wat is de molecuulmassa van H<sub>2</sub>SO<sub>4</sub>? (BINAS tabel 99)",
+   "answers": {
+    "a": "98,08 u",
+    "b": "64,06 u",
+    "c": "50,08 u",
+    "d": "116,08 u"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "In welke groep staan de halogenen?",
+   "answers": {
+    "a": "groep 1",
+    "b": "groep 17",
+    "c": "groep 18",
+    "d": "groep 2"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "In welke groep staan de edelgassen?",
+   "answers": {
+    "a": "groep 17",
+    "b": "groep 1",
+    "c": "groep 18",
+    "d": "groep 2"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Elementen in dezelfde groep hebben vergelijkbare …",
+   "answers": {
+    "a": "massagetallen",
+    "b": "atoomnummers",
+    "c": "aantallen neutronen",
+    "d": "chemische eigenschappen"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "Hoe bereikt natrium een edelgasconfiguratie?",
+   "answers": {
+    "a": "Door één valentie-elektron af te staan → Na<sup>+</sup>",
+    "b": "Door één elektron op te nemen → Na<sup>−</sup>",
+    "c": "Door zeven elektronen op te nemen",
+    "d": "Door twee elektronen af te staan"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "Hoe bereikt fluor (F) een edelgasconfiguratie?",
+   "answers": {
+    "a": "Door één elektron af te staan → F<sup>+</sup>",
+    "b": "Door één elektron op te nemen → F<sup>−</sup>",
+    "c": "Door zeven elektronen af te staan",
+    "d": "Door twee elektronen op te nemen"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Wat zijn isotopen?",
+   "answers": {
+    "a": "Atomen met hetzelfde massagetal maar een verschillend atoomnummer",
+    "b": "Moleculen met dezelfde formule maar een andere structuur",
+    "c": "Atomen met hetzelfde atoomnummer maar een verschillend massagetal",
+    "d": "Ionen met dezelfde lading"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Waarom is het massagetal in het periodiek systeem vaak geen rond getal?",
+   "answers": {
+    "a": "Omdat atomen gedeeltelijke protonen hebben",
+    "b": "Omdat elektronen meetellen in de massa",
+    "c": "Omdat de druk de massa verandert",
+    "d": "Omdat het een gewogen gemiddelde is van natuurlijke isotopen"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "De relatieve atoommassa van chloor is 35,45 u (isotopen Cl-35 en Cl-37). Welk isotoop komt het meest voor?",
+   "answers": {
+    "a": "Cl-35",
+    "b": "Cl-37",
+    "c": "Beide even vaak",
+    "d": "Dat kun je niet afleiden"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "Welke isotopen van broom komen in de natuur voor? (BINAS 25A)",
+   "answers": {
+    "a": "Br-78 en Br-80",
+    "b": "Br-79 en Br-81",
+    "c": "Br-35 en Br-37",
+    "d": "Br-79 en Br-80"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Broom heeft atoomnummer 35. Hoeveel neutronen heeft Br-79?",
+   "answers": {
+    "a": "35",
+    "b": "79",
+    "c": "44",
+    "d": "46"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Hoeveel mol H-atomen zitten er in 3,5 mol water (H<sub>2</sub>O)?",
+   "answers": {
+    "a": "3,5 mol",
+    "b": "1,75 mol",
+    "c": "10,5 mol",
+    "d": "7,0 mol"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "Wat is de kloppende reactievergelijking voor de verbranding van ethaan?",
+   "answers": {
+    "a": "2C<sub>2</sub>H<sub>6</sub> + 7O<sub>2</sub> → 4CO<sub>2</sub> + 6H<sub>2</sub>O",
+    "b": "C<sub>2</sub>H<sub>6</sub> + O<sub>2</sub> → CO<sub>2</sub> + H<sub>2</sub>O",
+    "c": "2C<sub>2</sub>H<sub>6</sub> + 3O<sub>2</sub> → 4CO<sub>2</sub> + 6H<sub>2</sub>O",
+    "d": "C<sub>2</sub>H<sub>6</sub> + 7O<sub>2</sub> → 2CO<sub>2</sub> + 3H<sub>2</sub>O"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "In welke molverhouding verbrandt ethaan met zuurstof tot CO<sub>2</sub> en H<sub>2</sub>O?",
+   "answers": {
+    "a": "1 : 1 : 1 : 1",
+    "b": "2 : 7 : 4 : 6",
+    "c": "2 : 3 : 4 : 6",
+    "d": "1 : 3,5 : 2 : 3"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Je laat 2 mol ethaan reageren met 14 mol zuurstof (verhouding 2 : 7). Wat geldt voor zuurstof?",
+   "answers": {
+    "a": "Ondermaat",
+    "b": "Precies genoeg",
+    "c": "Overmaat",
+    "d": "Er is geen zuurstof nodig"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Wat is de wetenschappelijke notatie van 0,0023 mol?",
+   "answers": {
+    "a": "2,3 · 10<sup>3</sup> mol",
+    "b": "0,23 · 10<sup>-2</sup> mol",
+    "c": "23 · 10<sup>-4</sup> mol",
+    "d": "2,3 · 10<sup>−3</sup> mol"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "1 L is gelijk aan …",
+   "answers": {
+    "a": "0,001 m<sup>3</sup>",
+    "b": "0,01 m<sup>3</sup>",
+    "c": "1 m<sup>3</sup>",
+    "d": "1000 m<sup>3</sup>"
+   },
+   "correctAnswer": "a"
+  }
+ ]
+}

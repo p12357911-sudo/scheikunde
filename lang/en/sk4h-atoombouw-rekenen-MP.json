@@ -1,0 +1,317 @@
+{
+ "title": "Chemical calculations - 123 school",
+ "heading": "Chemical calculations",
+ "intro": [],
+ "questions": [
+  {
+   "question": "Which three particles do you find in an atom?",
+   "answers": {
+    "a": "Protons, neutrons and electrons",
+    "b": "Protons, ions and molecules",
+    "c": "Neutrons, photons and electrons",
+    "d": "Protons, neutrons and ions"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "Which particles give the atom most of its mass?",
+   "answers": {
+    "a": "Electrons only",
+    "b": "Protons and neutrons",
+    "c": "Protons only",
+    "d": "Electrons and photons"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "In which unit is the mass of atoms expressed?",
+   "answers": {
+    "a": "gram (g)",
+    "b": "kilogram (kg)",
+    "c": "atomic mass unit (u)",
+    "d": "newton (N)"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "What determines the atomic number?",
+   "answers": {
+    "a": "The number of neutrons",
+    "b": "The number of electrons in the outer shell",
+    "c": "The mass of the atom",
+    "d": "The number of protons in the nucleus"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "What does the mass number show?",
+   "answers": {
+    "a": "The number of protons + neutrons",
+    "b": "The number of protons only",
+    "c": "The number of electrons only",
+    "d": "The number of shells"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "What is the overview of all atoms called?",
+   "answers": {
+    "a": "The reaction table",
+    "b": "The periodic table",
+    "c": "The BINAS index",
+    "d": "The ion scheme"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Why does a neutral atom have as many protons as electrons?",
+   "answers": {
+    "a": "Because protons and electrons have the same mass",
+    "b": "Because neutrons determine the charge",
+    "c": "Because protons are 1+ and electrons are 1−; the atom is neutral",
+    "d": "Because there are always as many neutrons"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "What is one difference between the Rutherford and Bohr atomic models?",
+   "answers": {
+    "a": "Rutherford has no nucleus; Bohr does",
+    "b": "In Rutherford electrons move in one cloud; in Bohr they move in shells",
+    "c": "In Bohr protons sit in shells",
+    "d": "In Rutherford there are no electrons"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Where are protons, neutrons and electrons located?",
+   "answers": {
+    "a": "All three in the nucleus",
+    "b": "All three in shells",
+    "c": "p and n in the nucleus; electrons in shells outside the nucleus",
+    "d": "Electrons in the nucleus; p and n in shells"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "What are the outermost electrons called?",
+   "answers": {
+    "a": "Core electrons",
+    "b": "Free neutrons",
+    "c": "Photoelectrons",
+    "d": "Valence electrons"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "What is the maximum number of electrons in the K, L and M shells?",
+   "answers": {
+    "a": "2, 8 and 18",
+    "b": "8, 8 and 8",
+    "c": "2, 8 and 8",
+    "d": "2, 18 and 32"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "What is a noble gas configuration?",
+   "answers": {
+    "a": "A configuration with protons only in the nucleus",
+    "b": "An electron configuration in which the shells are filled to the maximum",
+    "c": "A configuration with as many neutrons as protons",
+    "d": "A configuration without valence electrons"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "How many valence electrons does magnesium have? (BINAS table 99)",
+   "answers": {
+    "a": "12",
+    "b": "8",
+    "c": "2",
+    "d": "0"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "What must magnesium do to reach the noble gas configuration?",
+   "answers": {
+    "a": "Gain two electrons → Mg<sup>2−</sup>",
+    "b": "Lose one electron → Mg<sup>+</sup>",
+    "c": "Gain eight electrons",
+    "d": "Lose two electrons → Mg<sup>2+</sup>"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "What is the molecular mass of H<sub>2</sub>SO<sub>4</sub>? (BINAS table 99)",
+   "answers": {
+    "a": "98.08 u",
+    "b": "64.06 u",
+    "c": "50.08 u",
+    "d": "116.08 u"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "In which group are the halogens?",
+   "answers": {
+    "a": "group 1",
+    "b": "group 17",
+    "c": "group 18",
+    "d": "group 2"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "In which group are the noble gases?",
+   "answers": {
+    "a": "group 17",
+    "b": "group 1",
+    "c": "group 18",
+    "d": "group 2"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Elements in the same group have similar …",
+   "answers": {
+    "a": "mass numbers",
+    "b": "atomic numbers",
+    "c": "numbers of neutrons",
+    "d": "chemical properties"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "How does sodium reach a noble gas configuration?",
+   "answers": {
+    "a": "By losing its one valence electron → Na<sup>+</sup>",
+    "b": "By gaining one electron → Na<sup>−</sup>",
+    "c": "By gaining seven electrons",
+    "d": "By losing two electrons"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "How does fluorine (F) reach a noble gas configuration?",
+   "answers": {
+    "a": "By losing one electron → F<sup>+</sup>",
+    "b": "By gaining one electron → F<sup>−</sup>",
+    "c": "By losing seven electrons",
+    "d": "By gaining two electrons"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "What are isotopes?",
+   "answers": {
+    "a": "Atoms with the same mass number but a different atomic number",
+    "b": "Molecules with the same formula but a different structure",
+    "c": "Atoms with the same atomic number but a different mass number",
+    "d": "Ions with the same charge"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "Why is the mass number in the periodic table often not a round number?",
+   "answers": {
+    "a": "Because atoms have partial protons",
+    "b": "Because electrons count toward the mass",
+    "c": "Because pressure changes the mass",
+    "d": "Because it is a weighted average of natural isotopes"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "The relative atomic mass of chlorine is 35.45 u (isotopes Cl-35 and Cl-37). Which isotope is most abundant?",
+   "answers": {
+    "a": "Cl-35",
+    "b": "Cl-37",
+    "c": "Both equally",
+    "d": "You cannot tell"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "Which isotopes of bromine occur in nature? (BINAS table 25A)",
+   "answers": {
+    "a": "Br-78 and Br-80",
+    "b": "Br-79 and Br-81",
+    "c": "Br-35 and Br-37",
+    "d": "Br-79 and Br-80"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "Bromine has atomic number 35. How many neutrons does Br-79 have?",
+   "answers": {
+    "a": "35",
+    "b": "79",
+    "c": "44",
+    "d": "46"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "How many moles of H atoms are there in 3.5 mol of water (H<sub>2</sub>O)?",
+   "answers": {
+    "a": "3.5 mol",
+    "b": "1.75 mol",
+    "c": "10.5 mol",
+    "d": "7.0 mol"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "What is the balanced equation for the combustion of ethane?",
+   "answers": {
+    "a": "2C<sub>2</sub>H<sub>6</sub> + 7O<sub>2</sub> → 4CO<sub>2</sub> + 6H<sub>2</sub>O",
+    "b": "C<sub>2</sub>H<sub>6</sub> + O<sub>2</sub> → CO<sub>2</sub> + H<sub>2</sub>O",
+    "c": "2C<sub>2</sub>H<sub>6</sub> + 3O<sub>2</sub> → 4CO<sub>2</sub> + 6H<sub>2</sub>O",
+    "d": "C<sub>2</sub>H<sub>6</sub> + 7O<sub>2</sub> → 2CO<sub>2</sub> + 3H<sub>2</sub>O"
+   },
+   "correctAnswer": "a"
+  },
+  {
+   "question": "In which mole ratio does ethane burn with oxygen to form CO<sub>2</sub> and H<sub>2</sub>O?",
+   "answers": {
+    "a": "1 : 1 : 1 : 1",
+    "b": "2 : 7 : 4 : 6",
+    "c": "2 : 3 : 4 : 6",
+    "d": "1 : 3.5 : 2 : 3"
+   },
+   "correctAnswer": "b"
+  },
+  {
+   "question": "You let 2 mol of ethane react with 14 mol of oxygen (ratio 2 : 7). What applies to oxygen?",
+   "answers": {
+    "a": "Shortage",
+    "b": "Exactly enough",
+    "c": "Excess",
+    "d": "No oxygen is needed"
+   },
+   "correctAnswer": "c"
+  },
+  {
+   "question": "What is the scientific notation of 0.0023 mol?",
+   "answers": {
+    "a": "2.3 · 10<sup>3</sup> mol",
+    "b": "0.23 · 10<sup>−2</sup> mol",
+    "c": "23 · 10<sup>−4</sup> mol",
+    "d": "2.3 · 10<sup>−3</sup> mol"
+   },
+   "correctAnswer": "d"
+  },
+  {
+   "question": "1 L equals …",
+   "answers": {
+    "a": "0.001 m<sup>3</sup>",
+    "b": "0.01 m<sup>3</sup>",
+    "c": "1 m<sup>3</sup>",
+    "d": "1000 m<sup>3</sup>"
+   },
+   "correctAnswer": "a"
+  }
+ ]
+}
